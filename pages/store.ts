@@ -1,9 +1,11 @@
 import create from 'zustand';
 
-interface Logindata {
-  email: string;
-  password: string;
-  loginaction: () => void;
-}
+// interface Logindata {
+//   email: string;
+//   password: string;
+//   loginaction: () => void;
+// }
 
-export const login_test = create<Logindata>((data) => ({}));
+export const Logintest = create((data) => {
+  return console.log(data);
+});

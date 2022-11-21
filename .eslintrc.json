@@ -18,6 +18,7 @@
       { "namedComponents": "arrow-function" }
     ],
     "arrow-body-style": ["error", "always"],
-    "react/jsx-props-no-spreading": [1, { "custom": "ignore" }]
+    "react/jsx-props-no-spreading": [1, { "custom": "ignore" }],
+    "import/prefer-default-export": "off"
   }
 }
