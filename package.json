@@ -12,6 +12,12 @@
     "lint-staged": "lint-staged",
     "prettier": "prettier --write --config ./.prettierrc './pages/**/*.{ts,tsx}'"
   },
+  "lint-staged": {
+    "./pages/**/*.{ts,tsx}": [
+      "eslint --ext .tsx,ts pages/ --fix",
+      "prettier --write"
+    ]
+  },
   "dependencies": {
     "@tanstack/react-query": "^4.16.1",
     "@tanstack/react-query-devtools": "^4.16.1",

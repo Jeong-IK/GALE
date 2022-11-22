@@ -3,3 +3,4 @@
 
 echo 'hello husky test'
 pnpm run lint:fix
+pnpm run lint-staged
