@@ -1,7 +1,5 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-echo 'hello husky test'
-pnpm run lint:fix
+echo 'Husky and lint-staged Test'
 pnpm run lint-staged
-lint-staged
