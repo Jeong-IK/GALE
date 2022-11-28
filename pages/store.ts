@@ -1,11 +1,19 @@
 import create from "zustand";
 
-// interface Logindata {
-//     email: string;
-//     password: string;
-//     loginaction: () => void;
-// }
+interface Logindata {
+    email: string;
+    password: string;
+    setlogindata: (inputname: string, inputpassword: string) => void;
+}
 
-export const Logintest = create(data => {
-    console.log(data);
+export const useMemberStore = create<Logindata>()(set => {
+    return {
+        email: "init",
+        password: "init",
+        setlogindata: (inputname: string, inputpassword: string) => {
+            return set(() => {
+                return { email: inputname, password: inputpassword };
+            });
+        },
+    };
 });
