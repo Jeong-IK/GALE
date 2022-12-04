@@ -1,14 +1,8 @@
 import type { NextPage } from "next";
-import { Login } from "./member/login";
-import { Signup } from "./member/signup";
+import { Header } from "./Header/header";
 
 const Home: NextPage = () => {
-    return (
-        <>
-            <Login />
-            <Signup />
-        </>
-    );
+    return <Header />;
 };
 
 export default Home;

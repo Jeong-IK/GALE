@@ -20,15 +20,19 @@ export const Signup = () => {
             Inputnickname.current?.value
         ) {
             if (Inputpasswd.current.value === Confirmpasswd) {
-                axios.post(
-                    "http://175.212.160.106:7777/user/register",
-                    {
-                        Email: Inputemail.current.value,
-                        Password: Inputpasswd.current.value,
-                        Nickname: Inputnickname.current.value,
-                    },
-                    { withCredentials: true }
-                );
+                axios
+                    .post(
+                        "http://175.212.160.106:7777/auth/signup",
+                        {
+                            Email: Inputemail.current.value,
+                            Password: Inputpasswd.current.value,
+                            Nickname: Inputnickname.current.value,
+                        },
+                        { withCredentials: true }
+                    )
+                    .then(response => {
+                        return console.log(response);
+                    });
             } else {
                 alert("비밀번호 값 불일치");
                 document.getElementById("confirmpwd")?.focus();
@@ -72,6 +76,8 @@ export const Signup = () => {
                 닉네임
                 <input type="text" ref={Inputnickname} />
             </label>
+
+            <button type="submit">회원가입</button>
         </form>
     );
 };

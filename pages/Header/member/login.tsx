@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import axios from "axios";
 
-export const Login = () => {
+export const Login = (): JSX.Element => {
     const Inputemail = useRef<HTMLInputElement>(null);
     const Inputpasswd = useRef<HTMLInputElement>(null);
 
@@ -10,7 +10,7 @@ export const Login = () => {
         if (Inputemail.current?.value && Inputpasswd.current?.value) {
             axios
                 .post(
-                    "http://175.212.160.106:7777/user/login",
+                    "http://175.212.160.106:7777/auth/login",
                     {
                         Email: Inputemail.current.value,
                         Password: Inputpasswd.current.value,
@@ -18,7 +18,7 @@ export const Login = () => {
                     { withCredentials: true }
                 )
                 .then(response => {
-                    alert(response.status);
+                    console.log(response);
                 });
         } else {
             Inputemail.current?.focus();

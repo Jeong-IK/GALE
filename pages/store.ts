@@ -1,18 +1,14 @@
 import create from "zustand";
+import { Modalstatus } from "./Header/type_header";
 
-interface Logindata {
-    email: string;
-    password: string;
-    setlogindata: (inputname: string, inputpassword: string) => void;
-}
+// Modal 활성화 및 Modaltype
 
-export const useMemberStore = create<Logindata>()(set => {
+export const useModal = create<Modalstatus>()(set => {
     return {
-        email: "init",
-        password: "init",
-        setlogindata: (inputname: string, inputpassword: string) => {
+        Modaloption: 0,
+        setModaloption: (req: Modalstatus["Modaloption"]) => {
             return set(() => {
-                return { email: inputname, password: inputpassword };
+                return { Modaloption: req };
             });
         },
     };
