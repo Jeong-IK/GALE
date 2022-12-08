@@ -1,6 +1,6 @@
 import React, { ReactNode, useRef } from "react";
 import ReactDOM from "react-dom";
-import { Modalbgcolor, Modalwindow } from "./style_header";
+import { Modalbgcolor, Modalwindow } from "./Mainpages/style";
 // import { useModal } from "../store";
 
 export const Modal = (children: ReactNode) => {

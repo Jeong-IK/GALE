@@ -10,7 +10,8 @@
         "lint:fix": "eslint --fix './pages/**/*.{ts,tsx}'",
         "prepared": "husky install",
         "lint-staged": "lint-staged",
-        "prettier": "prettier --write --config ./.prettierrc.js './pages/**/*.{ts,tsx}'"
+        "prettier": "prettier --write --config ./.prettierrc.js './pages/**/*.{ts,tsx}'",
+        "check-type": "tsc --pretty --noEmit"
     },
     "lint-staged": {
         "./pages/**/*.{ts,tsx}": [
@@ -18,7 +19,11 @@
             "prettier --write --config ./.prettierrc.js './pages/**/*.{ts,tsx}'"
         ]
     },
+    "eslintIgnore": [
+        "./next.config.js"
+    ],
     "dependencies": {
+        "@babel/core": "^7.20.5",
         "@emotion/react": "^11.10.5",
         "@tanstack/react-query": "^4.16.1",
         "@tanstack/react-query-devtools": "^4.16.1",

@@ -1,14 +1,14 @@
 import create from "zustand";
-import { Modalstatus } from "./Header/type_header";
+import { Modaloption, Modalstatus } from "./Mainpages/type";
 
 // Modal 활성화 및 Modaltype
 
 export const useModal = create<Modalstatus>()(set => {
     return {
-        Modaloption: 0,
-        setModaloption: (req: Modalstatus["Modaloption"]) => {
+        modalOption: 0,
+        setModaloption: (req: Modaloption) => {
             return set(() => {
-                return { Modaloption: req };
+                return { modalOption: req };
             });
         },
     };

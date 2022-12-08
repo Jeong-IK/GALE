@@ -1,11 +1,11 @@
-import { Link } from "./style_header";
-import { Login } from "./member/login";
+import { Link } from "./style";
+// import { Login } from "./member/login";
 // import { Signup } from "./member/signup";
 import { useModal } from "../store";
-import { Modal } from "./Modal";
+// import { Modal } from "./Modal";
 
 export const Header = (): JSX.Element => {
-    const { Modaloption, setModaloption } = useModal();
+    const { setModaloption } = useModal();
 
     return (
         <>
@@ -29,11 +29,11 @@ export const Header = (): JSX.Element => {
                     회원가입
                 </button>
             </div>
-            {Modaloption && (
-                <Modal>
-                    <Login />
-                </Modal>
-            )}
+            {/* {modalOption && (
+                <p>Modalopen</p>
+                // <Modal>
+                //     <Login />
+                // </Modal> */}
             <div id="modal" />
         </>
     );

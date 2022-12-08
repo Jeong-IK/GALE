@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { Header } from "./Header/header";
+import { Header } from "./Mainpages/header.page";
 
 const Home: NextPage = () => {
     return <Header />;

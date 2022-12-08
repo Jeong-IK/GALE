@@ -31,15 +31,14 @@ export const Signup = () => {
                         { withCredentials: true }
                     )
                     .then(response => {
-                        return console.log(response);
+                        if (response.status === 200) {
+                            alert("회원가입에 성공하였습니다.");
+                        }
                     });
-            } else {
-                alert("비밀번호 값 불일치");
-                document.getElementById("confirmpwd")?.focus();
             }
-        } else {
-            alert("입력 값 미흡");
-            Inputemail.current?.focus();
+            if (Inputpasswd.current.value !== Confirmpasswd) {
+                alert("비밀번호가 서로 일치하지 않습니다.");
+            }
         }
     };
 

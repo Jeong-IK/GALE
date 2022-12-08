@@ -3,3 +3,4 @@
 
 echo 'Husky and lint-staged Test'
 pnpm run lint-staged
+pnpm run check-type
