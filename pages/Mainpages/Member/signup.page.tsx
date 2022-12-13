@@ -1,18 +1,16 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 // import { Datacheck } from "../type";
 // simport axios from "axios";
+
+type EmailErrorMsgType = "8자이상 입력" | "입력안할래??" | "넘길어 ㅋㅋ" | null;
 
 export const Signup = () => {
     const inputEmail = useRef<HTMLInputElement>(null);
     const inputPasswd = useRef<HTMLInputElement>(null);
     const confirmPwd = useRef<HTMLInputElement>(null);
     const inputNickname = useRef<HTMLInputElement>(null);
-    // const [dataValid, setDatavalid] = useState<Datacheck>({
-    //     email: "",
-    //     pwd: true,
-    //     confirmPwd: true,
-    //     nickName: true,
-    // });
+
+    const [emailErrorMsg, setEmailErrorMsg] = useState<EmailErrorMsgType>(null);
 
     const Signupaction = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -45,8 +43,24 @@ export const Signup = () => {
         <form onSubmit={Signupaction}>
             <label>
                 이메일
-                <input type="text" ref={inputEmail} />
+                <input
+                    type="text"
+                    ref={inputEmail}
+                    onChange={() => {
+                        if (!inputEmail.current?.value?.length) return;
+                        if (inputEmail.current?.value?.length < 8) {
+                            setEmailErrorMsg("8자이상 입력");
+                            return;
+                        }
+                        if (inputEmail.current?.value?.length > 20) {
+                            setEmailErrorMsg("넘길어 ㅋㅋ");
+                            return;
+                        }
+                        setEmailErrorMsg(null);
+                    }}
+                />
             </label>
+            {emailErrorMsg}
             <br />
             <label>
                 비밀번호 입력
