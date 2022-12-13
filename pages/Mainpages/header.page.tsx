@@ -2,6 +2,7 @@ import { Link } from "./style";
 // import { Login } from "./member/login";
 // import { Signup } from "./member/signup";
 import { useModal } from "../store";
+import { Signup } from "./Member/signup.page";
 // import { Modal } from "./Modal";
 
 export const Header = (): JSX.Element => {
@@ -28,6 +29,7 @@ export const Header = (): JSX.Element => {
                 >
                     회원가입
                 </button>
+                <Signup />
             </div>
             {/* {modalOption && (
                 <p>Modalopen</p>

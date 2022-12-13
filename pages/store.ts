@@ -13,3 +13,26 @@ export const useModal = create<Modalstatus>()(set => {
         },
     };
 });
+
+// export const useSignupata = create<SignupData>()(set => {
+//     return {
+//         emailValid: true,
+//         pwdValid: true,
+//         nameValid: true,
+//         setEmailvalid: (valid: boolean) => {
+//             return set(() => {
+//                 return { emailValied: valid };
+//             });
+//         },
+//         setPwdlvalid: (valid: boolean) => {
+//             return set(() => {
+//                 return { pwdValid: valid };
+//             });
+//         },
+//         setNamevalid: (valid: boolean) => {
+//             return set(() => {
+//                 return { nameValid: valid };
+//             });
+//         },
+//     };
+// });

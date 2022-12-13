@@ -5,3 +5,10 @@ export interface Modalstatus {
     modalOption: Modaloption;
     setModaloption: (type: Modaloption) => void;
 }
+
+export interface Datacheck {
+    email: string;
+    pwd: boolean;
+    confirmPwd: boolean;
+    nickName: boolean;
+}

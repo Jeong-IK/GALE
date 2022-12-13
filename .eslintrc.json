@@ -29,5 +29,6 @@
             }
         ],
         "react/no-unknown-property": ["error", { "ignore": ["css"] }]
-    }
+    },
+    "ignorePatterns": ["next.config.js"]
 }
