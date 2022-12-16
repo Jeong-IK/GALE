@@ -1,5 +1,13 @@
 import create from "zustand";
-import { Modaloption, Modalstatus } from "./Mainpages/type";
+import {
+    Modaloption,
+    Modalstatus,
+    SignupErrorMsgType,
+    EmailErrorMsgType,
+    PwdErrorMsgType,
+    CfmPwdErrorMsgType,
+    NickNameErrorMsgType,
+} from "./Mainpages/type";
 
 // Modal 활성화 및 Modaltype
 
@@ -14,25 +22,31 @@ export const useModal = create<Modalstatus>()(set => {
     };
 });
 
-// export const useSignupata = create<SignupData>()(set => {
-//     return {
-//         emailValid: true,
-//         pwdValid: true,
-//         nameValid: true,
-//         setEmailvalid: (valid: boolean) => {
-//             return set(() => {
-//                 return { emailValied: valid };
-//             });
-//         },
-//         setPwdlvalid: (valid: boolean) => {
-//             return set(() => {
-//                 return { pwdValid: valid };
-//             });
-//         },
-//         setNamevalid: (valid: boolean) => {
-//             return set(() => {
-//                 return { nameValid: valid };
-//             });
-//         },
-//     };
-// });
+export const useInputError = create<SignupErrorMsgType>()(set => {
+    return {
+        emailErrorMsg: null,
+        pwdErrorMsg: null,
+        cfmPwdErrorMsg: null,
+        nickNameErrorMsg: null,
+        setEmailErrorMsg: (errorMsg: EmailErrorMsgType) => {
+            return set(() => {
+                return { emailErrorMsg: errorMsg };
+            });
+        },
+        setPwdErrorMsg: (errorMsg: PwdErrorMsgType) => {
+            return set(() => {
+                return { pwdErrorMsg: errorMsg };
+            });
+        },
+        setCfmPwdErrorMsg: (errorMsg: CfmPwdErrorMsgType) => {
+            return set(() => {
+                return { cfmPwdErrorMsg: errorMsg };
+            });
+        },
+        setNickNameErrorMsg: (errorMsg: NickNameErrorMsgType) => {
+            return set(() => {
+                return { nickNameErrorMsg: errorMsg };
+            });
+        },
+    };
+});
