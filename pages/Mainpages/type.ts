@@ -1,5 +1,8 @@
-// 0= close 1 = Login
-export type Modaloption = 0 | 1 | 2;
+import { ReactNode } from "react";
+
+export type ModalchildrenType = { children: ReactNode };
+
+export type Modaloption = "logIn" | "signUp" | null;
 
 export interface Modalstatus {
     modalOption: Modaloption;
@@ -27,16 +30,5 @@ export type NickNameErrorMsgType =
     | "닉네임을 입력해주세요"
     | "올바른 닉네임 형식으로 입력해주세요"
     | null;
-
-export interface SignupErrorMsgType {
-    emailErrorMsg: EmailErrorMsgType;
-    pwdErrorMsg: PwdErrorMsgType;
-    cfmPwdErrorMsg: CfmPwdErrorMsgType;
-    nickNameErrorMsg: NickNameErrorMsgType;
-    setEmailErrorMsg: (errorMsg: EmailErrorMsgType) => void;
-    setPwdErrorMsg: (errorMsg: PwdErrorMsgType) => void;
-    setCfmPwdErrorMsg: (errorMsg: CfmPwdErrorMsgType) => void;
-    setNickNameErrorMsg: (errorMsg: NickNameErrorMsgType) => void;
-}
 
 export type LoginErrorMsgType = "이메일/비밀번호를 다시 확인해주세요." | null;

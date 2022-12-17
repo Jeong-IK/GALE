@@ -1,79 +1,69 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import axios from "axios";
-import { useInputError } from "../../store";
+import {
+    EmailErrorMsgType,
+    PwdErrorMsgType,
+    CfmPwdErrorMsgType,
+    NickNameErrorMsgType,
+} from "../type";
 
 export const Signup = () => {
+    // Input 입력 값
     const inputEmail = useRef<HTMLInputElement>(null);
     const inputPasswd = useRef<HTMLInputElement>(null);
     const confirmPwd = useRef<HTMLInputElement>(null);
     const inputNickname = useRef<HTMLInputElement>(null);
+    // Error State
+    const [emailErrorMsg, setEmailErrorMsg] = useState<EmailErrorMsgType>(null);
+    const [pwdErrorMsg, setPwdErrorMsg] = useState<PwdErrorMsgType>(null);
+    const [cfmPwdErrorMsg, setCfmPwdErrorMsg] =
+        useState<CfmPwdErrorMsgType>(null);
+    const [nickNameErrorMsg, setNickNameErrorMsg] =
+        useState<NickNameErrorMsgType>(null);
 
-    const {
-        emailErrorMsg,
-        pwdErrorMsg,
-        cfmPwdErrorMsg,
-        nickNameErrorMsg,
-        setEmailErrorMsg,
-        setPwdErrorMsg,
-        setCfmPwdErrorMsg,
-        setNickNameErrorMsg,
-    } = useInputError();
-
-    const Signupaction = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        // if (
-        //     !inputEmail.current?.value ||
-        //     !inputPasswd.current?.value ||
-        //     !confirmPwd.current?.value ||
-        //     !inputNickname.current?.value
-        // )
-        //     return;
-        // if (
-        //     !emailErrorMsg ||
-        //     !pwdErrorMsg ||
-        //     !cfmPwdErrorMsg ||
-        //     !nickNameErrorMsg
-        // )
-        //     return;
-
+    // 함수명, 변수명 줄여쓰지 말자 e -> formEvent
+    const signUpAction = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        if (
+            !inputEmail.current?.value ||
+            !inputPasswd.current?.value ||
+            !confirmPwd.current?.value ||
+            !inputNickname.current?.value
+        ) {
+            return;
+        }
+        if (
+            emailErrorMsg ||
+            pwdErrorMsg ||
+            cfmPwdErrorMsg ||
+            nickNameErrorMsg
+        ) {
+            return;
+        }
+        // catch 다른 상태코드
+        // next js error overlay이유
         axios
             .post("http://175.212.160.106:7777/auth/signup", [
                 {
-                    Email: inputEmail.current?.value,
-                    Password: inputPasswd.current?.value,
-                    ConfirmPassword: confirmPwd.current?.value,
-                    Nickname: inputNickname.current?.value,
+                    Email: inputEmail.current.value,
+                    Password: inputPasswd.current.value,
+                    ConfirmPassword: confirmPwd.current.value,
+                    Nickname: inputNickname.current.value,
                 },
                 {
                     withCredentials: true,
-                    validateStatus: (status: number) => {
-                        if (
-                            (status >= 200 && status < 300) ||
-                            status === 403 ||
-                            status === 503
-                        ) {
-                            return true;
-                        }
-                        return false;
-                    },
                 },
             ])
             .then(response => {
-                // response.Message 존재 여부 확인
-                if (response.status === 400) {
-                    alert(response.data.message);
-                    return;
-                }
-                if (response.status === 503) {
-                    alert(response.data.message);
-                    return;
-                }
                 alert(response.data.message);
+            })
+            .catch(response => {
+                alert(response.message);
             });
     };
 
     return (
-        <form onSubmit={Signupaction}>
+        <form onSubmit={signUpAction}>
             <label>
                 이메일
                 <input
@@ -127,6 +117,15 @@ export const Signup = () => {
                         }
                         if (inputPasswd?.current?.value.length > 16) {
                             setPwdErrorMsg("비밀번호길이가 너무 깁니다.");
+                            return;
+                        }
+                        if (
+                            confirmPwd.current?.value !==
+                            inputPasswd.current.value
+                        ) {
+                            setCfmPwdErrorMsg(
+                                "비밀번호가 서로 일치하지 않습니다."
+                            );
                             return;
                         }
                         setPwdErrorMsg(null);
@@ -202,7 +201,6 @@ export const Signup = () => {
                     정확히 입력해주세요.
                 </button>
             )}
-            <button type="submit">동의하고 가입하기</button>
         </form>
     );
 };

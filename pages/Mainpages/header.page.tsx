@@ -1,12 +1,11 @@
 import { Link } from "./style";
-// import { Login } from "./member/login";
-// import { Signup } from "./member/signup";
 import { useModal } from "../store";
 import { Signup } from "./Member/signup.page";
-// import { Modal } from "./Modal";
+import { Login } from "./Member/login.page";
+import { Modal } from "../modal";
 
 export const Header = (): JSX.Element => {
-    const { setModaloption } = useModal();
+    const { modalOption, setModaloption } = useModal();
 
     return (
         <>
@@ -15,7 +14,7 @@ export const Header = (): JSX.Element => {
                     type="button"
                     css={Link}
                     onClick={() => {
-                        setModaloption(1);
+                        setModaloption("logIn");
                     }}
                 >
                     로그인
@@ -24,19 +23,19 @@ export const Header = (): JSX.Element => {
                     type="button"
                     css={Link}
                     onClick={() => {
-                        setModaloption(2);
+                        setModaloption("signUp");
                     }}
                 >
                     회원가입
                 </button>
                 <Signup />
+                <Login />
             </div>
-            {/* {modalOption && (
-                <p>Modalopen</p>
-                // <Modal>
-                //     <Login />
-                // </Modal> */}
-            <div id="modal" />
+            {modalOption && (
+                <Modal>
+                    {modalOption === "logIn" ? <Login /> : <Signup />}
+                </Modal>
+            )}
         </>
     );
 };
