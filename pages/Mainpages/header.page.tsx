@@ -28,8 +28,6 @@ export const Header = (): JSX.Element => {
                 >
                     회원가입
                 </button>
-                <Signup />
-                <Login />
             </div>
             {modalOption && (
                 <Modal>
