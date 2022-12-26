@@ -32,4 +32,11 @@ export type NickNameErrorMsgType =
     | "이미 존재하는 닉네임입니다."
     | null;
 
-export type LoginErrorMsgType = "이메일/비밀번호를 다시 확인해주세요." | null;
+export type LoginIdErrorMsgType =
+    | "이메일/비밀번호를 다시 확인해주세요."
+    | "이메일을 입력해주세요"
+    | null;
+export type LoginPwdErrorMsgType =
+    | "이메일/비밀번호를 다시 확인해주세요."
+    | "비밀번호를 입력해주세요"
+    | null;

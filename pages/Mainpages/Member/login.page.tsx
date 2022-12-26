@@ -1,14 +1,16 @@
 import { useRef, useState } from "react";
 import axios from "axios";
 import { useModal } from "../../store";
-import { LoginErrorMsgType } from "../type";
+import { LoginIdErrorMsgType, LoginPwdErrorMsgType } from "../type";
 import { Formtable, Modalform } from "../style";
 
 export const Login = (): JSX.Element => {
     const inputEmail = useRef<HTMLInputElement>(null);
     const inputPasswd = useRef<HTMLInputElement>(null);
-    const [logInErrorMsg, setLogInErrorMsg] = useState<LoginErrorMsgType>();
+    const [idErrorMsg, setIdErrorMsg] = useState<LoginIdErrorMsgType>();
+    const [pwdErrorMsg, setPwdErrorMsg] = useState<LoginPwdErrorMsgType>();
     const { setModaloption } = useModal();
+
     const logInAction = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if (
@@ -28,10 +30,16 @@ export const Login = (): JSX.Element => {
             )
             .then(response => {
                 alert(response.data.message);
+                localStorage.setItem("accessToken", response.data.accessToken);
+                localStorage.setItem(
+                    "refreshToken",
+                    response.data.refreshToken
+                );
             })
             .catch(response => {
                 alert(response.response.data.message);
-                setLogInErrorMsg("이메일/비밀번호를 다시 확인해주세요.");
+                setIdErrorMsg("이메일/비밀번호를 다시 확인해주세요.");
+                setPwdErrorMsg("이메일/비밀번호를 다시 확인해주세요.");
             });
     };
 
@@ -41,42 +49,62 @@ export const Login = (): JSX.Element => {
             <p>갈래에 여행기록을 남겨보세요! ✍🏻</p>
             <form onSubmit={logInAction}>
                 <table css={Formtable}>
-                    <tr>
-                        <th>이메일</th>
-                        <th>
-                            <input
-                                type="text"
-                                placeholder="example@gmail.com"
-                                ref={inputEmail}
-                            />
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>{logInErrorMsg}</th>
-                    </tr>
-                    <tr>
-                        <th>비밀번호 입력</th>
-                        <th>
-                            <input
-                                type="password"
-                                ref={inputPasswd}
-                                placeholder="영어 대소문자, 특수문자, 숫자 포함 8자리 이상"
-                            />
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>{logInErrorMsg}</th>
-                    </tr>
-                    <tr>
-                        {inputEmail.current?.value.length &&
-                        inputPasswd.current?.value.length ? (
-                            <button type="submit">로그인 하기</button>
-                        ) : (
-                            <button type="submit" disabled>
-                                로그인 하기
-                            </button>
-                        )}
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <td>이메일</td>
+                            <td>
+                                <input
+                                    type="text"
+                                    placeholder="example@gmail.com"
+                                    ref={inputEmail}
+                                    onChange={() => {
+                                        if (!inputEmail.current?.value.length) {
+                                            setIdErrorMsg(
+                                                "이메일을 입력해주세요"
+                                            );
+                                        }
+                                    }}
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>{idErrorMsg}</td>
+                        </tr>
+                        <tr>
+                            <td>비밀번호 입력</td>
+                            <td>
+                                <input
+                                    type="password"
+                                    ref={inputPasswd}
+                                    placeholder="영어 대소문자, 특수문자, 숫자 포함 8자리 이상"
+                                    onChange={() => {
+                                        if (
+                                            !inputPasswd.current?.value.length
+                                        ) {
+                                            setPwdErrorMsg(
+                                                "비밀번호를 입력해주세요"
+                                            );
+                                        }
+                                    }}
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>{pwdErrorMsg}</td>
+                        </tr>
+                        <tr>
+                            <td colSpan={2}>
+                                {inputEmail.current?.value &&
+                                inputPasswd.current?.value ? (
+                                    <button type="submit">로그인 하기</button>
+                                ) : (
+                                    <button type="submit" disabled>
+                                        로그인 하기
+                                    </button>
+                                )}
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
             </form>
             <p>
