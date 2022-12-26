@@ -36,8 +36,8 @@ export const Login = (): JSX.Element => {
                     response.data.refreshToken
                 );
             })
-            .catch(response => {
-                alert(response.response.data.message);
+            .catch(error => {
+                alert(error.response.data.message);
                 setIdErrorMsg("이메일/비밀번호를 다시 확인해주세요.");
                 setPwdErrorMsg("이메일/비밀번호를 다시 확인해주세요.");
             });
@@ -62,7 +62,9 @@ export const Login = (): JSX.Element => {
                                             setIdErrorMsg(
                                                 "이메일을 입력해주세요"
                                             );
+                                            return;
                                         }
+                                        setIdErrorMsg(null);
                                     }}
                                 />
                             </td>
@@ -84,7 +86,9 @@ export const Login = (): JSX.Element => {
                                             setPwdErrorMsg(
                                                 "비밀번호를 입력해주세요"
                                             );
+                                            return;
                                         }
+                                        setPwdErrorMsg(null);
                                     }}
                                 />
                             </td>
