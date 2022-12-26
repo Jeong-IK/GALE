@@ -32,3 +32,17 @@ export const Modalwindow = css`
     border-radius: 1rem;
     text-align: right;
 `;
+
+export const Modalform = css`
+    text-align: center;
+    display: block;
+    list-style: none;
+`;
+
+export const Formindex = css`
+    list-style: none;
+`;
+
+export const Formtable = css`
+    border: 0px;
+`;

@@ -1,20 +1,33 @@
-import React, { ReactNode, useRef } from "react";
 import ReactDOM from "react-dom";
+import React, { useRef } from "react";
 import { Modalbgcolor, Modalwindow } from "./Mainpages/style";
-// import { useModal } from "../store";
+import { useModal } from "./store";
+import { ModalchildrenType } from "./Mainpages/type";
 
-export const Modal = (children: ReactNode) => {
-    const Windowmodal = useRef<HTMLDivElement>(null);
+export const Modal = ({ children }: ModalchildrenType) => {
+    const windowModal = useRef<HTMLDivElement>(null);
 
-    // const { setModaloption } = useModal();
+    const { setModaloption } = useModal();
 
-    // useEffect(() => {
-    //   const Overclick = (e: React.MouseEvent<HTMLElement>) => {Windowmodal.current && !Windowmodal.current.contains(e.target) ? addEventListener("click",setModaloption(0))}
-    //   });
+    const overClick = (event: React.MouseEvent) => {
+        if (
+            event.target &&
+            !windowModal.current?.contains(event.target as Node)
+        )
+            setModaloption(null);
+    };
 
     return ReactDOM.createPortal(
-        <div css={Modalbgcolor}>
-            <div css={Modalwindow} ref={Windowmodal}>
+        <div css={Modalbgcolor} onClick={overClick} aria-hidden="true">
+            <div css={Modalwindow} ref={windowModal}>
+                <button
+                    type="button"
+                    onClick={() => {
+                        setModaloption(null);
+                    }}
+                >
+                    X
+                </button>
                 {children}
             </div>
         </div>,
