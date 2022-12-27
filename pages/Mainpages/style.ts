@@ -51,9 +51,15 @@ export const Mainheader = css`
 `;
 export const Memberlink = css`
     position: absolute;
-    float: right;
 `;
 
-export const Formtable = css`
-    border: 0px;
+// export const Formtable = css`
+// `;
+
+export const Travleform = css`
+    width: 84vw;
+    height: 22vh;
+    border-radius: 15px;
+    box-shadow: 0px 2px 13px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
 `;

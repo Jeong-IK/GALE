@@ -21,8 +21,8 @@ export const Header = (): JSX.Element => {
                     withCredentials: true,
                 },
             ])
-            .then(() => {
-                setModaloption(null);
+            .then(response => {
+                console.log(response);
             })
             .catch(error => {
                 console.log(error.response.data.message);
@@ -67,7 +67,7 @@ export const Header = (): JSX.Element => {
                         </button>
                     </div>
                 ) : (
-                    <>
+                    <div css={Memberlink}>
                         <button
                             type="button"
                             css={Link}
@@ -80,7 +80,7 @@ export const Header = (): JSX.Element => {
                         <button type="button" css={Link}>
                             마이페이지
                         </button>
-                    </>
+                    </div>
                 )}
             </div>
             {modalOption && (

@@ -7,7 +7,7 @@ import {
     CfmPwdErrorMsgType,
     NickNameErrorMsgType,
 } from "../type";
-import { Modalform, Formtable } from "../style";
+import { Modalform } from "../style";
 
 export const Signup = () => {
     // Input 입력 값
@@ -84,7 +84,7 @@ export const Signup = () => {
             <p>환영합니다. </p>
             <p>여행지 기록 서비스 갈래와 함께 여행 기록을 작성해보세요. ✍🏻</p>
             <form onSubmit={signUpAction}>
-                <table css={Formtable}>
+                <table>
                     <tbody>
                         <tr>
                             <td>이메일</td>

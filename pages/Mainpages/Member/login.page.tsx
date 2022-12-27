@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import axios from "axios";
 import { useModal } from "../../store";
 import { LoginIdErrorMsgType, LoginPwdErrorMsgType } from "../type";
-import { Formtable, Modalform } from "../style";
+import { Modalform } from "../style";
 
 export const Login = (): JSX.Element => {
     const inputEmail = useRef<HTMLInputElement>(null);
@@ -52,7 +52,7 @@ export const Login = (): JSX.Element => {
             <p>이미 회원이신가요?</p>
             <p>갈래에 여행기록을 남겨보세요! ✍🏻</p>
             <form onSubmit={logInAction}>
-                <table css={Formtable}>
+                <table>
                     <tbody>
                         <tr>
                             <td>이메일</td>
