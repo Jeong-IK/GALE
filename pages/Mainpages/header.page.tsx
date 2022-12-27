@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "./style";
+import Image from "next/image";
+import { Link, Headerbgimg, Mainheader, Memberlink } from "./style";
 import { useModal } from "../store";
 import { Signup } from "./Member/signup.page";
 import { Login } from "./Member/login.page";
@@ -37,9 +38,15 @@ export const Header = (): JSX.Element => {
     }, []);
     return (
         <>
-            <div id="root">
+            <div css={Mainheader}>
+                <Image
+                    src="/headerBgImage.png"
+                    alt="headerbgimg"
+                    layout="fill"
+                    css={Headerbgimg}
+                />
                 {!logInState ? (
-                    <>
+                    <div css={Memberlink}>
                         <button
                             type="button"
                             css={Link}
@@ -58,17 +65,22 @@ export const Header = (): JSX.Element => {
                         >
                             회원가입
                         </button>
-                    </>
+                    </div>
                 ) : (
-                    <button
-                        type="button"
-                        css={Link}
-                        onClick={() => {
-                            logoutAction();
-                        }}
-                    >
-                        로그아웃
-                    </button>
+                    <>
+                        <button
+                            type="button"
+                            css={Link}
+                            onClick={() => {
+                                logoutAction();
+                            }}
+                        >
+                            로그아웃
+                        </button>
+                        <button type="button" css={Link}>
+                            마이페이지
+                        </button>
+                    </>
                 )}
             </div>
             {modalOption && (

@@ -39,8 +39,19 @@ export const Modalform = css`
     list-style: none;
 `;
 
-export const Formindex = css`
-    list-style: none;
+export const Headerbgimg = css`
+    background-size: cover;
+    width: 100vw;
+    background-repeat: no-repeat;
+`;
+export const Mainheader = css`
+    position: relative;
+    height: 46vh;
+    width: 100vw;
+`;
+export const Memberlink = css`
+    position: absolute;
+    float: right;
 `;
 
 export const Formtable = css`

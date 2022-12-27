@@ -30,10 +30,14 @@ export const Login = (): JSX.Element => {
             )
             .then(response => {
                 alert(response.data.message);
-                localStorage.setItem("accessToken", response.data.accessToken);
+                console.log(response);
+                localStorage.setItem(
+                    "accessToken",
+                    response.data.data.accessToken
+                );
                 localStorage.setItem(
                     "refreshToken",
-                    response.data.refreshToken
+                    response.data.data.refreshToken
                 );
             })
             .catch(error => {
