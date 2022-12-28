@@ -53,13 +53,30 @@ export const Memberlink = css`
     position: absolute;
 `;
 
-// export const Formtable = css`
-// `;
+export const Travlecard = css`
+    width: 84vw;
+    height: 29.1vh;
+`;
 
 export const Travleform = css`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 84vw;
     height: 22vh;
     border-radius: 15px;
     box-shadow: 0px 2px 13px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
+`;
+
+export const Cardstyle = css`
+    position: absolute;
+    width: 250px;
+    height: 339px;
+`;
+
+export const Cardimage = css`
+    position: absolute;
+    width: 250px;
+    height: 339px;
 `;
