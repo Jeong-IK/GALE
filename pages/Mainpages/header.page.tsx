@@ -14,7 +14,7 @@ export const Header = (): JSX.Element => {
         axios
             .post("http://175.212.160.106:7777/auth/logout", [
                 {
-                    Enail: "vkxld134@naver.com",
+                    Email: "vkxld134@naver.com",
                     Token: "admin",
                 },
                 {

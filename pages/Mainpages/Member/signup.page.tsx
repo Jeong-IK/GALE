@@ -2,52 +2,57 @@ import React, { useRef, useState } from "react";
 import axios from "axios";
 import { useModal } from "../../store";
 import {
-    EmailErrorMsgType,
-    PwdErrorMsgType,
-    CfmPwdErrorMsgType,
-    NickNameErrorMsgType,
+    SignupEmailErrorMsgType,
+    SignupPwdErrorMsgType,
+    SignupCfmPwdErrorMsgType,
+    SignupNickNameErrorMsgType,
 } from "../type";
 import { Modalform } from "../style";
 
 export const Signup = () => {
-    // Input 입력 값
+    // Input 입력 값 Ref 변수
     const inputEmail = useRef<HTMLInputElement>(null);
     const inputPasswd = useRef<HTMLInputElement>(null);
     const confirmPwd = useRef<HTMLInputElement>(null);
     const inputNickname = useRef<HTMLInputElement>(null);
-    // Error State
-    const [emailErrorMsg, setEmailErrorMsg] = useState<EmailErrorMsgType>(null);
-    const [pwdErrorMsg, setPwdErrorMsg] = useState<PwdErrorMsgType>(null);
+    // ErrorMsgType 상태
+    const [emailErrorMsg, setEmailErrorMsg] =
+        useState<SignupEmailErrorMsgType>(null);
+    const [pwdErrorMsg, setPwdErrorMsg] = useState<SignupPwdErrorMsgType>(null);
     const [cfmPwdErrorMsg, setCfmPwdErrorMsg] =
-        useState<CfmPwdErrorMsgType>(null);
+        useState<SignupCfmPwdErrorMsgType>(null);
     const [nickNameErrorMsg, setNickNameErrorMsg] =
-        useState<NickNameErrorMsgType>(null);
-    // 모달창 타입 store
+        useState<SignupNickNameErrorMsgType>(null);
+    // 모달창 타입 전역 상태
     const { setModaloption } = useModal();
-    // 닉네임 중복체크 로직
+
+    // 닉네임 중복체크
     const checkNicknameExist = () => {
         if (!inputNickname.current?.value.length) return;
         axios
-            .get("http://175.212.160.106:7777/auth/signup/exist-nickname")
-            .then(() => {
-                alert("사용 가능한 닉네임 입니다.");
+            .get("http://175.212.160.106:7777/auth/signup/exist-nickname", {
+                params: { Nickname: inputNickname.current.value },
             })
-            .catch(() => {
+            .then(response => {
+                alert(response.data.message);
+            })
+            .catch(error => {
+                if (error.response.status === 503)
+                    alert(error.response.data.message);
                 setNickNameErrorMsg("이미 존재하는 닉네임입니다.");
             });
     };
 
-    // 함수명, 변수명 줄여쓰지 말자 e -> formEvent
+    // 회원가입 중복체크
     const signUpAction = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        if (
-            !inputEmail.current?.value ||
-            !inputPasswd.current?.value ||
-            !confirmPwd.current?.value ||
-            !inputNickname.current?.value
-        ) {
-            return;
-        }
+        // if (
+        //     !inputEmail.current?.value ||
+        //     !inputPasswd.current?.value ||
+        //     !confirmPwd.current?.value ||
+        //     !inputNickname.current?.value
+        // )
+        //     return;
         if (
             emailErrorMsg ||
             pwdErrorMsg ||
@@ -61,10 +66,10 @@ export const Signup = () => {
         axios
             .post("http://175.212.160.106:7777/auth/signup", [
                 {
-                    Email: inputEmail.current.value,
-                    Password: inputPasswd.current.value,
-                    ConfirmPassword: confirmPwd.current.value,
-                    Nickname: inputNickname.current.value,
+                    Email: inputEmail.current?.value,
+                    Password: inputPasswd.current?.value,
+                    ConfirmPassword: confirmPwd.current?.value,
+                    Nickname: inputNickname.current?.value,
                 },
                 {
                     withCredentials: true,
@@ -75,6 +80,11 @@ export const Signup = () => {
                 setModaloption("logIn");
             })
             .catch(error => {
+                // if (error.response.status === 409)
+                //     alert(error.response.data.message);
+                // if (error.response.status === 503)
+                //     alert(error.response.data.message);
+                // if (error.response.status === 400)
                 alert(error.response.data.message);
             });
     };

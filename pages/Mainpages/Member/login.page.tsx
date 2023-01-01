@@ -29,8 +29,6 @@ export const Login = (): JSX.Element => {
                 { withCredentials: true }
             )
             .then(response => {
-                alert(response.data.message);
-                console.log(response);
                 localStorage.setItem(
                     "accessToken",
                     response.data.data.accessToken
@@ -39,11 +37,17 @@ export const Login = (): JSX.Element => {
                     "refreshToken",
                     response.data.data.refreshToken
                 );
+                setModaloption(null);
             })
             .catch(error => {
+                if (
+                    error.response.status === 401 ||
+                    error.response.statue === 404
+                ) {
+                    setIdErrorMsg("이메일/비밀번호를 다시 확인해주세요.");
+                    setPwdErrorMsg("이메일/비밀번호를 다시 확인해주세요.");
+                }
                 alert(error.response.data.message);
-                setIdErrorMsg("이메일/비밀번호를 다시 확인해주세요.");
-                setPwdErrorMsg("이메일/비밀번호를 다시 확인해주세요.");
             });
     };
 
@@ -64,7 +68,7 @@ export const Login = (): JSX.Element => {
                                     onChange={() => {
                                         if (!inputEmail.current?.value.length) {
                                             setIdErrorMsg(
-                                                "이메일을 입력해주세요"
+                                                "이메일을 입력해주세요."
                                             );
                                             return;
                                         }
