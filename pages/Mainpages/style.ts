@@ -48,26 +48,40 @@ export const Mainheader = css`
     position: relative;
     height: 46vh;
     width: 100vw;
+    margin-bottom: 8.7vh;
 `;
 export const Memberlink = css`
     position: absolute;
 `;
 
-export const Travlecard = css`
-    width: 84vw;
+export const TravleDiv = css`
+    width: auto;
     height: 29.1vh;
 `;
 
-export const Travleform = css`
+export const TravleSubject = css`
+    margin-left: 8.33vw;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 24px;
+    letter-spacing: -0.0002em;
+    color: #2d2d2d;
+`;
+
+export const TravleForm = css`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 84vw;
+    width: 83.33vw;
     height: 22vh;
     border-radius: 15px;
     box-shadow: 0px 2px 13px 4px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    margin: 2.75vh auto 0 auto;
 `;
+
+export const InputTxt = css``;
 
 export const Cardstyle = css`
     position: absolute;

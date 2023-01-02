@@ -10,12 +10,15 @@ import { Modal } from "../modal";
 export const Header = (): JSX.Element => {
     const { modalOption, setModaloption } = useModal();
     const [logInState, setLoginState] = useState<boolean>(false);
+    // 로그아웃 액션 -> accessToken만으로 로그아웃 되도록 수정 예정
     const logoutAction = () => {
+        if (!localStorage.getItem("accessToken")) return;
+
         axios
             .post("http://175.212.160.106:7777/auth/logout", [
                 {
                     Email: "vkxld134@naver.com",
-                    Token: "admin",
+                    Token: localStorage.getItem("accessToken"),
                 },
                 {
                     withCredentials: true,
@@ -28,7 +31,10 @@ export const Header = (): JSX.Element => {
                 console.log(error.response.data.message);
             });
     };
+
+    // 로그인 여부 확인
     useEffect(() => {
+        // localStorage가 생성되기 전에 실행되어 발생하는 오류 방지
         if (typeof window === "undefined") return;
         if (!localStorage.getItem("accessToken")) {
             setLoginState(false);
@@ -36,6 +42,7 @@ export const Header = (): JSX.Element => {
         }
         setLoginState(true);
     }, []);
+
     return (
         <>
             <div css={Mainheader}>

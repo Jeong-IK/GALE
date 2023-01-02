@@ -1,7 +1,7 @@
 import { useRef } from "react";
-import { Travlecard, Travleform } from "../style";
+import { TravleDiv, TravleSubject, TravleForm } from "../style";
 
-export const Travleplan = () => {
+export const TravlePlan = () => {
     const inputDepature = useRef<HTMLInputElement>(null);
     const inputArrival = useRef<HTMLInputElement>(null);
     const inputDate = useRef<HTMLInputElement>(null);
@@ -10,9 +10,9 @@ export const Travleplan = () => {
     // };
 
     return (
-        <div css={Travlecard}>
-            <span>어디로 떠나시나요? 🧳</span>
-            <div css={Travleform}>
+        <div css={TravleDiv}>
+            <span css={TravleSubject}>어디로 떠나시나요? 🧳</span>
+            <div css={TravleForm}>
                 <form>
                     <table>
                         <tbody>
