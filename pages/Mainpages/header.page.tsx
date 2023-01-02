@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
-import { Link, Headerbgimg, Mainheader, Memberlink } from "./style";
+import { Link, HeaderBgImg, MainHeader, MemberLink } from "./style";
 import { useModal } from "../store";
-import { Signup } from "./Member/signup.page";
-import { Login } from "./Member/login.page";
+import { Signup } from "./member/signup";
+import { Login } from "./member/login";
 import { Modal } from "../modal";
 
 export const Header = (): JSX.Element => {
@@ -17,7 +17,7 @@ export const Header = (): JSX.Element => {
         axios
             .post("http://175.212.160.106:7777/auth/logout", [
                 {
-                    Email: "vkxld134@naver.com",
+                    // Email: "vkxld134@naver.com",
                     Token: localStorage.getItem("accessToken"),
                 },
                 {
@@ -45,50 +45,55 @@ export const Header = (): JSX.Element => {
 
     return (
         <>
-            <div css={Mainheader}>
+            <div css={MainHeader}>
                 <Image
                     src="/headerBgImage.png"
                     alt="headerbgimg"
                     layout="fill"
-                    css={Headerbgimg}
+                    css={HeaderBgImg}
                 />
-                {!logInState ? (
-                    <div css={Memberlink}>
-                        <button
-                            type="button"
-                            css={Link}
-                            onClick={() => {
-                                setModaloption("logIn");
-                            }}
-                        >
-                            로그인
-                        </button>
-                        <button
-                            type="button"
-                            css={Link}
-                            onClick={() => {
-                                setModaloption("signUp");
-                            }}
-                        >
-                            회원가입
-                        </button>
-                    </div>
-                ) : (
-                    <div css={Memberlink}>
-                        <button
-                            type="button"
-                            css={Link}
-                            onClick={() => {
-                                logoutAction();
-                            }}
-                        >
-                            로그아웃
-                        </button>
-                        <button type="button" css={Link}>
-                            마이페이지
-                        </button>
-                    </div>
-                )}
+                <div>
+                    <button type="button">
+                        <Image src="/CI.png" alt="CI" />
+                    </button>
+                    {!logInState ? (
+                        <div css={MemberLink}>
+                            <button
+                                type="button"
+                                css={Link}
+                                onClick={() => {
+                                    setModaloption("logIn");
+                                }}
+                            >
+                                로그인
+                            </button>
+                            <button
+                                type="button"
+                                css={Link}
+                                onClick={() => {
+                                    setModaloption("signUp");
+                                }}
+                            >
+                                회원가입
+                            </button>
+                        </div>
+                    ) : (
+                        <div css={MemberLink}>
+                            <button
+                                type="button"
+                                css={Link}
+                                onClick={() => {
+                                    logoutAction();
+                                }}
+                            >
+                                로그아웃
+                            </button>
+                            <button type="button" css={Link}>
+                                마이페이지
+                            </button>
+                        </div>
+                    )}
+                </div>
             </div>
             {modalOption && (
                 <Modal>

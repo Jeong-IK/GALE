@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { TravleDiv, TravleSubject, TravleForm } from "../style";
+import { TravleDiv, TravleSubject, TravleForm, InputTxt } from "../style";
 
 export const TravlePlan = () => {
     const inputDepature = useRef<HTMLInputElement>(null);
@@ -20,6 +20,7 @@ export const TravlePlan = () => {
                                 <td>
                                     <input
                                         type="text"
+                                        css={InputTxt}
                                         placeholder="출발지"
                                         ref={inputDepature}
                                     />
@@ -27,6 +28,7 @@ export const TravlePlan = () => {
                                 <td>
                                     <input
                                         type="text"
+                                        css={InputTxt}
                                         placeholder="도착지"
                                         ref={inputArrival}
                                     />
@@ -34,6 +36,7 @@ export const TravlePlan = () => {
                                 <td>
                                     <input
                                         type="text"
+                                        css={InputTxt}
                                         placeholder="날짜입력"
                                         ref={inputDate}
                                         onFocus={() => {

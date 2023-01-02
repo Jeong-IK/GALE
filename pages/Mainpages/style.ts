@@ -1,7 +1,18 @@
 import { css } from "@emotion/react";
 
+export const MainHeader = css`
+    position: relative;
+    height: 46vh;
+    width: 100vw;
+    margin-bottom: 8.7vh;
+`;
+
+export const MemberLink = css`
+    position: absolute;
+`;
+
 export const Link = css`
-    font-size: 1.7rem;
+    font-size: 0.8rem;
     color: white;
     background-color: transparent;
     border: 0;
@@ -10,7 +21,7 @@ export const Link = css`
     }
 `;
 
-export const Modalbgcolor = css`
+export const ModalBgColor = css`
     backdrop-filter: blur(3px);
     background-color: rgba(0, 0, 0, 0.4);
     position: absolute;
@@ -24,7 +35,7 @@ export const Modalbgcolor = css`
     justify-content: center;
 `;
 
-export const Modalwindow = css`
+export const ModalWindow = css`
     background-color: white;
     display: block;
     position: relative;
@@ -33,25 +44,16 @@ export const Modalwindow = css`
     text-align: right;
 `;
 
-export const Modalform = css`
+export const ModalForm = css`
     text-align: center;
     display: block;
     list-style: none;
 `;
 
-export const Headerbgimg = css`
+export const HeaderBgImg = css`
     background-size: cover;
     width: 100vw;
     background-repeat: no-repeat;
-`;
-export const Mainheader = css`
-    position: relative;
-    height: 46vh;
-    width: 100vw;
-    margin-bottom: 8.7vh;
-`;
-export const Memberlink = css`
-    position: absolute;
 `;
 
 export const TravleDiv = css`
@@ -64,7 +66,7 @@ export const TravleSubject = css`
     font-family: "Inter";
     font-style: normal;
     font-weight: 700;
-    font-size: 2rem;
+    font-size: 1.3rem;
     line-height: 24px;
     letter-spacing: -0.0002em;
     color: #2d2d2d;
@@ -81,15 +83,22 @@ export const TravleForm = css`
     margin: 2.75vh auto 0 auto;
 `;
 
-export const InputTxt = css``;
+export const InputTxt = css`
+    border: none;
+    border-bottom: 1px solid #dadada;
+    &::placeholder {
+        color: 989AAC;
+        margin-left: 0;
+    }
+`;
 
-export const Cardstyle = css`
+export const CardStyle = css`
     position: absolute;
     width: 250px;
     height: 339px;
 `;
 
-export const Cardimage = css`
+export const CardImage = css`
     position: absolute;
     width: 250px;
     height: 339px;

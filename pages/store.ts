@@ -1,5 +1,5 @@
 import create from "zustand";
-import { Modaloption, Modalstatus } from "./Mainpages/type";
+import { Modaloption, Modalstatus } from "./mainpages/type";
 
 // Modal 활성화 및 Modaltype
 export const useModal = create<Modalstatus>()(set => ({

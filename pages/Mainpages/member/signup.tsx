@@ -7,7 +7,7 @@ import {
     SignupCfmPwdErrorMsgType,
     SignupNickNameErrorMsgType,
 } from "../type";
-import { Modalform } from "../style";
+import { ModalForm } from "../style";
 
 export const Signup = () => {
     // Input 입력 값 Ref 변수
@@ -90,7 +90,7 @@ export const Signup = () => {
     };
 
     return (
-        <div css={Modalform}>
+        <div css={ModalForm}>
             <p>환영합니다. </p>
             <p>여행지 기록 서비스 갈래와 함께 여행 기록을 작성해보세요. ✍🏻</p>
             <form onSubmit={signUpAction}>
