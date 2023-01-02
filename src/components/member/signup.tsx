@@ -1,13 +1,13 @@
 import React, { useRef, useState } from "react";
 import axios from "axios";
-import { useModal } from "../../store";
+import { useModal } from "../../../core/store";
 import {
     SignupEmailErrorMsgType,
     SignupPwdErrorMsgType,
     SignupCfmPwdErrorMsgType,
     SignupNickNameErrorMsgType,
-} from "../type";
-import { ModalForm } from "../style";
+} from "../../types/type";
+import { modalstyle } from "../../../styles/style";
 
 export const Signup = () => {
     // Input 입력 값 Ref 변수
@@ -90,7 +90,7 @@ export const Signup = () => {
     };
 
     return (
-        <div css={ModalForm}>
+        <div css={modalstyle.modalform}>
             <p>환영합니다. </p>
             <p>여행지 기록 서비스 갈래와 함께 여행 기록을 작성해보세요. ✍🏻</p>
             <form onSubmit={signUpAction}>
@@ -162,7 +162,7 @@ export const Signup = () => {
                                         }
                                         if (
                                             inputPasswd.current.value.match(
-                                                /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[a-zA-Z\d$@$!%*?&]{8,}/i
+                                                /^(?=.*[a-zA-Z])((?=.*\d)(?=.*\W)).{8,16}$/i
                                             ) === null
                                         ) {
                                             setPwdErrorMsg(

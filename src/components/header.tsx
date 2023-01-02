@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
-import { Link, HeaderBgImg, MainHeader, MemberLink } from "./style";
-import { useModal } from "../store";
+import { headerstyle } from "../../styles/style";
+import { useModal } from "../../core/store";
 import { Signup } from "./member/signup";
 import { Login } from "./member/login";
-import { Modal } from "../modal";
+import { Modal } from "./src/modal";
 
 export const Header = (): JSX.Element => {
     const { modalOption, setModaloption } = useModal();
@@ -45,22 +45,22 @@ export const Header = (): JSX.Element => {
 
     return (
         <>
-            <div css={MainHeader}>
+            <div css={headerstyle.mainheader}>
                 <Image
                     src="/headerBgImage.png"
                     alt="headerbgimg"
                     layout="fill"
-                    css={HeaderBgImg}
+                    css={headerstyle.headerbgimg}
                 />
                 <div>
-                    <button type="button">
+                    {/* <button type="button">
                         <Image src="/CI.png" alt="CI" />
-                    </button>
+                    </button> */}
                     {!logInState ? (
-                        <div css={MemberLink}>
+                        <div css={headerstyle.memberlink}>
                             <button
                                 type="button"
-                                css={Link}
+                                css={headerstyle.link}
                                 onClick={() => {
                                     setModaloption("logIn");
                                 }}
@@ -69,7 +69,7 @@ export const Header = (): JSX.Element => {
                             </button>
                             <button
                                 type="button"
-                                css={Link}
+                                css={headerstyle.link}
                                 onClick={() => {
                                     setModaloption("signUp");
                                 }}
@@ -78,17 +78,17 @@ export const Header = (): JSX.Element => {
                             </button>
                         </div>
                     ) : (
-                        <div css={MemberLink}>
+                        <div css={headerstyle.memberlink}>
                             <button
                                 type="button"
-                                css={Link}
+                                css={headerstyle.link}
                                 onClick={() => {
                                     logoutAction();
                                 }}
                             >
                                 로그아웃
                             </button>
-                            <button type="button" css={Link}>
+                            <button type="button" css={headerstyle.memberlink}>
                                 마이페이지
                             </button>
                         </div>
