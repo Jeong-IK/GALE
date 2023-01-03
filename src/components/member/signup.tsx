@@ -1,13 +1,13 @@
 import React, { useRef, useState } from "react";
 import axios from "axios";
-import { useModal } from "../../../core/store";
 import {
     SignupEmailErrorMsgType,
     SignupPwdErrorMsgType,
     SignupCfmPwdErrorMsgType,
     SignupNickNameErrorMsgType,
 } from "../../types/type";
-import { modalstyle } from "../../../styles/style";
+import { modalstyle } from "../../styles/style";
+// import { useSignup } from "../../api/signupApi";
 
 export const Signup = () => {
     // Input 입력 값 Ref 변수
@@ -24,7 +24,6 @@ export const Signup = () => {
     const [nickNameErrorMsg, setNickNameErrorMsg] =
         useState<SignupNickNameErrorMsgType>(null);
     // 모달창 타입 전역 상태
-    const { setModaloption } = useModal();
 
     // 닉네임 중복체크
     const checkNicknameExist = () => {
@@ -44,56 +43,12 @@ export const Signup = () => {
     };
 
     // 회원가입 중복체크
-    const signUpAction = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        // if (
-        //     !inputEmail.current?.value ||
-        //     !inputPasswd.current?.value ||
-        //     !confirmPwd.current?.value ||
-        //     !inputNickname.current?.value
-        // )
-        //     return;
-        if (
-            emailErrorMsg ||
-            pwdErrorMsg ||
-            cfmPwdErrorMsg ||
-            nickNameErrorMsg
-        ) {
-            return;
-        }
-        // catch 다른 상태코드
-        // next js error overlay이유
-        axios
-            .post("http://175.212.160.106:7777/auth/signup", [
-                {
-                    Email: inputEmail.current?.value,
-                    Password: inputPasswd.current?.value,
-                    ConfirmPassword: confirmPwd.current?.value,
-                    Nickname: inputNickname.current?.value,
-                },
-                {
-                    withCredentials: true,
-                },
-            ])
-            .then(response => {
-                alert(response.data.message);
-                setModaloption("logIn");
-            })
-            .catch(error => {
-                // if (error.response.status === 409)
-                //     alert(error.response.data.message);
-                // if (error.response.status === 503)
-                //     alert(error.response.data.message);
-                // if (error.response.status === 400)
-                alert(error.response.data.message);
-            });
-    };
 
     return (
         <div css={modalstyle.modalform}>
             <p>환영합니다. </p>
             <p>여행지 기록 서비스 갈래와 함께 여행 기록을 작성해보세요. ✍🏻</p>
-            <form onSubmit={signUpAction}>
+            <form>
                 <table>
                     <tbody>
                         <tr>
@@ -162,7 +117,7 @@ export const Signup = () => {
                                         }
                                         if (
                                             inputPasswd.current.value.match(
-                                                /^(?=.*[a-zA-Z])((?=.*\d)(?=.*\W)).{8,16}$/i
+                                                /(?=.*[a-zA-Z])((?=.*\d)(?=.*\W)).{8,16}$/
                                             ) === null
                                         ) {
                                             setPwdErrorMsg(
@@ -179,15 +134,6 @@ export const Signup = () => {
                                             );
                                             return;
                                         }
-                                        if (
-                                            confirmPwd.current?.value !==
-                                            inputPasswd.current.value
-                                        ) {
-                                            setCfmPwdErrorMsg(
-                                                "비밀번호가 서로 일치하지 않습니다."
-                                            );
-                                            return;
-                                        }
                                         setPwdErrorMsg(null);
                                     }}
                                 />
@@ -201,7 +147,6 @@ export const Signup = () => {
                             <td>
                                 <input
                                     type="password"
-                                    id="confirmpwd"
                                     ref={confirmPwd}
                                     onChange={() => {
                                         if (!confirmPwd?.current?.value.length)

@@ -42,3 +42,11 @@ export type LoginPwdErrorMsgType =
     | "비밀번호가 맞지 않습니다."
     | "비밀번호를 입력해주세요"
     | null;
+
+export interface SignupProps {
+    event: React.FormEvent<HTMLFormElement>;
+    email: string;
+    pwd: string;
+    confirmpwd: string;
+    nickname: string;
+}

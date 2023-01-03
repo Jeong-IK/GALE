@@ -1,8 +1,8 @@
 import { useRef, useState } from "react";
 import axios from "axios";
-import { useModal } from "../../../core/store";
+import { useModal } from "../../store/store";
 import { LoginIdErrorMsgType, LoginPwdErrorMsgType } from "../../types/type";
-import { modalstyle } from "../../../styles/style";
+import { modalstyle } from "../../styles/style";
 
 export const Login = (): JSX.Element => {
     const inputEmail = useRef<HTMLInputElement>(null);

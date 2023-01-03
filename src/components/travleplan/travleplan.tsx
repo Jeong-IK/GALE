@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { travlestyle } from "../../../styles/style";
+import { travlestyle } from "../../styles/style";
 
 export const TravlePlan = () => {
     const inputDepature = useRef<HTMLInputElement>(null);

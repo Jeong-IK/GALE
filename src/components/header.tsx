@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
-import { headerstyle } from "../../styles/style";
-import { useModal } from "../../core/store";
+import { headerstyle } from "../styles/style";
+import { useModal } from "../store/store";
 import { Signup } from "./member/signup";
 import { Login } from "./member/login";
-import { Modal } from "./src/modal";
+import { Modal } from "./common/modal";
+import headerImg from "../public/headerBgImage.png";
+// import CI from "../public/CI.png";
 
 export const Header = (): JSX.Element => {
     const { modalOption, setModaloption } = useModal();
@@ -47,9 +49,8 @@ export const Header = (): JSX.Element => {
         <>
             <div css={headerstyle.mainheader}>
                 <Image
-                    src="/headerBgImage.png"
-                    alt="headerbgimg"
-                    layout="fill"
+                    src={headerImg}
+                    alt="background"
                     css={headerstyle.headerbgimg}
                 />
                 <div>
