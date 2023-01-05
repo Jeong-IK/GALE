@@ -1,7 +1,7 @@
 import ReactDOM from "react-dom";
 import React, { useRef } from "react";
 import { modalstyle } from "../../styles/style";
-import { useModal } from "../../store/store";
+import { useModal } from "../../stores/store";
 import { ModalchildrenType } from "../../types/type";
 
 export const Modal = ({ children }: ModalchildrenType) => {

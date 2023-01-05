@@ -42,7 +42,26 @@ export const Signup = () => {
             });
     };
 
-    // 회원가입 중복체크
+    // 회원가입
+    // const useSignupAction = (event: React.FormEvent<HTMLFormElement>) => {
+    //     event.preventDefault();
+    //     if (
+    //         !inputEmail.current?.value ||
+    //         !inputPasswd.current?.value ||
+    //         !confirmPwd.current?.value ||
+    //         !inputNickname.current?.value
+    //     )
+    //         return;
+    //     if (emailErrorMsg || pwdErrorMsg || cfmPwdErrorMsg || nickNameErrorMsg)
+    //         return;
+    //     const formvalue = {
+    //         email: inputEmail.current.value,
+    //         pwd: inputPasswd.current.value,
+    //         cfmpwd: confirmPwd.current.value,
+    //         nickname: inputNickname.current.value,
+    //     };
+    //     // useSignup(formvalue);
+    // };
 
     return (
         <div css={modalstyle.modalform}>

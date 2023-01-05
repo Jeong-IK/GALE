@@ -8,7 +8,7 @@ export const headerstyle = {
         margin-bottom: 8.7vh;
     `,
     memberlink: css`
-        position: absolute;
+        position: relative;
     `,
     link: css`
         font-size: 0.8rem;
@@ -20,6 +20,7 @@ export const headerstyle = {
         }
     `,
     headerbgimg: css`
+        position: absolute;
         background-size: cover;
         width: 100vw;
         background-repeat: no-repeat;

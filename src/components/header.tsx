@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 import { headerstyle } from "../styles/style";
-import { useModal } from "../store/store";
+import { useModal } from "../stores/store";
 import { Signup } from "./member/signup";
 import { Login } from "./member/login";
 import { Modal } from "./common/modal";
@@ -48,53 +48,47 @@ export const Header = (): JSX.Element => {
     return (
         <>
             <div css={headerstyle.mainheader}>
-                <Image
-                    src={headerImg}
-                    alt="background"
-                    css={headerstyle.headerbgimg}
-                />
-                <div>
-                    {/* <button type="button">
+                <Image src={headerImg} css={headerstyle.headerbgimg} alt="" />
+                {/* <button type="button">
                         <Image src="/CI.png" alt="CI" />
                     </button> */}
-                    {!logInState ? (
-                        <div css={headerstyle.memberlink}>
-                            <button
-                                type="button"
-                                css={headerstyle.link}
-                                onClick={() => {
-                                    setModaloption("logIn");
-                                }}
-                            >
-                                로그인
-                            </button>
-                            <button
-                                type="button"
-                                css={headerstyle.link}
-                                onClick={() => {
-                                    setModaloption("signUp");
-                                }}
-                            >
-                                회원가입
-                            </button>
-                        </div>
-                    ) : (
-                        <div css={headerstyle.memberlink}>
-                            <button
-                                type="button"
-                                css={headerstyle.link}
-                                onClick={() => {
-                                    logoutAction();
-                                }}
-                            >
-                                로그아웃
-                            </button>
-                            <button type="button" css={headerstyle.memberlink}>
-                                마이페이지
-                            </button>
-                        </div>
-                    )}
-                </div>
+                {!logInState ? (
+                    <div css={headerstyle.memberlink}>
+                        <button
+                            type="button"
+                            css={headerstyle.link}
+                            onClick={() => {
+                                setModaloption("logIn");
+                            }}
+                        >
+                            로그인
+                        </button>
+                        <button
+                            type="button"
+                            css={headerstyle.link}
+                            onClick={() => {
+                                setModaloption("signUp");
+                            }}
+                        >
+                            회원가입
+                        </button>
+                    </div>
+                ) : (
+                    <div css={headerstyle.memberlink}>
+                        <button
+                            type="button"
+                            css={headerstyle.link}
+                            onClick={() => {
+                                logoutAction();
+                            }}
+                        >
+                            로그아웃
+                        </button>
+                        <button type="button" css={headerstyle.memberlink}>
+                            마이페이지
+                        </button>
+                    </div>
+                )}
             </div>
             {modalOption && (
                 <Modal>

@@ -1,18 +1,20 @@
 import axios from "axios";
-import { useModal } from "../store/store";
+import React from "react";
+import { useModal } from "../stores/store";
 import { SignupProps } from "../types/type";
 
+export const test = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    console.log(event);
+};
+
 export const useSignup = ({
-    event,
     email,
     pwd,
     confirmpwd,
     nickname,
 }: SignupProps) => {
     const { setModaloption } = useModal();
-    event.preventDefault();
-    if (!email || !pwd || !confirmpwd || !nickname) return;
-    // next js error overlay이유
     axios
         .post("http://175.212.160.106:7777/auth/signup", [
             {

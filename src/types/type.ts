@@ -44,7 +44,6 @@ export type LoginPwdErrorMsgType =
     | null;
 
 export interface SignupProps {
-    event: React.FormEvent<HTMLFormElement>;
     email: string;
     pwd: string;
     confirmpwd: string;

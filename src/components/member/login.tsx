@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import axios from "axios";
-import { useModal } from "../../store/store";
+import { useModal } from "../../stores/store";
 import { LoginIdErrorMsgType, LoginPwdErrorMsgType } from "../../types/type";
 import { modalstyle } from "../../styles/style";
 
