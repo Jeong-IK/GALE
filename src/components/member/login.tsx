@@ -1,8 +1,8 @@
 import { useRef, useState } from "react";
 import axios from "axios";
-import { useModal } from "../../store";
-import { LoginIdErrorMsgType, LoginPwdErrorMsgType } from "../type";
-import { Formtable, Modalform } from "../style";
+import { useModal } from "../../stores/store";
+import { LoginIdErrorMsgType, LoginPwdErrorMsgType } from "../../types/type";
+import { modalstyle } from "../../styles/style";
 
 export const Login = (): JSX.Element => {
     const inputEmail = useRef<HTMLInputElement>(null);
@@ -29,26 +29,34 @@ export const Login = (): JSX.Element => {
                 { withCredentials: true }
             )
             .then(response => {
-                alert(response.data.message);
-                localStorage.setItem("accessToken", response.data.accessToken);
+                localStorage.setItem(
+                    "accessToken",
+                    response.data.data.accessToken
+                );
                 localStorage.setItem(
                     "refreshToken",
-                    response.data.refreshToken
+                    response.data.data.refreshToken
                 );
+                setModaloption(null);
             })
-            .catch(response => {
-                alert(response.response.data.message);
-                setIdErrorMsg("이메일/비밀번호를 다시 확인해주세요.");
-                setPwdErrorMsg("이메일/비밀번호를 다시 확인해주세요.");
+            .catch(error => {
+                if (
+                    error.response.status === 401 ||
+                    error.response.statue === 404
+                ) {
+                    setIdErrorMsg("이메일/비밀번호를 다시 확인해주세요.");
+                    setPwdErrorMsg("이메일/비밀번호를 다시 확인해주세요.");
+                }
+                alert(error.response.data.message);
             });
     };
 
     return (
-        <div css={Modalform}>
+        <div css={modalstyle.modalform}>
             <p>이미 회원이신가요?</p>
             <p>갈래에 여행기록을 남겨보세요! ✍🏻</p>
             <form onSubmit={logInAction}>
-                <table css={Formtable}>
+                <table>
                     <tbody>
                         <tr>
                             <td>이메일</td>
@@ -60,9 +68,11 @@ export const Login = (): JSX.Element => {
                                     onChange={() => {
                                         if (!inputEmail.current?.value.length) {
                                             setIdErrorMsg(
-                                                "이메일을 입력해주세요"
+                                                "이메일을 입력해주세요."
                                             );
+                                            return;
                                         }
+                                        setIdErrorMsg(null);
                                     }}
                                 />
                             </td>
@@ -84,7 +94,9 @@ export const Login = (): JSX.Element => {
                                             setPwdErrorMsg(
                                                 "비밀번호를 입력해주세요"
                                             );
+                                            return;
                                         }
+                                        setPwdErrorMsg(null);
                                     }}
                                 />
                             </td>
