@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
-import { headerstyle } from "../styles/style";
+import { headerStyle } from "../styles/style";
 import { useModal } from "../stores/store";
 import { Signup } from "./member/signup";
 import { Login } from "./member/login";
@@ -47,16 +47,16 @@ export const Header = (): JSX.Element => {
 
     return (
         <>
-            <div css={headerstyle.mainheader}>
-                <Image src={headerImg} css={headerstyle.headerbgimg} alt="" />
+            <div css={headerStyle.mainHeader}>
+                <Image src={headerImg} css={headerStyle.headerBgImg} alt="" />
                 {/* <button type="button">
                         <Image src="/CI.png" alt="CI" />
                     </button> */}
                 {!logInState ? (
-                    <div css={headerstyle.memberlink}>
+                    <div css={headerStyle.memberLink}>
                         <button
                             type="button"
-                            css={headerstyle.link}
+                            css={headerStyle.link}
                             onClick={() => {
                                 setModaloption("logIn");
                             }}
@@ -65,7 +65,7 @@ export const Header = (): JSX.Element => {
                         </button>
                         <button
                             type="button"
-                            css={headerstyle.link}
+                            css={headerStyle.link}
                             onClick={() => {
                                 setModaloption("signUp");
                             }}
@@ -74,17 +74,17 @@ export const Header = (): JSX.Element => {
                         </button>
                     </div>
                 ) : (
-                    <div css={headerstyle.memberlink}>
+                    <div css={headerStyle.memberLink}>
                         <button
                             type="button"
-                            css={headerstyle.link}
+                            css={headerStyle.link}
                             onClick={() => {
                                 logoutAction();
                             }}
                         >
                             로그아웃
                         </button>
-                        <button type="button" css={headerstyle.memberlink}>
+                        <button type="button" css={headerStyle.memberLink}>
                             마이페이지
                         </button>
                     </div>

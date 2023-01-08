@@ -5,8 +5,8 @@ import {
     SignupCfmPwdErrorMsgType,
     SignupNickNameErrorMsgType,
 } from "../../types/type";
-import { modalstyle } from "../../styles/style";
-import { Signupaction, checkNicknameExist } from "../../api/signupapi";
+import { modalStyle } from "../../styles/style";
+import { signupAction, checkNicknameExist } from "../../api/signupapi";
 import { useModal } from "../../stores/store";
 import {
     checkCfmPwdValue,
@@ -36,7 +36,7 @@ export const Signup = () => {
         event.preventDefault();
         if (emailErrorMsg || pwdErrorMsg || cfmPwdErrorMsg || nickNameErrorMsg)
             return;
-        Signupaction({
+        signupAction({
             email: inputEmail,
             pwd: inputPasswd,
             confirmpwd: confirmPwd,
@@ -46,7 +46,7 @@ export const Signup = () => {
     };
 
     return (
-        <div css={modalstyle.modalform}>
+        <div css={modalStyle.modalForm}>
             <p>환영합니다. </p>
             <p>여행지 기록 서비스 갈래와 함께 여행 기록을 작성해보세요. ✍🏻</p>
             <form onSubmit={useSignupAction}>
@@ -70,7 +70,6 @@ export const Signup = () => {
                         <tr>
                             <td>{emailErrorMsg}</td>
                         </tr>
-
                         <tr>
                             <td>비밀번호 입력</td>
                             <td>

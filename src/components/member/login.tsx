@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import axios from "axios";
 import { useModal } from "../../stores/store";
 import { LoginIdErrorMsgType, LoginPwdErrorMsgType } from "../../types/type";
-import { modalstyle } from "../../styles/style";
+import { modalStyle } from "../../styles/style";
 
 export const Login = (): JSX.Element => {
     const inputEmail = useRef<HTMLInputElement>(null);
@@ -10,7 +10,7 @@ export const Login = (): JSX.Element => {
     const [idErrorMsg, setIdErrorMsg] = useState<LoginIdErrorMsgType>();
     const [pwdErrorMsg, setPwdErrorMsg] = useState<LoginPwdErrorMsgType>();
     const { setModaloption } = useModal();
-
+    // const URL = process.env.NEXT_PUBLIC_API_URL;
     const logInAction = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if (
@@ -21,7 +21,7 @@ export const Login = (): JSX.Element => {
 
         axios
             .post(
-                "http://175.212.160.106:7777/auth/login",
+                `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
                 {
                     Email: inputEmail.current.value,
                     Password: inputPasswd.current.value,
@@ -47,12 +47,13 @@ export const Login = (): JSX.Element => {
                     setIdErrorMsg("이메일/비밀번호를 다시 확인해주세요.");
                     setPwdErrorMsg("이메일/비밀번호를 다시 확인해주세요.");
                 }
+                console.log(error);
                 alert(error.response.data.message);
             });
     };
 
     return (
-        <div css={modalstyle.modalform}>
+        <div css={modalStyle.modalForm}>
             <p>이미 회원이신가요?</p>
             <p>갈래에 여행기록을 남겨보세요! ✍🏻</p>
             <form onSubmit={logInAction}>
@@ -92,7 +93,7 @@ export const Login = (): JSX.Element => {
                                             !inputPasswd.current?.value.length
                                         ) {
                                             setPwdErrorMsg(
-                                                "비밀번호를 입력해주세요"
+                                                "비밀번호를 입력해주세요."
                                             );
                                             return;
                                         }

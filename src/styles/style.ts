@@ -1,13 +1,13 @@
 import { css } from "@emotion/react";
 
-export const headerstyle = {
-    mainheader: css`
+export const headerStyle = {
+    mainHeader: css`
         position: relative;
         height: 46vh;
         width: 100vw;
         margin-bottom: 8.7vh;
     `,
-    memberlink: css`
+    memberLink: css`
         position: relative;
     `,
     link: css`
@@ -19,7 +19,7 @@ export const headerstyle = {
             color: #fe8101;
         }
     `,
-    headerbgimg: css`
+    headerBgImg: css`
         position: absolute;
         background-size: cover;
         width: 100vw;
@@ -27,8 +27,8 @@ export const headerstyle = {
     `,
 };
 
-export const modalstyle = {
-    modalbgcolor: css`
+export const modalStyle = {
+    modalBgColor: css`
         backdrop-filter: blur(3px);
         background-color: rgba(0, 0, 0, 0.4);
         position: absolute;
@@ -41,7 +41,7 @@ export const modalstyle = {
         align-items: center;
         justify-content: center;
     `,
-    modalwindow: css`
+    modalWindow: css`
         background-color: white;
         display: block;
         position: relative;
@@ -49,19 +49,19 @@ export const modalstyle = {
         border-radius: 1rem;
         text-align: right;
     `,
-    modalform: css`
+    modalForm: css`
         text-align: center;
         display: block;
         list-style: none;
     `,
 };
 
-export const travlestyle = {
-    travlediv: css`
+export const travleStyle = {
+    travleDiv: css`
         width: auto;
         height: 29.1vh;
     `,
-    travlesubject: css`
+    travleSubject: css`
         margin-left: 8.33vw;
         font-family: "Inter";
         font-style: normal;
@@ -71,7 +71,7 @@ export const travlestyle = {
         letter-spacing: -0.0002em;
         color: #2d2d2d;
     `,
-    travleform: css`
+    travleForm: css`
         display: flex;
         justify-content: center;
         align-items: center;
@@ -81,7 +81,7 @@ export const travlestyle = {
         box-shadow: 0px 2px 13px 4px rgba(0, 0, 0, 0.1);
         margin: 2.75vh auto 0 auto;
     `,
-    Inputtxt: css`
+    inputTxt: css`
         border: none;
         border-bottom: 1px solid #dadada;
         &::placeholder {
@@ -91,13 +91,13 @@ export const travlestyle = {
     `,
 };
 
-export const cardstyle = {
-    cardstyle: css`
+export const cardStyle = {
+    cardStyle: css`
         position: absolute;
         width: 250px;
         height: 339px;
     `,
-    cardimage: css`
+    cardImage: css`
         position: absolute;
         width: 250px;
         height: 339px;

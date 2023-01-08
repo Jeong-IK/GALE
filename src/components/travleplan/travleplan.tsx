@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { travlestyle } from "../../styles/style";
+import { travleStyle } from "../../styles/style";
 
 export const TravlePlan = () => {
     const inputDepature = useRef<HTMLInputElement>(null);
@@ -10,9 +10,9 @@ export const TravlePlan = () => {
     // };
 
     return (
-        <div css={travlestyle.travlediv}>
-            <span css={travlestyle.travlesubject}>어디로 떠나시나요? 🧳</span>
-            <div css={travlestyle.travleform}>
+        <div css={travleStyle.travleDiv}>
+            <span css={travleStyle.travleSubject}>어디로 떠나시나요? 🧳</span>
+            <div css={travleStyle.travleForm}>
                 <form>
                     <table>
                         <tbody>
@@ -20,7 +20,7 @@ export const TravlePlan = () => {
                                 <td>
                                     <input
                                         type="text"
-                                        css={travlestyle.Inputtxt}
+                                        css={travleStyle.inputTxt}
                                         placeholder="출발지"
                                         ref={inputDepature}
                                     />
@@ -28,7 +28,7 @@ export const TravlePlan = () => {
                                 <td>
                                     <input
                                         type="text"
-                                        css={travlestyle.Inputtxt}
+                                        css={travleStyle.inputTxt}
                                         placeholder="도착지"
                                         ref={inputArrival}
                                     />
@@ -36,7 +36,7 @@ export const TravlePlan = () => {
                                 <td>
                                     <input
                                         type="text"
-                                        css={travlestyle.Inputtxt}
+                                        css={travleStyle.inputTxt}
                                         placeholder="날짜입력"
                                         ref={inputDate}
                                         onFocus={() => {

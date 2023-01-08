@@ -1,10 +1,10 @@
 import ReactDOM from "react-dom";
 import React, { useRef } from "react";
-import { modalstyle } from "../../styles/style";
+import { modalStyle } from "../../styles/style";
 import { useModal } from "../../stores/store";
-import { ModalchildrenType } from "../../types/type";
+import { ModalChildrenType } from "../../types/type";
 
-export const Modal = ({ children }: ModalchildrenType) => {
+export const Modal = ({ children }: ModalChildrenType) => {
     const windowModal = useRef<HTMLDivElement>(null);
 
     const { setModaloption } = useModal();
@@ -19,11 +19,11 @@ export const Modal = ({ children }: ModalchildrenType) => {
 
     return ReactDOM.createPortal(
         <div
-            css={modalstyle.modalbgcolor}
+            css={modalStyle.modalBgColor}
             onClick={overClick}
             aria-hidden="true"
         >
-            <div css={modalstyle.modalwindow} ref={windowModal}>
+            <div css={modalStyle.modalWindow} ref={windowModal}>
                 <button
                     type="button"
                     onClick={() => {

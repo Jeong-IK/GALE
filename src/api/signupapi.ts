@@ -1,7 +1,7 @@
 import axios from "axios";
 import { SignupProps, CheckNicknameProps } from "../types/type";
 
-export const Signupaction = ({
+export const signupAction = ({
     email,
     pwd,
     confirmpwd,

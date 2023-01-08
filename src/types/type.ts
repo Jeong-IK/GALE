@@ -1,12 +1,12 @@
 import { ReactNode } from "react";
 
-export type ModalchildrenType = { children: ReactNode };
+export type ModalChildrenType = { children: ReactNode };
 
-export type Modaloption = "logIn" | "signUp" | null;
+export type ModalOption = "logIn" | "signUp" | null;
 
 export interface Modalstatus {
-    modalOption: Modaloption;
-    setModaloption: (type: Modaloption) => void;
+    modalOption: ModalOption;
+    setModaloption: (type: ModalOption) => void;
 }
 
 export type SignupEmailErrorMsgType =
@@ -49,7 +49,7 @@ export interface SignupProps {
     pwd: React.RefObject<HTMLInputElement>;
     confirmpwd: React.RefObject<HTMLInputElement>;
     nickname: React.RefObject<HTMLInputElement>;
-    setModaloption: (type: Modaloption) => void;
+    setModaloption: (type: ModalOption) => void;
 }
 
 export interface CheckNicknameProps {

@@ -1,10 +1,10 @@
 import Image from "next/image";
-import { cardstyle } from "../../styles/style";
+import { cardStyle } from "../../styles/style";
 import example from "../../public/example.png";
 
 export const Card = () => (
-    <div css={cardstyle.cardstyle}>
-        <Image src={example} alt="삭제예정" css={cardstyle.cardimage} />
+    <div css={cardStyle.cardStyle}>
+        <Image src={example} alt="삭제예정" css={cardStyle.cardImage} />
         <div>
             <span>경기용인시</span>
             <span>수지생태공원</span>
