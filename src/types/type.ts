@@ -45,14 +45,22 @@ export type LoginPwdErrorMsgType =
     | null;
 
 export interface SignupProps {
-    email: React.RefObject<HTMLInputElement>;
-    pwd: React.RefObject<HTMLInputElement>;
-    confirmpwd: React.RefObject<HTMLInputElement>;
-    nickname: React.RefObject<HTMLInputElement>;
+    inputEmail: React.RefObject<HTMLInputElement>;
+    inputPasswd: React.RefObject<HTMLInputElement>;
+    confirmPwd: React.RefObject<HTMLInputElement>;
+    inputNickname: React.RefObject<HTMLInputElement>;
     setModaloption: (type: ModalOption) => void;
 }
 
 export interface CheckNicknameProps {
-    nickname: React.RefObject<HTMLInputElement>;
+    inputNickname: React.RefObject<HTMLInputElement>;
     setNickNameErrorMsg: (errorMsg: SignupNickNameErrorMsgType) => void;
+}
+
+export interface LoginProps {
+    inputEmail: React.RefObject<HTMLInputElement>;
+    inputPasswd: React.RefObject<HTMLInputElement>;
+    setModaloption: (type: ModalOption) => void;
+    setIdErrorMsg: (errorMsg: LoginIdErrorMsgType) => void;
+    setPwdErrorMsg: (errorMsg: LoginPwdErrorMsgType) => void;
 }

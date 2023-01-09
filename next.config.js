@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    publicRuntimeConfig: {
-        PUBLIC_URL: process.env.NEXT_PUBLIC_API_URL,
-    },
+    env: {
+        NEXT_PUBLIC_BASE_URL: "http://175.212.160.106:7777",
+      },
     reactStrictMode: true,
     swcMinify: true,
     pageExtensions: ["page.tsx"],

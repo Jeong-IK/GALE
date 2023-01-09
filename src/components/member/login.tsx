@@ -1,8 +1,8 @@
 import { useRef, useState } from "react";
-import axios from "axios";
 import { useModal } from "../../stores/store";
 import { LoginIdErrorMsgType, LoginPwdErrorMsgType } from "../../types/type";
 import { modalStyle } from "../../styles/style";
+import { loginAction } from "../../api/memberapi";
 
 export const Login = (): JSX.Element => {
     const inputEmail = useRef<HTMLInputElement>(null);
@@ -10,46 +10,16 @@ export const Login = (): JSX.Element => {
     const [idErrorMsg, setIdErrorMsg] = useState<LoginIdErrorMsgType>();
     const [pwdErrorMsg, setPwdErrorMsg] = useState<LoginPwdErrorMsgType>();
     const { setModaloption } = useModal();
-    // const URL = process.env.NEXT_PUBLIC_API_URL;
+
     const logInAction = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        if (
-            !inputEmail.current?.value.length ||
-            !inputPasswd.current?.value.length
-        )
-            return;
-
-        axios
-            .post(
-                `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
-                {
-                    Email: inputEmail.current.value,
-                    Password: inputPasswd.current.value,
-                },
-                { withCredentials: true }
-            )
-            .then(response => {
-                localStorage.setItem(
-                    "accessToken",
-                    response.data.data.accessToken
-                );
-                localStorage.setItem(
-                    "refreshToken",
-                    response.data.data.refreshToken
-                );
-                setModaloption(null);
-            })
-            .catch(error => {
-                if (
-                    error.response.status === 401 ||
-                    error.response.statue === 404
-                ) {
-                    setIdErrorMsg("이메일/비밀번호를 다시 확인해주세요.");
-                    setPwdErrorMsg("이메일/비밀번호를 다시 확인해주세요.");
-                }
-                console.log(error);
-                alert(error.response.data.message);
-            });
+        loginAction({
+            inputEmail,
+            inputPasswd,
+            setModaloption,
+            setIdErrorMsg,
+            setPwdErrorMsg,
+        });
     };
 
     return (

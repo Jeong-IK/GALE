@@ -6,14 +6,14 @@ import {
     SignupNickNameErrorMsgType,
 } from "../../types/type";
 import { modalStyle } from "../../styles/style";
-import { signupAction, checkNicknameExist } from "../../api/signupapi";
+import { signupAction, checkNicknameExist } from "../../api/memberapi";
 import { useModal } from "../../stores/store";
 import {
     checkCfmPwdValue,
     checkEmailValue,
     checkNicknameValue,
     checkPwdValue,
-} from "../../utils/signuputil";
+} from "../../utils/memberutils";
 
 export const Signup = () => {
     // Input 입력 값 Ref 변수
@@ -37,10 +37,10 @@ export const Signup = () => {
         if (emailErrorMsg || pwdErrorMsg || cfmPwdErrorMsg || nickNameErrorMsg)
             return;
         signupAction({
-            email: inputEmail,
-            pwd: inputPasswd,
-            confirmpwd: confirmPwd,
-            nickname: inputNickname,
+            inputEmail,
+            inputPasswd,
+            confirmPwd,
+            inputNickname,
             setModaloption,
         });
     };
@@ -124,7 +124,7 @@ export const Signup = () => {
                                     type="button"
                                     onClick={() =>
                                         checkNicknameExist({
-                                            nickname: inputNickname,
+                                            inputNickname,
                                             setNickNameErrorMsg,
                                         })
                                     }
