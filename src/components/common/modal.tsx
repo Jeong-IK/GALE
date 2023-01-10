@@ -2,12 +2,13 @@ import ReactDOM from "react-dom";
 import React, { useRef } from "react";
 import { modalStyle } from "../../styles/style";
 import { useModal } from "../../stores/store";
-import { ModalChildrenType } from "../../types/type";
+import { Login } from "../member/login";
+import { Signup } from "../member/signup";
 
-export const Modal = ({ children }: ModalChildrenType) => {
+export const Modal = () => {
     const windowModal = useRef<HTMLDivElement>(null);
 
-    const { setModaloption } = useModal();
+    const { modalOption, setModaloption } = useModal();
 
     const overClick = (event: React.MouseEvent) => {
         if (
@@ -17,25 +18,29 @@ export const Modal = ({ children }: ModalChildrenType) => {
             setModaloption(null);
     };
 
-    return ReactDOM.createPortal(
-        <div
-            css={modalStyle.modalBgColor}
-            onClick={overClick}
-            aria-hidden="true"
-        >
-            <div css={modalStyle.modalWindow} ref={windowModal}>
-                <button
-                    type="button"
-                    onClick={() => {
-                        setModaloption(null);
-                    }}
-                >
-                    X
-                </button>
-                {children}
-            </div>
-        </div>,
-
-        document.getElementById("modal") as HTMLElement
+    return (
+        <>
+            {modalOption &&
+                ReactDOM.createPortal(
+                    <div
+                        css={modalStyle.modalBgColor}
+                        onClick={overClick}
+                        aria-hidden="true"
+                    >
+                        <div css={modalStyle.modalWindow} ref={windowModal}>
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    setModaloption(null);
+                                }}
+                            >
+                                X
+                            </button>
+                            {modalOption ? <Login /> : <Signup />}
+                        </div>
+                    </div>,
+                    document.getElementById("modal") as HTMLElement
+                )}
+        </>
     );
 };

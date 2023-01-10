@@ -3,14 +3,12 @@ import axios from "axios";
 import Image from "next/image";
 import { headerStyle } from "../styles/style";
 import { useModal } from "../stores/store";
-import { Signup } from "./member/signup";
-import { Login } from "./member/login";
 import { Modal } from "./common/modal";
 import headerImg from "../public/headerBgImage.png";
 // import CI from "../public/CI.png";
 
 export const Header = (): JSX.Element => {
-    const { modalOption, setModaloption } = useModal();
+    const { setModaloption } = useModal();
     const [logInState, setLoginState] = useState<boolean>(false);
     // 로그아웃 액션 -> accessToken만으로 로그아웃 되도록 수정 예정
     const logoutAction = () => {
@@ -90,11 +88,7 @@ export const Header = (): JSX.Element => {
                     </div>
                 )}
             </div>
-            {modalOption && (
-                <Modal>
-                    {modalOption === "logIn" ? <Login /> : <Signup />}
-                </Modal>
-            )}
+            <Modal />
         </>
     );
 };
