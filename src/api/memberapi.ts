@@ -91,3 +91,24 @@ export const loginAction = ({
             alert(error.response.data.message);
         });
 };
+
+export const logoutAction = () => {
+    if (!localStorage.getItem("accessToken")) return;
+
+    axios
+        .post(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/logout`, [
+            {
+                // Email: "vkxld134@naver.com",
+                Token: localStorage.getItem("accessToken"),
+            },
+            {
+                withCredentials: true,
+            },
+        ])
+        .then(response => {
+            console.log(response);
+        })
+        .catch(error => {
+            console.log(error.response.data.message);
+        });
+};
