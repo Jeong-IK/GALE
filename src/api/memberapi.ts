@@ -1,5 +1,9 @@
 import axios from "axios";
-import { SignupProps, CheckNicknameProps, LoginProps } from "../types/type";
+import {
+    SignupProps,
+    CheckSignupNicknameProps,
+    LoginProps,
+} from "../types/type";
 
 export const signupAction = ({
     inputEmail,
@@ -35,7 +39,7 @@ export const signupAction = ({
 export const checkNicknameExist = ({
     inputNickname,
     setNickNameErrorMsg,
-}: CheckNicknameProps) => {
+}: CheckSignupNicknameProps) => {
     if (!inputNickname.current?.value.length) return;
     axios
         .get(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/signup/exist-nickname`, {

@@ -3,6 +3,7 @@ import { useModal } from "../../stores/store";
 import { LoginIdErrorMsgType, LoginPwdErrorMsgType } from "../../types/type";
 import { modalStyle } from "../../styles/style";
 import { loginAction } from "../../api/memberapi";
+import { checkLoginIdValue, checkLoginPwdValue } from "../../utils/memberutils";
 
 export const Login = (): JSX.Element => {
     const inputEmail = useRef<HTMLInputElement>(null);
@@ -37,13 +38,10 @@ export const Login = (): JSX.Element => {
                                     placeholder="example@gmail.com"
                                     ref={inputEmail}
                                     onChange={() => {
-                                        if (!inputEmail.current?.value.length) {
-                                            setIdErrorMsg(
-                                                "이메일을 입력해주세요."
-                                            );
-                                            return;
-                                        }
-                                        setIdErrorMsg(null);
+                                        checkLoginIdValue({
+                                            inputEmail,
+                                            setIdErrorMsg,
+                                        });
                                     }}
                                 />
                             </td>
@@ -59,15 +57,10 @@ export const Login = (): JSX.Element => {
                                     ref={inputPasswd}
                                     placeholder="영어 대소문자, 특수문자, 숫자 포함 8자리 이상"
                                     onChange={() => {
-                                        if (
-                                            !inputPasswd.current?.value.length
-                                        ) {
-                                            setPwdErrorMsg(
-                                                "비밀번호를 입력해주세요."
-                                            );
-                                            return;
-                                        }
-                                        setPwdErrorMsg(null);
+                                        checkLoginPwdValue({
+                                            inputPasswd,
+                                            setPwdErrorMsg,
+                                        });
                                     }}
                                 />
                             </td>

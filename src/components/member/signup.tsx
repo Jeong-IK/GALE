@@ -59,10 +59,10 @@ export const Signup = () => {
                                     type="text"
                                     ref={inputEmail}
                                     onChange={() => {
-                                        checkEmailValue(
+                                        checkEmailValue({
                                             inputEmail,
-                                            setEmailErrorMsg
-                                        );
+                                            setEmailErrorMsg,
+                                        });
                                     }}
                                 />
                             </td>
@@ -77,10 +77,10 @@ export const Signup = () => {
                                     type="password"
                                     ref={inputPasswd}
                                     onChange={() => {
-                                        checkPwdValue(
+                                        checkPwdValue({
                                             inputPasswd,
-                                            setPwdErrorMsg
-                                        );
+                                            setPwdErrorMsg,
+                                        });
                                     }}
                                 />
                             </td>
@@ -95,11 +95,11 @@ export const Signup = () => {
                                     type="password"
                                     ref={confirmPwd}
                                     onChange={() => {
-                                        checkCfmPwdValue(
+                                        checkCfmPwdValue({
                                             confirmPwd,
                                             inputPasswd,
-                                            setCfmPwdErrorMsg
-                                        );
+                                            setCfmPwdErrorMsg,
+                                        });
                                     }}
                                 />
                             </td>
@@ -114,10 +114,10 @@ export const Signup = () => {
                                     type="text"
                                     ref={inputNickname}
                                     onChange={() => {
-                                        checkNicknameValue(
+                                        checkNicknameValue({
                                             inputNickname,
-                                            setNickNameErrorMsg
-                                        );
+                                            setNickNameErrorMsg,
+                                        });
                                     }}
                                 />
                                 <button

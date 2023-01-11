@@ -1,14 +1,16 @@
 import {
-    SignupCfmPwdErrorMsgType,
-    SignupEmailErrorMsgType,
-    SignupNickNameErrorMsgType,
-    SignupPwdErrorMsgType,
+    CheckLoginIdValueProps,
+    CheckLoginPwdValueProps,
+    CheckSignupCfmPwdProps,
+    CheckSignupEmailProps,
+    CheckSignupNicknameProps,
+    CheckSignupPwdProps,
 } from "../types/type";
 
-export const checkEmailValue = (
-    inputEmail: React.RefObject<HTMLInputElement>,
-    setEmailErrorMsg: (errorMsg: SignupEmailErrorMsgType) => void
-) => {
+export const checkEmailValue = ({
+    inputEmail,
+    setEmailErrorMsg,
+}: CheckSignupEmailProps) => {
     if (!inputEmail.current?.value?.length) return;
     if (inputEmail.current?.value?.length < 8) {
         setEmailErrorMsg("8자이상으로 입력해주세요.");
@@ -29,10 +31,10 @@ export const checkEmailValue = (
     setEmailErrorMsg(null);
 };
 
-export const checkPwdValue = (
-    inputPasswd: React.RefObject<HTMLInputElement>,
-    setPwdErrorMsg: (errorMsg: SignupPwdErrorMsgType) => void
-) => {
+export const checkPwdValue = ({
+    inputPasswd,
+    setPwdErrorMsg,
+}: CheckSignupPwdProps) => {
     if (!inputPasswd?.current?.value.length) return;
     if (inputPasswd?.current?.value.length === 0) {
         setPwdErrorMsg("비밀번호를 입력해주세요.");
@@ -55,11 +57,11 @@ export const checkPwdValue = (
     setPwdErrorMsg(null);
 };
 
-export const checkCfmPwdValue = (
-    confirmPwd: React.RefObject<HTMLInputElement>,
-    inputPasswd: React.RefObject<HTMLInputElement>,
-    setCfmPwdErrorMsg: (errorMsg: SignupCfmPwdErrorMsgType) => void
-) => {
+export const checkCfmPwdValue = ({
+    confirmPwd,
+    inputPasswd,
+    setCfmPwdErrorMsg,
+}: CheckSignupCfmPwdProps) => {
     if (!confirmPwd?.current?.value.length) return;
     if (confirmPwd?.current?.value.length === 0) {
         setCfmPwdErrorMsg("비밀번호를 한번 더 입력해주세요.");
@@ -72,10 +74,10 @@ export const checkCfmPwdValue = (
     setCfmPwdErrorMsg(null);
 };
 
-export const checkNicknameValue = (
-    inputNickname: React.RefObject<HTMLInputElement>,
-    setNickNameErrorMsg: (errorMsg: SignupNickNameErrorMsgType) => void
-) => {
+export const checkNicknameValue = ({
+    inputNickname,
+    setNickNameErrorMsg,
+}: CheckSignupNicknameProps) => {
     if (!inputNickname?.current?.value.length) return;
     if (inputNickname?.current?.value.length === 0) {
         setNickNameErrorMsg("닉네임을 입력해주세요.");
@@ -90,4 +92,34 @@ export const checkNicknameValue = (
         return;
     }
     setNickNameErrorMsg("중복검사를 실행해주시기 바랍니다.");
+};
+
+export const checkLoginIdValue = ({
+    inputEmail,
+    setIdErrorMsg,
+}: CheckLoginIdValueProps) => {
+    if (!inputEmail.current?.value.length) {
+        setIdErrorMsg("이메일을 입력해주세요.");
+        return;
+    }
+    if (
+        inputEmail.current?.value.match(
+            /[a-z0-9]([-_₩.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_₩.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i
+        ) == null
+    ) {
+        setIdErrorMsg("이메일 형식으로 입력해주시기 바랍니다.");
+        return;
+    }
+    setIdErrorMsg(null);
+};
+
+export const checkLoginPwdValue = ({
+    inputPasswd,
+    setPwdErrorMsg,
+}: CheckLoginPwdValueProps) => {
+    if (!inputPasswd.current?.value.length) {
+        setPwdErrorMsg("비밀번호를 입력해주세요.");
+        return;
+    }
+    setPwdErrorMsg(null);
 };

@@ -1,7 +1,3 @@
-import { ReactNode } from "react";
-
-export type ModalChildrenType = { children: ReactNode };
-
 export type ModalOption = "logIn" | "signUp" | null;
 
 export interface Modalstatus {
@@ -15,6 +11,7 @@ export type SignupEmailErrorMsgType =
     | "이메일 길이가 너무 깁니다."
     | "이메일 형식으로 입력해주시기 바랍니다."
     | null;
+
 export type SignupPwdErrorMsgType =
     | "영어 대소문자, 특수문자, 숫자 포함 8자리 이상 입력해주세요."
     | "비밀번호를 입력해주세요."
@@ -33,16 +30,26 @@ export type SignupNickNameErrorMsgType =
     | "중복검사를 실행해주시기 바랍니다."
     | null;
 
-export type LoginIdErrorMsgType =
-    | "이메일/비밀번호를 다시 확인해주세요."
-    | "찾을 수 없는 이메일입니다."
-    | "이메일을 입력해주세요."
-    | null;
-export type LoginPwdErrorMsgType =
-    | "이메일/비밀번호를 다시 확인해주세요."
-    | "비밀번호가 맞지 않습니다."
-    | "비밀번호를 입력해주세요."
-    | null;
+export interface CheckSignupEmailProps {
+    inputEmail: React.RefObject<HTMLInputElement>;
+    setEmailErrorMsg: (errorMsg: SignupEmailErrorMsgType) => void;
+}
+
+export interface CheckSignupPwdProps {
+    inputPasswd: React.RefObject<HTMLInputElement>;
+    setPwdErrorMsg: (errorMsg: SignupPwdErrorMsgType) => void;
+}
+
+export interface CheckSignupCfmPwdProps {
+    confirmPwd: React.RefObject<HTMLInputElement>;
+    inputPasswd: React.RefObject<HTMLInputElement>;
+    setCfmPwdErrorMsg: (errorMsg: SignupCfmPwdErrorMsgType) => void;
+}
+
+export interface CheckSignupNicknameProps {
+    inputNickname: React.RefObject<HTMLInputElement>;
+    setNickNameErrorMsg: (errorMsg: SignupNickNameErrorMsgType) => void;
+}
 
 export interface SignupProps {
     inputEmail: React.RefObject<HTMLInputElement>;
@@ -52,9 +59,25 @@ export interface SignupProps {
     setModaloption: (type: ModalOption) => void;
 }
 
-export interface CheckNicknameProps {
-    inputNickname: React.RefObject<HTMLInputElement>;
-    setNickNameErrorMsg: (errorMsg: SignupNickNameErrorMsgType) => void;
+export type LoginIdErrorMsgType =
+    | "이메일/비밀번호를 다시 확인해주세요."
+    | "이메일 형식으로 입력해주시기 바랍니다."
+    | "이메일을 입력해주세요."
+    | null;
+
+export type LoginPwdErrorMsgType =
+    | "이메일/비밀번호를 다시 확인해주세요."
+    | "비밀번호를 입력해주세요."
+    | null;
+
+export interface CheckLoginIdValueProps {
+    inputEmail: React.RefObject<HTMLInputElement>;
+    setIdErrorMsg: (errorMsg: LoginIdErrorMsgType) => void;
+}
+
+export interface CheckLoginPwdValueProps {
+    inputPasswd: React.RefObject<HTMLInputElement>;
+    setPwdErrorMsg: (errorMsg: LoginPwdErrorMsgType) => void;
 }
 
 export interface LoginProps {
