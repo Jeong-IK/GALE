@@ -36,7 +36,7 @@ export const Modal = () => {
                             >
                                 X
                             </button>
-                            {modalOption ? <Login /> : <Signup />}
+                            {modalOption === "logIn" ? <Login /> : <Signup />}
                         </div>
                     </div>,
                     document.getElementById("modal") as HTMLElement

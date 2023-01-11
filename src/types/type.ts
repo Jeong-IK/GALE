@@ -1,4 +1,4 @@
-export type ModalOption = "logIn" | "signUp" | null;
+export type ModalOption = "logIn" | "signUp" | "date" | null;
 
 export interface Modalstatus {
     modalOption: ModalOption;

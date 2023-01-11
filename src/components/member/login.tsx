@@ -28,72 +28,65 @@ export const Login = (): JSX.Element => {
             <p>이미 회원이신가요?</p>
             <p>갈래에 여행기록을 남겨보세요! ✍🏻</p>
             <form onSubmit={logInAction}>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>이메일</td>
-                            <td>
-                                <input
-                                    type="text"
-                                    placeholder="example@gmail.com"
-                                    ref={inputEmail}
-                                    onChange={() => {
-                                        checkLoginIdValue({
-                                            inputEmail,
-                                            setIdErrorMsg,
-                                        });
-                                    }}
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>{idErrorMsg}</td>
-                        </tr>
-                        <tr>
-                            <td>비밀번호 입력</td>
-                            <td>
-                                <input
-                                    type="password"
-                                    ref={inputPasswd}
-                                    placeholder="영어 대소문자, 특수문자, 숫자 포함 8자리 이상"
-                                    onChange={() => {
-                                        checkLoginPwdValue({
-                                            inputPasswd,
-                                            setPwdErrorMsg,
-                                        });
-                                    }}
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>{pwdErrorMsg}</td>
-                        </tr>
-                        <tr>
-                            <td colSpan={2}>
-                                {inputEmail.current?.value &&
-                                inputPasswd.current?.value ? (
-                                    <button type="submit">로그인 하기</button>
-                                ) : (
-                                    <button type="submit" disabled>
-                                        로그인 하기
-                                    </button>
-                                )}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div>
+                    <div>
+                        이메일
+                        <span>
+                            <input
+                                type="text"
+                                placeholder="example@gmail.com"
+                                ref={inputEmail}
+                                onChange={() => {
+                                    checkLoginIdValue({
+                                        inputEmail,
+                                        setIdErrorMsg,
+                                    });
+                                }}
+                            />
+                        </span>
+                    </div>
+                    <div>{idErrorMsg}</div>
+                    <div>
+                        비밀번호 입력
+                        <span>
+                            <input
+                                type="password"
+                                ref={inputPasswd}
+                                placeholder="영어 대소문자, 특수문자, 숫자 포함 8자리 이상"
+                                onChange={() => {
+                                    checkLoginPwdValue({
+                                        inputPasswd,
+                                        setPwdErrorMsg,
+                                    });
+                                }}
+                            />
+                        </span>
+                    </div>
+                    {pwdErrorMsg}
+                    <div>
+                        <button
+                            type="submit"
+                            disabled={
+                                !(
+                                    inputEmail.current?.value &&
+                                    inputPasswd.current?.value
+                                )
+                            }
+                        >
+                            로그인 하기
+                        </button>
+                    </div>
+                </div>
             </form>
-            <p>
-                회원이 아니신가요?
-                <strong
-                    onClick={() => {
-                        setModaloption("signUp");
-                    }}
-                    role="presentation"
-                >
-                    가입하기
-                </strong>
-            </p>
+            회원이 아니신가요?
+            <strong
+                onClick={() => {
+                    setModaloption("signUp");
+                }}
+                role="presentation"
+            >
+                가입하기
+            </strong>
         </div>
     );
 };
