@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { AiOutlineSwap } from "react-icons/ai";
 import { travleStyle } from "../../styles/style";
+import { Calendar } from "./calendar/calendar";
 
 export const TravlePlan = () => {
     const inputDepature = useRef<HTMLInputElement>(null);
@@ -49,6 +50,7 @@ export const TravlePlan = () => {
                     </div>
                 </form>
             </div>
+            <Calendar/>
         </div>
     );
 };
