@@ -26,7 +26,12 @@ export const Header = (): JSX.Element => {
     return (
         <>
             <div css={headerStyle.mainHeader}>
-                <Image src={headerImg} css={headerStyle.headerBgImg} alt="" />
+                <Image
+                    src={headerImg}
+                    css={headerStyle.headerBgImg}
+                    alt=""
+                    priority
+                />
                 {/* <button type="button">
                         <Image src="/CI.png" alt="CI" />
                     </button> */}

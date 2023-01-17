@@ -5,6 +5,16 @@ export interface Modalstatus {
     setModaloption: (type: ModalOption) => void;
 }
 
+export interface SignupData extends LoginData {
+    cfmPasswd: string;
+    nickname: string;
+}
+
+export interface LoginData {
+    email: string;
+    passwd: string;
+}
+
 export type SignupEmailErrorMsgType =
     | "8자이상으로 입력해주세요."
     | "이메일을 입력해주새요."

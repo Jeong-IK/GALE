@@ -30,6 +30,7 @@ specifiers:
   prettier: ^2.7.1
   react: 18.2.0
   react-dom: 18.2.0
+  react-hook-form: ^7.42.1
   react-icons: ^4.7.1
   typescript: 4.9.3
   zustand: ^4.1.4
@@ -59,6 +60,7 @@ dependencies:
   prettier: 2.7.1
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  react-hook-form: 7.42.1_react@18.2.0
   react-icons: 4.7.1_react@18.2.0
   zustand: 4.1.4_react@18.2.0
 
@@ -2662,6 +2664,15 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
+    dev: false
+
+  /react-hook-form/7.42.1_react@18.2.0:
+    resolution: {integrity: sha512-2UIGqwMZksd5HS55crTT1ATLTr0rAI4jS7yVuqTaoRVDhY2Qc4IyjskCmpnmdYqUNOYFy04vW253tb2JRVh+IQ==}
+    engines: {node: '>=12.22.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /react-icons/4.7.1_react@18.2.0:

@@ -1,147 +1,122 @@
-import React, { useRef, useState } from "react";
-import {
-    SignupEmailErrorMsgType,
-    SignupPwdErrorMsgType,
-    SignupCfmPwdErrorMsgType,
-    SignupNickNameErrorMsgType,
-} from "../../types/type";
+import { useForm } from "react-hook-form";
+import { SignupData } from "../../types/type";
 import { modalStyle } from "../../styles/style";
-import { signupAction, checkNicknameExist } from "../../api/memberapi";
-import { useModal } from "../../stores/store";
-import {
-    checkCfmPwdValue,
-    checkEmailValue,
-    checkNicknameValue,
-    checkPwdValue,
-} from "../../utils/memberutils";
+// import { signupAction, checkNicknameExist } from "../../api/memberapi";
+// import { useModal } from "../../stores/store";
 
 export const Signup = () => {
-    // Input 입력 값 Ref 변수
-    const inputEmail = useRef<HTMLInputElement>(null);
-    const inputPasswd = useRef<HTMLInputElement>(null);
-    const confirmPwd = useRef<HTMLInputElement>(null);
-    const inputNickname = useRef<HTMLInputElement>(null);
-    // ErrorMsgType 상태
-    const [emailErrorMsg, setEmailErrorMsg] =
-        useState<SignupEmailErrorMsgType>(null);
-    const [pwdErrorMsg, setPwdErrorMsg] = useState<SignupPwdErrorMsgType>(null);
-    const [cfmPwdErrorMsg, setCfmPwdErrorMsg] =
-        useState<SignupCfmPwdErrorMsgType>(null);
-    const [nickNameErrorMsg, setNickNameErrorMsg] =
-        useState<SignupNickNameErrorMsgType>(null);
     // 모달창 타입 전역 상태
-    const { setModaloption } = useModal();
+    // const { setModaloption } = useModal();
+
+    const {
+        register,
+        formState: { errors, isValid, isSubmitting },
+        handleSubmit,
+        reset,
+    } = useForm<SignupData>();
+
     // 회원가입
-    const useSignupAction = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        if (emailErrorMsg || pwdErrorMsg || cfmPwdErrorMsg || nickNameErrorMsg)
-            return;
-        signupAction({
-            inputEmail,
-            inputPasswd,
-            confirmPwd,
-            inputNickname,
-            setModaloption,
-        });
+    // const useSignupAction = (event: React.FormEvent<HTMLFormElement>) => {
+    //     event.preventDefault();
+    //     if (emailErrorMsg || pwdErrorMsg || cfmPwdErrorMsg || nickNameErrorMsg)
+    //         return;
+    //     signupAction({
+    //         inputEmail,
+    //         inputPasswd,
+    //         confirmPwd,
+    //         inputNickname,
+    //         setModaloption,
+    //     });
+    // };
+
+    const onSignup = (data: SignupData) => {
+        console.log(data);
+
+        reset();
     };
 
     return (
         <div css={modalStyle.modalForm}>
             <p>환영합니다. </p>
             <p>여행지 기록 서비스 갈래와 함께 여행 기록을 작성해보세요. ✍🏻</p>
-            <form onSubmit={useSignupAction}>
+            <form onSubmit={handleSubmit(onSignup)}>
                 <div>
                     <div>
                         이메일
                         <span>
                             <input
                                 type="text"
-                                ref={inputEmail}
-                                onChange={() => {
-                                    checkEmailValue({
-                                        inputEmail,
-                                        setEmailErrorMsg,
-                                    });
-                                }}
+                                placeholder="example@gmail.com"
+                                {...register("email", {
+                                    required: "이메일을 입력해주세요.",
+                                    pattern: {
+                                        value: /[a-z0-9]([-_₩.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_₩.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/,
+                                        message:
+                                            "이메일 형식으로 입력해주시기 바랍니다.",
+                                    },
+                                })}
                             />
                         </span>
                     </div>
-                    <div>{emailErrorMsg}</div>
+                    <div>{errors.email?.message}</div>
                     <div>
                         비밀번호 입력
                         <span>
                             <input
                                 type="password"
-                                ref={inputPasswd}
-                                onChange={() => {
-                                    checkPwdValue({
-                                        inputPasswd,
-                                        setPwdErrorMsg,
-                                    });
-                                }}
+                                placeholder="영어 대소문자, 특수문자, 숫자 포함 8자리 이상"
+                                {...register("passwd", {
+                                    required: "비밀번호를 입력해주세요.",
+                                    pattern: {
+                                        value: /(?=.*[a-zA-Z])((?=.*\d)(?=.*\W)).{8,16}$/,
+                                        message:
+                                            "영어 대소문자, 특수문자, 숫자 포함 8자리 이상 입력해주세요.",
+                                    },
+                                })}
                             />
                         </span>
                     </div>
-                    <div>{pwdErrorMsg}</div>
+                    <div>{errors.passwd?.message}</div>
                     <div>
                         비밀번호 확인
                         <span>
                             <input
                                 type="password"
-                                ref={confirmPwd}
-                                onChange={() => {
-                                    checkCfmPwdValue({
-                                        confirmPwd,
-                                        inputPasswd,
-                                        setCfmPwdErrorMsg,
-                                    });
-                                }}
+                                {...register("cfmPasswd", {
+                                    required:
+                                        "비밀번호를 한 번더 입력해주세요.",
+                                    // validate: (cfmPasswd?: string) => {
+                                    //     const passwdValue = getValues("passwd");
+                                    //     if (!cfmPasswd) return;
+                                    //     if (passwdValue !== cfmPasswd)
+
+                                    // },
+                                })}
                             />
                         </span>
                     </div>
-                    <div>{cfmPwdErrorMsg}</div>
+                    <div>{errors.cfmPasswd?.message}</div>
                     <div>
                         닉네임
                         <span>
                             <input
                                 type="text"
-                                ref={inputNickname}
-                                onChange={() => {
-                                    checkNicknameValue({
-                                        inputNickname,
-                                        setNickNameErrorMsg,
-                                    });
-                                }}
+                                {...register("nickname", {
+                                    required: "닉네임을 입력해주세요.",
+                                    minLength: {
+                                        value: 3,
+                                        message: "3글자 이상 입력해주세요.",
+                                    },
+                                })}
                             />
-                            <button
-                                type="button"
-                                onClick={() =>
-                                    checkNicknameExist({
-                                        inputNickname,
-                                        setNickNameErrorMsg,
-                                    })
-                                }
-                            >
-                                중복확인
-                            </button>
+                            <button type="button">중복확인</button>
                         </span>
                     </div>
-                    <div>{nickNameErrorMsg}</div>
+                    <div>{errors.nickname?.message}</div>
                     <div>
                         <button
-                            disabled={
-                                !(
-                                    inputEmail.current?.value &&
-                                    inputPasswd.current?.value &&
-                                    confirmPwd.current?.value &&
-                                    inputNickname.current?.value &&
-                                    !emailErrorMsg &&
-                                    !pwdErrorMsg &&
-                                    !cfmPwdErrorMsg &&
-                                    !nickNameErrorMsg
-                                )
-                            }
-                            type="button"
+                            disabled={isSubmitting || !isValid}
+                            type="submit"
                         >
                             동의하고 가입하기
                         </button>

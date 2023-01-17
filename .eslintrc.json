@@ -18,7 +18,10 @@
             { "namedComponents": "arrow-function" }
         ],
         "arrow-body-style": ["error", "as-needed"],
-        "react/jsx-props-no-spreading": [1, { "custom": "ignore" }],
+        "react/jsx-props-no-spreading": [
+            0,
+            { "custom": "ignore", "html": "ignore" }
+        ],
         "import/prefer-default-export": "off",
         "jsx-a11y/label-has-associated-control": [
             "error",

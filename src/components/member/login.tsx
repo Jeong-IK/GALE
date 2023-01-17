@@ -1,33 +1,39 @@
-import { useRef, useState } from "react";
+import { useForm } from "react-hook-form";
 import { useModal } from "../../stores/store";
-import { LoginIdErrorMsgType, LoginPwdErrorMsgType } from "../../types/type";
+import { LoginData } from "../../types/type";
 import { modalStyle } from "../../styles/style";
-import { loginAction } from "../../api/memberapi";
-import { checkLoginIdValue, checkLoginPwdValue } from "../../utils/memberutils";
 
 export const Login = (): JSX.Element => {
-    const inputEmail = useRef<HTMLInputElement>(null);
-    const inputPasswd = useRef<HTMLInputElement>(null);
-    const [idErrorMsg, setIdErrorMsg] = useState<LoginIdErrorMsgType>();
-    const [pwdErrorMsg, setPwdErrorMsg] = useState<LoginPwdErrorMsgType>();
     const { setModaloption } = useModal();
 
-    const logInAction = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        loginAction({
-            inputEmail,
-            inputPasswd,
-            setModaloption,
-            setIdErrorMsg,
-            setPwdErrorMsg,
-        });
+    const {
+        register,
+        formState: { errors, isSubmitting, isValid },
+        handleSubmit,
+        reset,
+    } = useForm<LoginData>();
+
+    // const logInAction = (event: React.FormEvent<HTMLFormElement>) => {
+    //     event.preventDefault();
+    //     loginAction({
+    //         inputEmail,
+    //         inputPasswd,
+    //         setModaloption,
+    //         setIdErrorMsg,
+    //         setPwdErrorMsg,
+    //     });
+    // };
+
+    const onSubmit = (data: LoginData) => {
+        console.log(data);
+        reset();
     };
 
     return (
         <div css={modalStyle.modalForm}>
             <p>이미 회원이신가요?</p>
             <p>갈래에 여행기록을 남겨보세요! ✍🏻</p>
-            <form onSubmit={logInAction}>
+            <form onSubmit={handleSubmit(onSubmit)}>
                 <div>
                     <div>
                         이메일
@@ -35,43 +41,35 @@ export const Login = (): JSX.Element => {
                             <input
                                 type="text"
                                 placeholder="example@gmail.com"
-                                ref={inputEmail}
-                                onChange={() => {
-                                    checkLoginIdValue({
-                                        inputEmail,
-                                        setIdErrorMsg,
-                                    });
-                                }}
+                                {...register("email", {
+                                    required: "이메일을 입력해주세요.",
+                                    pattern: {
+                                        value: /[a-z0-9]([-_₩.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_₩.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/,
+                                        message:
+                                            "이메일 형식으로 입력해주시기 바랍니다.",
+                                    },
+                                })}
                             />
                         </span>
                     </div>
-                    <div>{idErrorMsg}</div>
+                    <div>{errors.email?.message}</div>
                     <div>
                         비밀번호 입력
                         <span>
                             <input
                                 type="password"
-                                ref={inputPasswd}
-                                placeholder="영어 대소문자, 특수문자, 숫자 포함 8자리 이상"
-                                onChange={() => {
-                                    checkLoginPwdValue({
-                                        inputPasswd,
-                                        setPwdErrorMsg,
-                                    });
-                                }}
+                                placeholder="*******"
+                                {...register("passwd", {
+                                    required: "비밀번호를 입력해주세요.",
+                                })}
                             />
                         </span>
                     </div>
-                    {pwdErrorMsg}
+                    {errors.passwd?.message}
                     <div>
                         <button
                             type="submit"
-                            disabled={
-                                !(
-                                    inputEmail.current?.value &&
-                                    inputPasswd.current?.value
-                                )
-                            }
+                            disabled={isSubmitting || !isValid}
                         >
                             로그인 하기
                         </button>
