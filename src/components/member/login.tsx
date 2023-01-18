@@ -10,8 +10,7 @@ export const Login = (): JSX.Element => {
         register,
         formState: { errors, isSubmitting, isValid },
         handleSubmit,
-        reset,
-    } = useForm<LoginData>();
+    } = useForm<LoginData>({ mode: "onChange" });
 
     // const logInAction = (event: React.FormEvent<HTMLFormElement>) => {
     //     event.preventDefault();
@@ -24,10 +23,7 @@ export const Login = (): JSX.Element => {
     //     });
     // };
 
-    const onSubmit = (data: LoginData) => {
-        console.log(data);
-        reset();
-    };
+    const onSubmit = (data: LoginData) => console.log(data);
 
     return (
         <div css={modalStyle.modalForm}>
@@ -42,9 +38,12 @@ export const Login = (): JSX.Element => {
                                 type="text"
                                 placeholder="example@gmail.com"
                                 {...register("email", {
-                                    required: "이메일을 입력해주세요.",
+                                    required: {
+                                        value: true,
+                                        message: "이메일을 입력해주세요.",
+                                    },
                                     pattern: {
-                                        value: /[a-z0-9]([-_₩.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_₩.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/,
+                                        value: /[a-z0-9]([-_₩.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_₩.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i,
                                         message:
                                             "이메일 형식으로 입력해주시기 바랍니다.",
                                     },
@@ -58,9 +57,12 @@ export const Login = (): JSX.Element => {
                         <span>
                             <input
                                 type="password"
-                                placeholder="*******"
+                                placeholder="영어 대소문자, 특수문자, 숫자 포함 8자리 이상"
                                 {...register("passwd", {
-                                    required: "비밀번호를 입력해주세요.",
+                                    required: {
+                                        value: true,
+                                        message: "비밀번호를 입력해주세요.",
+                                    },
                                 })}
                             />
                         </span>

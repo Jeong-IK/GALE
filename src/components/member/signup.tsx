@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
 import { SignupData } from "../../types/type";
 import { modalStyle } from "../../styles/style";
-// import { signupAction, checkNicknameExist } from "../../api/memberapi";
 // import { useModal } from "../../stores/store";
 
 export const Signup = () => {
@@ -13,21 +12,8 @@ export const Signup = () => {
         formState: { errors, isValid, isSubmitting },
         handleSubmit,
         reset,
-    } = useForm<SignupData>();
-
-    // 회원가입
-    // const useSignupAction = (event: React.FormEvent<HTMLFormElement>) => {
-    //     event.preventDefault();
-    //     if (emailErrorMsg || pwdErrorMsg || cfmPwdErrorMsg || nickNameErrorMsg)
-    //         return;
-    //     signupAction({
-    //         inputEmail,
-    //         inputPasswd,
-    //         confirmPwd,
-    //         inputNickname,
-    //         setModaloption,
-    //     });
-    // };
+        getValues,
+    } = useForm<SignupData>({ mode: "onChange" });
 
     const onSignup = (data: SignupData) => {
         console.log(data);
@@ -85,12 +71,12 @@ export const Signup = () => {
                                 {...register("cfmPasswd", {
                                     required:
                                         "비밀번호를 한 번더 입력해주세요.",
-                                    // validate: (cfmPasswd?: string) => {
-                                    //     const passwdValue = getValues("passwd");
-                                    //     if (!cfmPasswd) return;
-                                    //     if (passwdValue !== cfmPasswd)
-
-                                    // },
+                                    validate: (cfmPasswd?: string) => {
+                                        const passwdValue = getValues("passwd");
+                                        if (!cfmPasswd) return;
+                                        if (passwdValue !== cfmPasswd)
+                                            return "비밀번호가 서로 일치하지 않습니다.";
+                                    },
                                 })}
                             />
                         </span>
