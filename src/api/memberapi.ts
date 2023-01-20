@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useModal } from "../stores/store";
 import {
     SignupProps,
     CheckSignupNicknameProps,
@@ -10,7 +11,6 @@ export const signupAction = ({
     inputPasswd,
     confirmPwd,
     inputNickname,
-    setModaloption,
 }: SignupProps) => {
     if (
         !inputEmail.current?.value ||

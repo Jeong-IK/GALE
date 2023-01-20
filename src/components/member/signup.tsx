@@ -1,12 +1,9 @@
 import { useForm } from "react-hook-form";
+import axios from "axios";
 import { SignupData } from "../../types/type";
 import { modalStyle } from "../../styles/style";
-// import { useModal } from "../../stores/store";
 
 export const Signup = () => {
-    // 모달창 타입 전역 상태
-    // const { setModaloption } = useModal();
-
     const {
         register,
         formState: { errors, isValid, isSubmitting },
@@ -16,8 +13,21 @@ export const Signup = () => {
     } = useForm<SignupData>({ mode: "onChange" });
 
     const onSignup = (data: SignupData) => {
-        console.log(data);
-
+        axios
+            .post(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/signup`, {
+                email: data.email,
+                password: data.passwd,
+                confirmPassword: data.cfmPasswd,
+                nickname: data.nickname,
+            })
+            .then(response => {
+                alert(response.data.message);
+                setModaloption("logIn");
+            })
+            .catch(error => {
+                console.log(error.response.data);
+                alert(error.response.data.message);
+            });
         reset();
     };
 
