@@ -1,7 +1,8 @@
 import { useForm } from "react-hook-form";
 import { useModal } from "../../stores/store";
-import { LoginData } from "../../types/type";
+import { LoginProps } from "../../types/type";
 import { modalStyle } from "../../styles/style";
+import { useAuth } from "../../hooks/useAuth";
 
 export const Login = (): JSX.Element => {
     const { setModaloption } = useModal();
@@ -10,7 +11,7 @@ export const Login = (): JSX.Element => {
         register,
         formState: { errors, isSubmitting, isValid },
         handleSubmit,
-    } = useForm<LoginData>({ mode: "onChange" });
+    } = useForm<LoginProps>({ mode: "onChange" });
 
     // const logInAction = (event: React.FormEvent<HTMLFormElement>) => {
     //     event.preventDefault();
@@ -23,13 +24,15 @@ export const Login = (): JSX.Element => {
     //     });
     // };
 
-    const onSubmit = (data: LoginData) => console.log(data);
+    const useLogin = (data: LoginProps) => {
+        useAuth(data);
+    };
 
     return (
         <div css={modalStyle.modalForm}>
             <p>이미 회원이신가요?</p>
             <p>갈래에 여행기록을 남겨보세요! ✍🏻</p>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(useLogin)}>
                 <div>
                     <div>
                         이메일
