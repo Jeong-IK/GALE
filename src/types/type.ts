@@ -15,11 +15,16 @@ export interface LoginProps {
     passwd: string;
 }
 
-export interface CheckNicknameExistProps {
+export interface ExistNicknameProps {
     nickname: string;
 }
 
 export interface LoginResponse {
     accessToken: string;
     refreshToken: string;
+}
+
+export interface GeneralResponse {
+    code: string;
+    message: string;
 }

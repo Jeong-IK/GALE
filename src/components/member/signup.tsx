@@ -1,34 +1,57 @@
 import { useForm } from "react-hook-form";
-import axios from "axios";
-import { SignupData } from "../../types/type";
+import { useMutation } from "@tanstack/react-query";
+import {
+    SignupProps,
+    ExistNicknameProps,
+    GeneralResponse,
+} from "../../types/type";
 import { modalStyle } from "../../styles/style";
+import { existNicknameAction, signupAction } from "../../api/memberapi";
+import { useModal } from "../../stores/store";
 
 export const Signup = () => {
+    const { setModaloption } = useModal();
     const {
         register,
         formState: { errors, isValid, isSubmitting },
         handleSubmit,
         reset,
         getValues,
-    } = useForm<SignupData>({ mode: "onChange" });
+    } = useForm<SignupProps>({ mode: "onChange" });
 
-    const onSignup = (data: SignupData) => {
-        axios
-            .post(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/signup`, {
-                email: data.email,
-                password: data.passwd,
-                confirmPassword: data.cfmPasswd,
-                nickname: data.nickname,
-            })
-            .then(response => {
-                alert(response.data.message);
-                setModaloption("logIn");
-            })
-            .catch(error => {
-                console.log(error.response.data);
-                alert(error.response.data.message);
-            });
-        reset();
+    const signupMutation = useMutation<GeneralResponse, Error, SignupProps>({
+        mutationFn: signupAction,
+        onSuccess: data => {
+            alert(data.message);
+            setModaloption("logIn");
+        },
+        onError: error => {
+            alert(error);
+            reset();
+        },
+    });
+
+    const checkNicknameMutation = useMutation<
+        GeneralResponse,
+        Error,
+        ExistNicknameProps
+    >({
+        mutationFn: existNicknameAction,
+        onSuccess: data => {
+            console.log(data.message);
+        },
+        onError: error => {
+            console.log(error.message);
+        },
+    });
+
+    const onCheckNickname = () => {
+        const nickname = getValues("nickname");
+        checkNicknameMutation.mutate({ nickname });
+    };
+
+    const onSignup = (inputdata: SignupProps) => {
+        signupMutation.mutate(inputdata);
     };
 
     return (
@@ -105,7 +128,9 @@ export const Signup = () => {
                                     },
                                 })}
                             />
-                            <button type="button">중복확인</button>
+                            <button type="button" onClick={onCheckNickname}>
+                                중복확인
+                            </button>
                         </span>
                     </div>
                     <div>{errors.nickname?.message}</div>
