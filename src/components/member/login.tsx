@@ -1,10 +1,8 @@
 import { useForm } from "react-hook-form";
-import { useMutation } from "@tanstack/react-query";
 import { useModal } from "../../stores/store";
-import { LoginProps, LoginResponse } from "../../types/type";
+import { LoginProps } from "../../types/type";
 import { modalStyle } from "../../styles/style";
-import { loginAction } from "../../api/memberapi";
-// import { useLoginMutation } from "../../hooks/useAuth";
+import { useLoginMutation } from "../../hooks/useAuth";
 
 export const Login = (): JSX.Element => {
     const { setModaloption } = useModal();
@@ -15,25 +13,16 @@ export const Login = (): JSX.Element => {
         handleSubmit,
     } = useForm<LoginProps>({ mode: "onChange" });
 
-    const loginMutation = useMutation<LoginResponse, Error, LoginProps>({
-        mutationFn: (inputData: LoginProps) => loginAction(inputData),
-        onSuccess: data => {
-            localStorage.setItem("accessToken", data.accessToken);
-            localStorage.setItem("refreshToken", data.refreshToken);
-        },
-        onError: error => {
-            console.log(error);
-        },
-    });
-    const onSubmit = (inputData: LoginProps) => {
-        loginMutation.mutate(inputData);
+    const loginQuery = useLoginMutation();
+    const onLogin = (inputData: LoginProps) => {
+        loginQuery(inputData);
     };
 
     return (
         <div css={modalStyle.modalForm}>
             <p>이미 회원이신가요?</p>
             <p>갈래에 여행기록을 남겨보세요! ✍🏻</p>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onLogin)}>
                 <div>
                     <div>
                         이메일

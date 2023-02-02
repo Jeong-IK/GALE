@@ -28,3 +28,9 @@ export interface GeneralResponse {
     code: string;
     message: string;
 }
+
+export interface GeneralError extends Error {
+    response: {
+        data: GeneralResponse;
+    };
+}

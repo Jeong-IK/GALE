@@ -67,7 +67,7 @@ export const Header = (): JSX.Element => {
                         >
                             로그아웃
                         </button>
-                        <button type="button" css={headerStyle.memberLink}>
+                        <button type="button" css={headerStyle.link}>
                             마이페이지
                         </button>
                     </div>

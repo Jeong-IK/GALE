@@ -1,16 +1,12 @@
 import { useForm } from "react-hook-form";
-import { useMutation } from "@tanstack/react-query";
-import {
-    SignupProps,
-    ExistNicknameProps,
-    GeneralResponse,
-} from "../../types/type";
+import { SignupProps } from "../../types/type";
 import { modalStyle } from "../../styles/style";
-import { existNicknameAction, signupAction } from "../../api/memberapi";
-import { useModal } from "../../stores/store";
+import {
+    useExistNicknameMutation,
+    useSignupMutation,
+} from "../../hooks/useAuth";
 
 export const Signup = () => {
-    const { setModaloption } = useModal();
     const {
         register,
         formState: { errors, isValid, isSubmitting },
@@ -19,39 +15,16 @@ export const Signup = () => {
         getValues,
     } = useForm<SignupProps>({ mode: "onChange" });
 
-    const signupMutation = useMutation<GeneralResponse, Error, SignupProps>({
-        mutationFn: signupAction,
-        onSuccess: data => {
-            alert(data.message);
-            setModaloption("logIn");
-        },
-        onError: error => {
-            alert(error);
-            reset();
-        },
-    });
-
-    const checkNicknameMutation = useMutation<
-        GeneralResponse,
-        Error,
-        ExistNicknameProps
-    >({
-        mutationFn: existNicknameAction,
-        onSuccess: data => {
-            console.log(data.message);
-        },
-        onError: error => {
-            console.log(error.message);
-        },
-    });
-
-    const onCheckNickname = () => {
+    const existNicknameQuery = useExistNicknameMutation();
+    const signupQuery = useSignupMutation();
+    const onExistNickname = () => {
         const nickname = getValues("nickname");
-        checkNicknameMutation.mutate({ nickname });
+        existNicknameQuery({ nickname });
     };
 
     const onSignup = (inputdata: SignupProps) => {
-        signupMutation.mutate(inputdata);
+        signupQuery(inputdata);
+        reset();
     };
 
     return (
@@ -128,7 +101,7 @@ export const Signup = () => {
                                     },
                                 })}
                             />
-                            <button type="button" onClick={onCheckNickname}>
+                            <button type="button" onClick={onExistNickname}>
                                 중복확인
                             </button>
                         </span>
