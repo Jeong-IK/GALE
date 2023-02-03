@@ -31,6 +31,7 @@ export interface GeneralResponse {
 
 export interface GeneralError extends Error {
     response: {
+        status: number;
         data: GeneralResponse;
     };
 }

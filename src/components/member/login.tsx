@@ -13,9 +13,12 @@ export const Login = (): JSX.Element => {
         handleSubmit,
     } = useForm<LoginProps>({ mode: "onChange" });
 
-    const loginQuery = useLoginMutation();
+    const { loginMutation, loginStatus, loginError } = useLoginMutation();
+
     const onLogin = (inputData: LoginProps) => {
-        loginQuery(inputData);
+        loginMutation(inputData);
+        if (loginStatus === "error" && loginError?.response.status !== 401)
+            alert(loginError?.response.data.message);
     };
 
     return (
@@ -44,7 +47,12 @@ export const Login = (): JSX.Element => {
                             />
                         </span>
                     </div>
-                    <div>{errors.email?.message}</div>
+                    <div>
+                        {errors.email
+                            ? errors.email?.message
+                            : loginError?.response.status === 401 &&
+                              loginError.response.data.message}
+                    </div>
                     <div>
                         비밀번호 입력
                         <span>
@@ -60,7 +68,10 @@ export const Login = (): JSX.Element => {
                             />
                         </span>
                     </div>
-                    {errors.passwd?.message}
+                    {errors.passwd
+                        ? errors.passwd?.message
+                        : loginError?.response.status === 401 &&
+                          loginError.response.data.message}
                     <div>
                         <button
                             type="submit"

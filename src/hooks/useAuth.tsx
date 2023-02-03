@@ -30,42 +30,37 @@ const setStorageData = (responseData: LoginResponse) => {
 };
 
 export const useLoginMutation = () => {
-    const { mutate: loginMutation } = useMutation<
-        LoginResponse,
-        GeneralError,
-        LoginProps
-    >({
+    const {
+        mutate: loginMutation,
+        status: loginStatus,
+        error: loginError,
+    } = useMutation<LoginResponse, GeneralError, LoginProps>({
         mutationFn: (inputData: LoginProps) => loginAction(inputData),
         onSuccess: data => {
             setStorageData(data);
         },
-        onError: error => error.response?.data.message,
     });
-    return loginMutation;
+    return { loginMutation, loginStatus, loginError };
 };
 
 export const useSignupMutation = () => {
     const { setModaloption } = useModal();
-    const { mutate: signupMutation } = useMutation<
-        GeneralResponse,
-        Error,
-        SignupProps
-    >({
+    const {
+        mutate: signupMutation,
+        status: signupStatus,
+        error: signupError,
+    } = useMutation<GeneralResponse, Error, SignupProps>({
         mutationFn: signupAction,
         onSuccess: data => {
             alert(data.message);
             setModaloption("logIn");
         },
-        onError: error => {
-            alert(error);
-            // reset();
-        },
     });
-    return signupMutation;
+    return { signupMutation, signupStatus, signupError };
 };
 
 export const useExistNicknameMutation = () => {
-    const { mutate: existNicknameMutation } = useMutation<
+    const { mutate: existNicknameMutation, status: exist } = useMutation<
         GeneralResponse,
         Error,
         ExistNicknameProps
