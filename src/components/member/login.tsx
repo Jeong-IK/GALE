@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useModal } from "../../stores/store";
 import { LoginProps } from "../../types/type";
-import { modalStyle } from "../../styles/style";
+// import { modalStyle } from "../../styles/style";
 import { useLoginMutation } from "../../hooks/useAuth";
 
 export const Login = (): JSX.Element => {
@@ -22,7 +22,7 @@ export const Login = (): JSX.Element => {
     };
 
     return (
-        <div css={modalStyle.modalForm}>
+        <div>
             <p>이미 회원이신가요?</p>
             <p>갈래에 여행기록을 남겨보세요! ✍🏻</p>
             <form onSubmit={handleSubmit(onLogin)}>

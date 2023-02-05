@@ -17,7 +17,7 @@ export const signupAction = async (
             confirmpassword: inputData.cfmPasswd,
             nickname: inputData.nickname,
         })
-        .then(response => response.data.data);
+        .then(response => response.data);
     return signupResult;
 };
 
@@ -28,7 +28,7 @@ export const existNicknameAction = async (
         .get(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/signup/exist-nickname`, {
             params: { nickname: inputData.nickname },
         })
-        .then(response => response.data.data);
+        .then(response => response.data);
     return existResult;
 };
 
@@ -44,7 +44,7 @@ export const loginAction = async (
             },
             { withCredentials: true }
         )
-        .then(response => response.data.data);
+        .then(response => response.data);
 
     return result;
 };

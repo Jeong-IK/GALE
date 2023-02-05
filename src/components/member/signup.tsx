@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { SignupProps } from "../../types/type";
-import { modalStyle } from "../../styles/style";
+// import { modalStyle } from "../../styles/style";
 import {
     useExistNicknameMutation,
     useSignupMutation,
@@ -9,26 +9,24 @@ import {
 export const Signup = () => {
     const {
         register,
-        formState: { errors, isValid, isSubmitting },
+        formState: { errors, isValid },
         handleSubmit,
-        reset,
         getValues,
     } = useForm<SignupProps>({ mode: "onChange" });
 
-    const existNicknameQuery = useExistNicknameMutation();
-    const signupQuery = useSignupMutation();
+    const existNicknameMutation = useExistNicknameMutation();
+    const signupMutation = useSignupMutation();
+
     const onExistNickname = () => {
         const nickname = getValues("nickname");
-        existNicknameQuery({ nickname });
+        existNicknameMutation({ nickname });
     };
-
     const onSignup = (inputdata: SignupProps) => {
-        signupQuery(inputdata);
-        reset();
+        signupMutation(inputdata);
     };
 
     return (
-        <div css={modalStyle.modalForm}>
+        <div>
             <p>환영합니다. </p>
             <p>여행지 기록 서비스 갈래와 함께 여행 기록을 작성해보세요. ✍🏻</p>
             <form onSubmit={handleSubmit(onSignup)}>
@@ -108,10 +106,7 @@ export const Signup = () => {
                     </div>
                     <div>{errors.nickname?.message}</div>
                     <div>
-                        <button
-                            disabled={isSubmitting || !isValid}
-                            type="submit"
-                        >
+                        <button disabled={!isValid} type="submit">
                             동의하고 가입하기
                         </button>
                     </div>

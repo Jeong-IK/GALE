@@ -45,32 +45,35 @@ export const useLoginMutation = () => {
 
 export const useSignupMutation = () => {
     const { setModaloption } = useModal();
-    const {
-        mutate: signupMutation,
-        status: signupStatus,
-        error: signupError,
-    } = useMutation<GeneralResponse, Error, SignupProps>({
+    const { mutate: signupMutation } = useMutation<
+        GeneralResponse,
+        GeneralError,
+        SignupProps
+    >({
         mutationFn: signupAction,
         onSuccess: data => {
             alert(data.message);
             setModaloption("logIn");
         },
+        onError: error => {
+            alert(error.response.data.message);
+        },
     });
-    return { signupMutation, signupStatus, signupError };
+    return signupMutation;
 };
 
 export const useExistNicknameMutation = () => {
-    const { mutate: existNicknameMutation, status: exist } = useMutation<
+    const { mutate: existNicknameMutation } = useMutation<
         GeneralResponse,
-        Error,
+        GeneralError,
         ExistNicknameProps
     >({
         mutationFn: existNicknameAction,
         onSuccess: data => {
-            console.log(data.message);
+            alert(data.message);
         },
         onError: error => {
-            console.log(error.message);
+            alert(error.response.data.message);
         },
     });
     return existNicknameMutation;

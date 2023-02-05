@@ -53,6 +53,7 @@ export const modalStyle = {
         text-align: center;
         display: block;
         list-style: none;
+        margin: 7.3rem 16.1rem 7.3rem 16.1rem; ;
     `,
 };
 
