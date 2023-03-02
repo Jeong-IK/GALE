@@ -23,6 +23,14 @@ export interface LoginResponse {
     accessToken: string;
     refreshToken: string;
 }
+export interface RefreshTokenProps {
+    email: string;
+    toeken: string;
+}
+export interface RefreshTokenResponse {
+    message: string;
+    Success: boolean;
+}
 
 export interface GeneralResponse {
     code: string;

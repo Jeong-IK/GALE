@@ -3,7 +3,7 @@ import Image from "next/image";
 import { logoutAction } from "../api/memberapi";
 import { headerStyle } from "../styles/style";
 import { useModal } from "../stores/store";
-import { Modal } from "./common/modal";
+import { Modal } from "./member/modal";
 import headerImg from "../public/headerBgImage.png";
 // import CI from "../public/CI.png";
 

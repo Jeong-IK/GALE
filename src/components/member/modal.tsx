@@ -2,8 +2,8 @@ import ReactDOM from "react-dom";
 import React, { useRef } from "react";
 import { modalStyle } from "../../styles/style";
 import { useModal } from "../../stores/store";
-import { Login } from "../member/login";
-import { Signup } from "../member/signup";
+import { Login } from "./login";
+import { Signup } from "./signup";
 
 export const Modal = () => {
     const windowModal = useRef<HTMLDivElement>(null);

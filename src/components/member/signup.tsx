@@ -1,10 +1,8 @@
 import { useForm } from "react-hook-form";
 import { SignupProps } from "../../types/type";
 // import { modalStyle } from "../../styles/style";
-import {
-    useExistNicknameMutation,
-    useSignupMutation,
-} from "../../hooks/useAuth";
+import { useExistNicknameMutation } from "../../hooks/useExistNickname";
+import { useSignupMutation } from "../../hooks/useSignup";
 
 export const Signup = () => {
     const {

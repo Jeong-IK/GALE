@@ -1,65 +1,50 @@
-import axios from "axios";
+import axios from "./axiosInstance";
 import {
     SignupProps,
     ExistNicknameProps,
     LoginProps,
     LoginResponse,
     GeneralResponse,
+    RefreshTokenResponse,
 } from "../types/type";
 
 export const signupAction = async (
     inputData: SignupProps
 ): Promise<GeneralResponse> => {
-    const signupResult = await axios
-        .post(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/signup`, {
-            email: inputData.email,
-            password: inputData.passwd,
-            confirmpassword: inputData.cfmPasswd,
-            nickname: inputData.nickname,
-        })
+    const axiosResult = axios
+        .post("/auth/signup", inputData)
         .then(response => response.data);
-    return signupResult;
+    return axiosResult;
 };
 
 export const existNicknameAction = async (
     inputData: ExistNicknameProps
 ): Promise<GeneralResponse> => {
-    const existResult = await axios
-        .get(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/signup/exist-nickname`, {
-            params: { nickname: inputData.nickname },
-        })
+    const axiosResult = await axios
+        .post("/auth/signup/exist-nickname", inputData)
         .then(response => response.data);
-    return existResult;
+    return axiosResult;
 };
 
 export const loginAction = async (
     inputData: LoginProps
 ): Promise<LoginResponse> => {
-    const result = await axios
-        .post(
-            `${process.env.NEXT_PUBLIC_BASE_URL}/auth/login`,
-            {
-                email: inputData.email,
-                password: inputData.passwd,
-            },
-            { withCredentials: true }
-        )
+    const axiosResult = await axios
+        .post("/auth/login", inputData)
         .then(response => response.data);
-
-    return result;
+    return axiosResult;
 };
 
 export const logoutAction = async (): Promise<GeneralResponse> => {
-    const result = await axios
-        .post(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/logout`, [
-            {
-                // Email: "vkxld134@naver.com",
-                Token: localStorage.getItem("accessToken"),
-            },
-            {
-                withCredentials: true,
-            },
-        ])
-        .then(response => response.data.data);
-    return result;
+    const axiosResult = await axios
+        .post("/auth/logout")
+        .then(response => response.data);
+    return axiosResult;
+};
+
+export const refreshTokenAction = async (): Promise<RefreshTokenResponse> => {
+    const axiosResult = await axios
+        .post("/auth/token")
+        .then(response => response.data);
+    return axiosResult;
 };

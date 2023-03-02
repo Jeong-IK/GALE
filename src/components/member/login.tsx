@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { useModal } from "../../stores/store";
 import { LoginProps } from "../../types/type";
 // import { modalStyle } from "../../styles/style";
-import { useLoginMutation } from "../../hooks/useAuth";
+import { useLoginMutation } from "../../hooks/useLogin";
 
 export const Login = (): JSX.Element => {
     const { setModaloption } = useModal();

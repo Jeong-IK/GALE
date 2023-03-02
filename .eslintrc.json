@@ -33,7 +33,9 @@
         ],
         "react/no-unknown-property": ["error", { "ignore": ["css"] }],
         "react/jsx-no-useless-fragment": "warn",
-        "consistent-return": "off"
+        "consistent-return": "off",
+        "no-param-reassign": [0, { "props": true }],
+        "import/no-cycle": "off"
     },
     "ignorePatterns": ["next.config.js"]
 }
