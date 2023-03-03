@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { loginAction } from "../api/memberapi";
+import { loginAction } from "../api/memberApi";
 import { GeneralError, LoginProps, LoginResponse } from "../types/type";
 
 const setStorageData = (responseData: LoginResponse) => {

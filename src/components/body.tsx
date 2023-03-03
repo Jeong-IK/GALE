@@ -1,3 +1,3 @@
-import { TravlePlan } from "./travleplan/travleplan";
+import { TravlePlan } from "./travleplan/travlePlan";
 
 export const Body = () => <TravlePlan />;

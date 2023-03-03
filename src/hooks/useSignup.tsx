@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { signupAction } from "../api/memberapi";
+import { signupAction } from "../api/memberApi";
 import { useModal } from "../stores/store";
 import { GeneralError, GeneralResponse, SignupProps } from "../types/type";
 

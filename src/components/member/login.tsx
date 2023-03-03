@@ -1,19 +1,20 @@
 import { useForm } from "react-hook-form";
-import { useModal } from "../../stores/store";
+import { useModal, useErrorMsg } from "../../stores/store";
 import { LoginProps } from "../../types/type";
 // import { modalStyle } from "../../styles/style";
 import { useLoginMutation } from "../../hooks/useLogin";
+import { ErrorMsg } from "../common/errormsg";
 
 export const Login = (): JSX.Element => {
     const { setModaloption } = useModal();
+    const { setErrorMsgType } = useErrorMsg();
+    const { loginMutation, loginStatus, loginError } = useLoginMutation();
 
     const {
         register,
         formState: { errors, isSubmitting, isValid },
         handleSubmit,
     } = useForm<LoginProps>({ mode: "onChange" });
-
-    const { loginMutation, loginStatus, loginError } = useLoginMutation();
 
     const onLogin = (inputData: LoginProps) => {
         loginMutation(inputData);
@@ -82,6 +83,14 @@ export const Login = (): JSX.Element => {
                     </div>
                 </div>
             </form>
+            <button
+                type="button"
+                onClick={() => {
+                    setErrorMsgType("Test");
+                }}
+            >
+                test
+            </button>
             회원이 아니신가요?
             <strong
                 onClick={() => {
@@ -91,6 +100,7 @@ export const Login = (): JSX.Element => {
             >
                 가입하기
             </strong>
+            <ErrorMsg />
         </div>
     );
 };

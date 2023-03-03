@@ -6,9 +6,9 @@ import { Login } from "./login";
 import { Signup } from "./signup";
 
 export const Modal = () => {
-    const windowModal = useRef<HTMLDivElement>(null);
-
     const { modalOption, setModaloption } = useModal();
+
+    const windowModal = useRef<HTMLDivElement>(null);
 
     const overClick = (event: React.MouseEvent) => {
         if (
@@ -23,6 +23,7 @@ export const Modal = () => {
             {modalOption &&
                 ReactDOM.createPortal(
                     <div
+                        id="modalForm"
                         css={modalStyle.modalBgColor}
                         onClick={overClick}
                         aria-hidden="true"

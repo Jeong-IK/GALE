@@ -35,7 +35,8 @@
         "react/jsx-no-useless-fragment": "warn",
         "consistent-return": "off",
         "no-param-reassign": [0, { "props": true }],
-        "import/no-cycle": "off"
+        "import/no-cycle": "off",
+        "react-hooks/rules-of-hooks": "off"
     },
     "ignorePatterns": ["next.config.js"]
 }

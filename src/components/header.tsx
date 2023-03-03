@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { logoutAction } from "../api/memberapi";
+import { logoutAction } from "../api/memberApi";
 import { headerStyle } from "../styles/style";
 import { useModal } from "../stores/store";
 import { Modal } from "./member/modal";

@@ -5,6 +5,11 @@ export interface Modalstatus {
     setModaloption: (type: ModalOption) => void;
 }
 
+export interface ErrorMsgType {
+    errorMsgType: string;
+    setErrorMsgType: (message: string) => void;
+}
+
 export interface SignupProps extends LoginProps {
     cfmPasswd: string;
     nickname: string;

@@ -1,11 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useErrorMsg } from "../../stores/store";
 
-export const useErrorMsg = (data: string) => {
-    const [errorStatus, setErrorStatus] = useState<boolean>(true);
+export const ErrorMsg = () => {
+    const { errorMsgType, setErrorMsgType } = useErrorMsg();
 
     useEffect(() => {
-        const closeTimer = setTimeout(() => setErrorStatus(false), 3000);
-        return clearTimeout(closeTimer);
-    }, []);
-    return errorStatus && <div> {data} </div>;
+        console.log("타이머");
+        const closeTimer = setTimeout(() => {
+            setErrorMsgType("");
+        }, 3000);
+        console.log(closeTimer);
+        return () => {
+            clearTimeout(closeTimer);
+        };
+    }, [errorMsgType, setErrorMsgType]);
+
+    return <div>{errorMsgType && <div> {errorMsgType} </div>}</div>;
 };

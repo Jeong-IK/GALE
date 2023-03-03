@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { refreshTokenAction } from "../api/memberapi";
+import { refreshTokenAction } from "../api/memberApi";
 import {
     GeneralError,
     RefreshTokenResponse,
