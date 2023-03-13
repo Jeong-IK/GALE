@@ -1,13 +1,12 @@
 import { useForm } from "react-hook-form";
-import { useModal, useErrorMsg } from "../../stores/store";
+import { useModal } from "../../stores/store";
 import { LoginProps } from "../../types/type";
 // import { modalStyle } from "../../styles/style";
 import { useLoginMutation } from "../../hooks/useLogin";
-import { ErrorMsg } from "../common/errormsg";
+import { modalStyle } from "../../styles/style";
 
 export const Login = (): JSX.Element => {
     const { setModaloption } = useModal();
-    const { setErrorMsgType } = useErrorMsg();
     const { loginMutation, loginStatus, loginError } = useLoginMutation();
 
     const {
@@ -24,14 +23,17 @@ export const Login = (): JSX.Element => {
 
     return (
         <div>
-            <p>이미 회원이신가요?</p>
-            <p>갈래에 여행기록을 남겨보세요! ✍🏻</p>
+            <div css={modalStyle.modalTitle}>이미 회원이신가요?</div>
+            <div css={modalStyle.modalSubject}>
+                갈래에 여행기록을 남겨보세요! ✍🏻
+            </div>
             <form onSubmit={handleSubmit(onLogin)}>
-                <div>
-                    <div>
-                        이메일
-                        <span>
+                <>
+                    <div css={modalStyle.modalInputForm}>
+                        <div css={modalStyle.modalInputIndex}>이메일</div>
+                        <div>
                             <input
+                                css={modalStyle.modalInput}
                                 type="text"
                                 placeholder="example@gmail.com"
                                 {...register("email", {
@@ -46,51 +48,51 @@ export const Login = (): JSX.Element => {
                                     },
                                 })}
                             />
-                        </span>
+                            <div css={modalStyle.modalError}>
+                                {errors.email
+                                    ? errors.email?.message
+                                    : loginError?.response.status === 401 &&
+                                      loginError.response.data.message}
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        {errors.email
-                            ? errors.email?.message
-                            : loginError?.response.status === 401 &&
-                              loginError.response.data.message}
-                    </div>
-                    <div>
-                        비밀번호 입력
-                        <span>
+
+                    <div css={modalStyle.modalInputForm}>
+                        <div css={modalStyle.modalInputIndex}>
+                            비밀번호 입력
+                        </div>
+                        <div>
                             <input
+                                css={modalStyle.modalInput}
                                 type="password"
                                 placeholder="영어 대소문자, 특수문자, 숫자 포함 8자리 이상"
-                                {...register("passwd", {
+                                {...register("password", {
                                     required: {
                                         value: true,
                                         message: "비밀번호를 입력해주세요.",
                                     },
                                 })}
                             />
-                        </span>
+                            <div css={modalStyle.modalError}>
+                                {errors.password
+                                    ? errors.password?.message
+                                    : loginError?.response.status === 401 &&
+                                      loginError.response.data.message}
+                            </div>
+                        </div>
                     </div>
-                    {errors.passwd
-                        ? errors.passwd?.message
-                        : loginError?.response.status === 401 &&
-                          loginError.response.data.message}
-                    <div>
+
+                    <div css={modalStyle.modalSubmitForm}>
                         <button
+                            css={modalStyle.modalSubmitButton(isValid)}
                             type="submit"
                             disabled={isSubmitting || !isValid}
                         >
                             로그인 하기
                         </button>
                     </div>
-                </div>
+                </>
             </form>
-            <button
-                type="button"
-                onClick={() => {
-                    setErrorMsgType("Test");
-                }}
-            >
-                test
-            </button>
             회원이 아니신가요?
             <strong
                 onClick={() => {
@@ -100,7 +102,6 @@ export const Login = (): JSX.Element => {
             >
                 가입하기
             </strong>
-            <ErrorMsg />
         </div>
     );
 };

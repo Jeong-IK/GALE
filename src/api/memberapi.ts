@@ -21,7 +21,11 @@ export const existNicknameAction = async (
     inputData: ExistNicknameProps
 ): Promise<GeneralResponse> => {
     const axiosResult = await axios
-        .post("/auth/signup/exist-nickname", inputData)
+        .get("/auth/signup/exist-nickname", {
+            params: {
+                nickname: inputData.nickname,
+            },
+        })
         .then(response => response.data);
     return axiosResult;
 };

@@ -32,7 +32,7 @@
             }
         ],
         "react/no-unknown-property": ["error", { "ignore": ["css"] }],
-        "react/jsx-no-useless-fragment": "warn",
+        "react/jsx-no-useless-fragment": "off",
         "consistent-return": "off",
         "no-param-reassign": [0, { "props": true }],
         "import/no-cycle": "off",

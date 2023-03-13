@@ -26,6 +26,7 @@ clientAxios.interceptors.response.use(
             originalConfig.headers.Authorization = `Bearer ${token}`;
             return axios(originalConfig);
         }
+        return Promise.reject(error);
     }
 );
 

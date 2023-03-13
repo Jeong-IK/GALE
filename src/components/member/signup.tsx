@@ -3,6 +3,8 @@ import { SignupProps } from "../../types/type";
 // import { modalStyle } from "../../styles/style";
 import { useExistNicknameMutation } from "../../hooks/useExistNickname";
 import { useSignupMutation } from "../../hooks/useSignup";
+import { ErrorMsg } from "../common/errormsg";
+import { modalStyle } from "../../styles/style";
 
 export const Signup = () => {
     const {
@@ -25,14 +27,17 @@ export const Signup = () => {
 
     return (
         <div>
-            <p>환영합니다. </p>
-            <p>여행지 기록 서비스 갈래와 함께 여행 기록을 작성해보세요. ✍🏻</p>
+            <div css={modalStyle.modalTitle}>환영합니다. </div>
+            <div css={modalStyle.modalSubject}>
+                여행지 기록 서비스 갈래와 함께 여행 기록을 작성해보세요. ✍🏻
+            </div>
             <form onSubmit={handleSubmit(onSignup)}>
                 <div>
-                    <div>
-                        이메일
-                        <span>
+                    <div css={modalStyle.modalInputForm}>
+                        <div css={modalStyle.modalInputIndex}>이메일</div>
+                        <div>
                             <input
+                                css={modalStyle.modalInput}
                                 type="text"
                                 placeholder="example@gmail.com"
                                 {...register("email", {
@@ -44,16 +49,21 @@ export const Signup = () => {
                                     },
                                 })}
                             />
-                        </span>
+                            <div css={modalStyle.modalError}>
+                                {errors.email?.message}
+                            </div>
+                        </div>
                     </div>
-                    <div>{errors.email?.message}</div>
-                    <div>
-                        비밀번호 입력
-                        <span>
+                    <div css={modalStyle.modalInputForm}>
+                        <div css={modalStyle.modalInputIndex}>
+                            비밀번호 입력
+                        </div>
+                        <div>
                             <input
+                                css={modalStyle.modalInput}
                                 type="password"
                                 placeholder="영어 대소문자, 특수문자, 숫자 포함 8자리 이상"
-                                {...register("passwd", {
+                                {...register("password", {
                                     required: "비밀번호를 입력해주세요.",
                                     pattern: {
                                         value: /(?=.*[a-zA-Z])((?=.*\d)(?=.*\W)).{8,16}$/,
@@ -62,32 +72,41 @@ export const Signup = () => {
                                     },
                                 })}
                             />
-                        </span>
+                            <div css={modalStyle.modalError}>
+                                {errors.password?.message}
+                            </div>
+                        </div>
                     </div>
-                    <div>{errors.passwd?.message}</div>
-                    <div>
-                        비밀번호 확인
-                        <span>
+                    <div css={modalStyle.modalInputForm}>
+                        <div css={modalStyle.modalInputIndex}>
+                            비밀번호 확인
+                        </div>
+                        <div>
                             <input
+                                css={modalStyle.modalInput}
                                 type="password"
-                                {...register("cfmPasswd", {
+                                {...register("confirmpassword", {
                                     required:
                                         "비밀번호를 한 번더 입력해주세요.",
                                     validate: (cfmPasswd?: string) => {
-                                        const passwdValue = getValues("passwd");
+                                        const passwdValue =
+                                            getValues("password");
                                         if (!cfmPasswd) return;
                                         if (passwdValue !== cfmPasswd)
                                             return "비밀번호가 서로 일치하지 않습니다.";
                                     },
                                 })}
                             />
-                        </span>
+                            <div css={modalStyle.modalError}>
+                                {errors.confirmpassword?.message}
+                            </div>
+                        </div>
                     </div>
-                    <div>{errors.cfmPasswd?.message}</div>
-                    <div>
-                        닉네임
-                        <span>
+                    <div css={modalStyle.modalInputForm}>
+                        <div css={modalStyle.modalInputIndex}>닉네임</div>
+                        <div>
                             <input
+                                css={modalStyle.modalNicknameInput}
                                 type="text"
                                 {...register("nickname", {
                                     required: "닉네임을 입력해주세요.",
@@ -97,19 +116,33 @@ export const Signup = () => {
                                     },
                                 })}
                             />
-                            <button type="button" onClick={onExistNickname}>
+                            <button
+                                css={modalStyle.modalExistButton(
+                                    getValues("nickname")
+                                )}
+                                type="button"
+                                onClick={onExistNickname}
+                            >
                                 중복확인
                             </button>
-                        </span>
+
+                            <div css={modalStyle.modalError}>
+                                {errors.nickname?.message}
+                            </div>
+                        </div>
                     </div>
-                    <div>{errors.nickname?.message}</div>
-                    <div>
-                        <button disabled={!isValid} type="submit">
+                    <div css={modalStyle.modalSubmitForm}>
+                        <button
+                            css={modalStyle.modalSubmitButton(isValid)}
+                            disabled={!isValid}
+                            type="submit"
+                        >
                             동의하고 가입하기
                         </button>
                     </div>
                 </div>
             </form>
+            <ErrorMsg />
         </div>
     );
 };

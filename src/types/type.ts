@@ -11,13 +11,13 @@ export interface ErrorMsgType {
 }
 
 export interface SignupProps extends LoginProps {
-    cfmPasswd: string;
+    confirmpassword: string;
     nickname: string;
 }
 
 export interface LoginProps {
     email: string;
-    passwd: string;
+    password: string;
 }
 
 export interface ExistNicknameProps {
@@ -48,3 +48,7 @@ export interface GeneralError extends Error {
         data: GeneralResponse;
     };
 }
+
+export type ButtonStatusProps = {
+    inputValue: string;
+};

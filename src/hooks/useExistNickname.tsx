@@ -1,6 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
 import { existNicknameAction } from "../api/memberApi";
-import { ErrorMsg } from "../components/common/errormsg";
 import {
     ExistNicknameProps,
     GeneralError,
@@ -15,7 +14,7 @@ export const useExistNicknameMutation = () => {
     >({
         mutationFn: existNicknameAction,
         onSuccess: data => {
-            ErrorMsg(data.message);
+            alert(data.message);
         },
         onError: error => {
             alert(error.response.data.message);

@@ -5,7 +5,8 @@ import { headerStyle } from "../styles/style";
 import { useModal } from "../stores/store";
 import { Modal } from "./member/modal";
 import headerImg from "../public/headerBgImage.png";
-// import CI from "../public/CI.png";
+import smallLogo from "../public/CI.png";
+import bigLogo from "../public/LOGO.png";
 
 export const Header = (): JSX.Element => {
     const { setModaloption } = useModal();
@@ -32,46 +33,61 @@ export const Header = (): JSX.Element => {
                     alt=""
                     priority
                 />
-                {/* <button type="button">
+                <div css={headerStyle.linkFamily}>
+                    <span css={headerStyle.smallLogoDiv}>
+                        <button type="button" css={headerStyle.smallLogo}>
+                            <Image src={smallLogo} alt="" />
+                        </button>
+                    </span>
+                    {/* <button type="button">
                         <Image src="/CI.png" alt="CI" />
                     </button> */}
-                {!logInState ? (
-                    <div css={headerStyle.memberLink}>
-                        <button
-                            type="button"
-                            css={headerStyle.link}
-                            onClick={() => {
-                                setModaloption("logIn");
-                            }}
-                        >
-                            로그인
-                        </button>
-                        <button
-                            type="button"
-                            css={headerStyle.link}
-                            onClick={() => {
-                                setModaloption("signUp");
-                            }}
-                        >
-                            회원가입
-                        </button>
+                    {!logInState ? (
+                        <div css={headerStyle.memberLink}>
+                            <button
+                                type="button"
+                                css={headerStyle.link}
+                                onClick={() => {
+                                    setModaloption("logIn");
+                                }}
+                            >
+                                로그인
+                            </button>
+                            <button
+                                type="button"
+                                css={headerStyle.link}
+                                onClick={() => {
+                                    setModaloption("signUp");
+                                }}
+                            >
+                                회원가입
+                            </button>
+                        </div>
+                    ) : (
+                        <div css={headerStyle.memberLink}>
+                            <button
+                                type="button"
+                                css={headerStyle.link}
+                                onClick={() => {
+                                    logoutAction();
+                                }}
+                            >
+                                로그아웃
+                            </button>
+                            <button type="button" css={headerStyle.link}>
+                                마이페이지
+                            </button>
+                        </div>
+                    )}
+                    <div css={headerStyle.bigLogoDiv}>
+                        <Image src={bigLogo} alt="" />
+                        <div css={headerStyle.service}>
+                            <button type="button" css={headerStyle.link}>
+                                서비스 셜명란
+                            </button>
+                        </div>
                     </div>
-                ) : (
-                    <div css={headerStyle.memberLink}>
-                        <button
-                            type="button"
-                            css={headerStyle.link}
-                            onClick={() => {
-                                logoutAction();
-                            }}
-                        >
-                            로그아웃
-                        </button>
-                        <button type="button" css={headerStyle.link}>
-                            마이페이지
-                        </button>
-                    </div>
-                )}
+                </div>
             </div>
             <Modal />
         </>

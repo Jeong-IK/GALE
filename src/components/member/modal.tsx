@@ -31,6 +31,7 @@ export const Modal = () => {
                         <div css={modalStyle.modalWindow} ref={windowModal}>
                             <button
                                 type="button"
+                                css={modalStyle.closeButton}
                                 onClick={() => {
                                     setModaloption(null);
                                 }}
