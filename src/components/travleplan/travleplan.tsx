@@ -12,7 +12,7 @@ export const TravlePlan = () => {
 
     return (
         <div css={travleStyle.travleDiv}>
-            <span css={travleStyle.travleSubject}>어디로 떠나시나요? 🧳</span>
+            <div css={travleStyle.travleSubject}>어디로 떠나시나요? 🧳</div>
             <div css={travleStyle.travleForm}>
                 <form>
                     <div>

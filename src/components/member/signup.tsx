@@ -1,6 +1,5 @@
 import { useForm } from "react-hook-form";
 import { SignupProps } from "../../types/type";
-// import { modalStyle } from "../../styles/style";
 import { useExistNicknameMutation } from "../../hooks/useExistNickname";
 import { useSignupMutation } from "../../hooks/useSignup";
 import { ErrorMsg } from "../common/errormsg";
@@ -37,7 +36,7 @@ export const Signup = () => {
                         <div css={modalStyle.modalInputIndex}>이메일</div>
                         <div>
                             <input
-                                css={modalStyle.modalInput}
+                                css={modalStyle.modalInput(!errors.email)}
                                 type="text"
                                 placeholder="example@gmail.com"
                                 {...register("email", {
@@ -60,7 +59,7 @@ export const Signup = () => {
                         </div>
                         <div>
                             <input
-                                css={modalStyle.modalInput}
+                                css={modalStyle.modalInput(!errors.password)}
                                 type="password"
                                 placeholder="영어 대소문자, 특수문자, 숫자 포함 8자리 이상"
                                 {...register("password", {
@@ -83,7 +82,9 @@ export const Signup = () => {
                         </div>
                         <div>
                             <input
-                                css={modalStyle.modalInput}
+                                css={modalStyle.modalInput(
+                                    !errors.confirmpassword
+                                )}
                                 type="password"
                                 {...register("confirmpassword", {
                                     required:

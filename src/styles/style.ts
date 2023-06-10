@@ -119,10 +119,11 @@ export const modalStyle = {
         font-size: 1.4rem;
         line-height: 1.7rem;
     `,
-    modalInput: css`
+    modalInput: (isValid: boolean) => css`
+        border: ${isValid ? "none" : "1px solid #FF1F1F"};
+        border-color: #ff1f1f;
         width: 34rem;
         height: 5rem;
-        border: none;
         background: #f3f3f3;
         border-radius: 1.5rem;
         text-align: left;
@@ -145,6 +146,7 @@ export const modalStyle = {
         padding: 2rem 0 2.8rem 0;
     `,
     modalError: css`
+        margin-top: 0.5rem;
         color: red;
         text-align: left;
         font-family: "Inter";
@@ -173,30 +175,36 @@ export const modalStyle = {
     `,
 };
 
+export const bodyStyle = css`
+    width: 160rem;
+    margin: 0 auto 0 auto;
+`;
+
 export const travleStyle = {
     travleDiv: css`
-        width: auto;
-        height: 29.1vh;
+        margin: 0 auto 10rem auto;
+        position: relative;
+        width: 160rem;
+        height: 20rem;
     `,
     travleSubject: css`
-        margin-left: 8.33vw;
-        font-family: "Inter";
+        display: flex;
+        justify-content: left;
         font-style: normal;
         font-weight: 700;
-        font-size: 1.3rem;
-        line-height: 24px;
-        letter-spacing: -0.0002em;
+        font-size: 2rem;
+        line-height: 2.4rem;
         color: #2d2d2d;
     `,
     travleForm: css`
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 83.33vw;
-        height: 22vh;
+        width: 160rem;
+        height: 15.6rem;
         border-radius: 15px;
         box-shadow: 0px 2px 13px 4px rgba(0, 0, 0, 0.1);
-        margin: 2.75vh auto 0 auto;
+        margin: 2.4rem auto 0 auto;
     `,
     inputTxt: css`
         border: none;
@@ -208,15 +216,152 @@ export const travleStyle = {
     `,
 };
 
-export const cardStyle = {
-    cardStyle: css`
-        position: absolute;
-        width: 250px;
-        height: 339px;
+export const hotPlaceStyle = {
+    totalDiv: css`
+        width: 160rem;
+        height: 71rem;
+        display: flex;
     `,
-    cardImage: css`
-        position: absolute;
-        width: 250px;
-        height: 339px;
+    hotPlaceDiv: css`
+        width: 81rem;
+        height: 71rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        row-gap: 10px;
+    `,
+    hotPlaceSubject: css`
+        margin: 0 0 2.4rem 0;
+        font-family: "Inter";
+        height: 2rem;
+        font-style: normal;
+        font-size: 2rem;
+        line-height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    `,
+
+    hotplaceShells: (props?: number) => css`
+        margin-right: 2rem;
+        width: 25rem;
+        height: 34rem;
+        transform: translateX(${props && props >= 0 && props * -1600}px);
+        transition: "0.5s ease";
+    `,
+    hotPlaceImage: css`
+        width: 25rem;
+        height: 28.6rem;
+    `,
+    hotPlaceAdress: css`
+        margin-top: 1rem;
+        font-size: 1rem;
+        color: #989aac;
+    `,
+    svg: css`
+        font-size: 1rem;
+        color: #fe8101;
+    `,
+    hotPlacePlaceName: css`
+        margin-top: 0.8rem;
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 1.4rem;
+    `,
+    kakaoMap: css`
+        width: 79rem;
+        height: 66rem;
+        flex: 1;
+        border-radius: 15px;
+    `,
+    slideDiv: css`
+        height: 36rem;
+        margin: 5.8rem 0 0 0;
+    `,
+    slideButton: css`
+        border: none;
+        background-color: transparent;
+        color: orange;
+        width: 2.4rem;
+        height: 2.4rem;
+    `,
+    totalShell: css`
+        display: -webkit-box;
+        /* flex-flow: row nowrap;
+        white-space: nowrap; */
+        align-items: center;
+        overflow: hidden;
+    `,
+    totalPage: css`
+        height: 0.3rem;
+        width: 50rem;
+        background-color: #d9d9d9;
+        margin-right: 2.1rem;
+    `,
+    currentPage: (props: number) => css`
+        background-color: #fe8101;
+        height: 0.3rem;
+        width: ${props === 0 ? "25rem" : "50rem"};
+    `,
+};
+
+export const footer = {
+    footerBgBox: css`
+        margin-top: 7.5rem;
+        background: #f3f3f3;
+        height: 6.4rem;
+        width: auto;
+    `,
+    footerDiv: css`
+        display: flex;
+        width: 160rem;
+        height: 6.4rem;
+        align-items: center;
+        margin: 0 auto 0 auto;
+        gap: 10rem;
+    `,
+    footerContent: css`
+        font-size: 1.4rem;
+        color: #54566f;
+    `,
+};
+
+export const errorMsg = {
+    errorDiv: css`
+        height: 27rem;
+        width: 51rem;
+        box-shadow: 2.14005px 4.2801px 11.4136px rgba(0, 0, 0, 0.25);
+        border-radius: 1rem;
+    `,
+    errorContentDiv: css`
+        height: 21rem;
+        width: auto;
+        padding-top: 3.7rem;
+    `,
+    errorMsgDiv: css`
+        height: 13rem;
+        width: 29rem;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+        font-size: 1.8rem;
+    `,
+    errorButton: css`
+        height: 6rem;
+        width: 51rem;
+        border-top: 1.4267px solid #e4e4e4;
+        border-bottom: none;
+        border-left: none;
+        border-right: none;
+        color: #fe8101;
+        align-content: center;
+        background: #ffffff;
+    `,
+    Polygon: css`
+        height: 7, 7rem;
+        widows: 7.7rem;
+        margin: 0 auto 1.9rem auto;
     `,
 };

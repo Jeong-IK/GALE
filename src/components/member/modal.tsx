@@ -49,6 +49,7 @@ export const Modal = () => {
                     </div>,
                     document.getElementById("modal") as HTMLElement
                 )}
+            <div id="errormodal" />
         </>
     );
 };

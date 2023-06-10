@@ -52,3 +52,11 @@ export interface GeneralError extends Error {
 export type ButtonStatusProps = {
     inputValue: string;
 };
+
+export interface ShellProps {
+    cssType: number;
+}
+
+export interface SlidShellSubject {
+    subject: string;
+}

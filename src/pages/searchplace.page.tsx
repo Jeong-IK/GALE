@@ -1,20 +1,16 @@
 import type { NextPage } from "next";
 import { Global } from "@emotion/react";
-import { Body } from "../components/body";
-import { Header } from "../components/header";
 import { resetcss } from "../styles/resetstyle";
 import { Footer } from "../components/footer";
 
-const Home: NextPage = () => (
+const SearchPlace: NextPage = () => (
     <>
         <Global styles={resetcss} />
         <div id="root">
-            <Header />
-            <Body />
             <Footer />
         </div>
         <div id="modal" />
     </>
 );
 
-export default Home;
+export default SearchPlace;

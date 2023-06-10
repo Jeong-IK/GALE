@@ -35,7 +35,11 @@ export const loginAction = async (
 ): Promise<LoginResponse> => {
     const axiosResult = await axios
         .post("/auth/login", inputData)
-        .then(response => response.data);
+        .then(response => {
+            console.log(response);
+
+            return response.data;
+        });
     return axiosResult;
 };
 

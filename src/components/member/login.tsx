@@ -33,7 +33,7 @@ export const Login = (): JSX.Element => {
                         <div css={modalStyle.modalInputIndex}>이메일</div>
                         <div>
                             <input
-                                css={modalStyle.modalInput}
+                                css={modalStyle.modalInput(!errors.email)}
                                 type="text"
                                 placeholder="example@gmail.com"
                                 {...register("email", {
@@ -63,7 +63,7 @@ export const Login = (): JSX.Element => {
                         </div>
                         <div>
                             <input
-                                css={modalStyle.modalInput}
+                                css={modalStyle.modalInput(!errors.password)}
                                 type="password"
                                 placeholder="영어 대소문자, 특수문자, 숫자 포함 8자리 이상"
                                 {...register("password", {
