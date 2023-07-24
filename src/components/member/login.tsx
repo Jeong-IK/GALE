@@ -19,6 +19,7 @@ export const Login = (): JSX.Element => {
         loginMutation(inputData);
         if (loginStatus === "error" && loginError?.response.status !== 401)
             alert(loginError?.response.data.message);
+        setModaloption(null);
     };
 
     return (
@@ -76,7 +77,7 @@ export const Login = (): JSX.Element => {
                             <div css={modalStyle.modalError}>
                                 {errors.password
                                     ? errors.password?.message
-                                    : loginError?.response.status === 401 &&
+                                    : loginError?.response?.status === 401 &&
                                       loginError.response.data.message}
                             </div>
                         </div>

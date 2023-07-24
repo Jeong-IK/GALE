@@ -16,12 +16,16 @@ clientAxios.interceptors.request.use(
     error => Promise.reject(error)
 );
 
+const newAccesstoken = () => {
+    useRefreshToken();
+};
+
 clientAxios.interceptors.response.use(
     res => res,
     async error => {
         const originalConfig = error.config;
         if (error.response.status === 401) {
-            await useRefreshToken();
+            await newAccesstoken();
             const token = localStorage.getItem("accessToken");
             originalConfig.headers.Authorization = `Bearer ${token}`;
             return axios(originalConfig);

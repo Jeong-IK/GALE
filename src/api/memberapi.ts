@@ -35,24 +35,31 @@ export const loginAction = async (
 ): Promise<LoginResponse> => {
     const axiosResult = await axios
         .post("/auth/login", inputData)
-        .then(response => {
-            console.log(response);
-
-            return response.data;
-        });
+        .then(response => response.data);
     return axiosResult;
 };
 
+// 수정 예정
 export const logoutAction = async (): Promise<GeneralResponse> => {
+    const refreshtoken = localStorage.getItem("refreshToken");
     const axiosResult = await axios
-        .post("/auth/logout")
+        .post("/auth/logout", {
+            headers: {
+                Authorization: `Bearer ${refreshtoken}`,
+            },
+        })
         .then(response => response.data);
     return axiosResult;
 };
 
 export const refreshTokenAction = async (): Promise<RefreshTokenResponse> => {
+    const refreshtoken = localStorage.getItem("refreshToken");
     const axiosResult = await axios
-        .post("/auth/token")
+        .post("/auth/token", {
+            headers: {
+                Authorization: `Bearer ${refreshtoken}`,
+            },
+        })
         .then(response => response.data);
     return axiosResult;
 };

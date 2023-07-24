@@ -36,7 +36,9 @@
         "consistent-return": "off",
         "no-param-reassign": [0, { "props": true }],
         "import/no-cycle": "off",
-        "react-hooks/rules-of-hooks": "off"
+        "react-hooks/rules-of-hooks": "off",
+        "react-hooks/exhaustive-deps": "off",
+        "react/no-array-index-key": "off"
     },
     "ignorePatterns": ["next.config.js"]
 }

@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { existNicknameAction } from "../api/memberApi";
+import { existNicknameAction } from "../api/memberapi";
 import {
     ExistNicknameProps,
     GeneralError,

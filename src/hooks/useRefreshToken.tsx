@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { refreshTokenAction } from "../api/memberApi";
+import { refreshTokenAction } from "../api/memberapi";
 import {
     GeneralError,
     RefreshTokenResponse,
@@ -15,12 +15,13 @@ export const useRefreshToken = () => {
         RefreshTokenResponse,
         GeneralError,
         RefreshTokenProps
-    >(refreshTokenAction, {
+    >({
+        mutationFn: refreshTokenAction,
         onSuccess: data => {
             setStorageData(data);
         },
         onError: error => Promise.reject(error),
     });
 
-    return { refreshMutate };
+    return refreshMutate;
 };

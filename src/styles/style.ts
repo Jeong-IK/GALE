@@ -23,9 +23,9 @@ export const headerStyle = {
         background-color: transparent;
         border: 0;
     `,
-    link: css`
+    link: (isIndex: boolean) => css`
         font-size: 1rem;
-        color: white;
+        color: ${isIndex ? "white" : "black"};
         background-color: transparent;
         border: 0;
         &:hover {
@@ -53,15 +53,15 @@ export const modalStyle = {
     modalBgColor: css`
         backdrop-filter: blur(3px);
         background-color: rgba(0, 0, 0, 0.4);
-        position: absolute;
+        position: fixed;
         top: 0;
-        right: 0;
         left: 0;
-        bottom: 0;
         z-index: 1;
         display: flex;
         align-items: center;
         justify-content: center;
+        height: 100%;
+        width: 100%;
     `,
     closeButton: css`
         background-color: transparent;
@@ -178,6 +178,7 @@ export const modalStyle = {
 export const bodyStyle = css`
     width: 160rem;
     margin: 0 auto 0 auto;
+    padding-bottom: 7.5rem;
 `;
 
 export const travleStyle = {
@@ -198,6 +199,7 @@ export const travleStyle = {
     `,
     travleForm: css`
         display: flex;
+        background-color: #ffffff;
         justify-content: center;
         align-items: center;
         width: 160rem;
@@ -307,7 +309,6 @@ export const hotPlaceStyle = {
 
 export const footer = {
     footerBgBox: css`
-        margin-top: 7.5rem;
         background: #f3f3f3;
         height: 6.4rem;
         width: auto;
@@ -363,5 +364,408 @@ export const errorMsg = {
         height: 7, 7rem;
         widows: 7.7rem;
         margin: 0 auto 1.9rem auto;
+    `,
+};
+
+export const destinationComplete = {
+    distinationBgcolor: css`
+        width: auto;
+        height: auto;
+        background-color: #f5f5f5;
+        padding-top: 5.8rem;
+    `,
+    destinationDiv: css`
+        width: 160rem;
+        height: auto;
+        margin: 0 auto 0 auto;
+    `,
+    destinationSubject: css`
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 70rem;
+        font-size: 2rem;
+        margin-bottom: 1.8rem;
+    `,
+    destinationSelectDiv: css`
+        display: flex;
+        width: 97.5rem;
+        height: auto;
+    `,
+    destinationShell: css`
+        width: 97.5rem;
+        height: 14rem;
+        background: #ffffff;
+        box-shadow: 0px 2px 13px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+        &:hover {
+            border: 1.5px solid #fe8101;
+        }
+    `,
+};
+
+export const reviewStyle = {
+    reviewTotalDiv: css`
+        width: auto;
+        height: 224.2rem;
+        background-color: #ffffff;
+        padding: 5.9rem 0 10.7rem 0;
+    `,
+    reviewform: css`
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    `,
+    reviewPlaceName: css`
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 6.4rem;
+    `,
+    reviewAdress: css`
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1.9rem;
+        color: #989aac;
+        margin: 1.7rem 0 0 0;
+    `,
+    reviewSubjectBorder: css`
+        width: 1600px;
+        height: 3px;
+        background: #54566f;
+        margin: 4.2rem 0 0 0;
+    `,
+    reviewSurvey: css`
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 3.2rem;
+        line-height: 3.9rem;
+        margin: 6rem 0 0 0;
+    `,
+    reviewEffect: css`
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 2.4rem;
+        line-height: 2.9rem;
+        color: #9c9c9c;
+        margin: 3rem 0 0 0;
+    `,
+    reviewTotalform: css`
+        width: 64rem;
+        height: 78rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2.6rem 0 5.3rem 0;
+    `,
+    reviewEachform: css`
+        width: 63.2rem;
+        height: 10.8rem;
+        display: flex;
+        align-items: center;
+    `,
+    reviewRatingsubject: css`
+        width: 15.8rem;
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 3.2rem;
+        line-height: 3.9rem;
+        color: #54566f;
+    `,
+    reviewExplain: css`
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1.6rem;
+        line-height: 1.9rem;
+        color: #989aac;
+        margin: 1.45rem 0 0 0;
+    `,
+    reviewStarform: css`
+        //display: flex;
+        gap: 2rem;
+    `,
+    reviewStar: (checked: boolean) => css`
+        width: 7.775rem;
+        height: 7.425rem;
+        color: ${checked ? "#FE8101" : "#DADADA"};
+    `,
+    reviewStarsurvey: css`
+        width: 160rem;
+        height: 2px;
+        background: #e4e4e4;
+    `,
+    reviewTextdiv: css`
+        width: 160rem;
+        height: 34.6rem;
+        margin: 6rem 0 0 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3.8rem;
+    `,
+    reviewTextsubject: css`
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 4rem;
+    `,
+    reviewTextinputdiv: css`
+        width: 160rem;
+        height: 26rem;
+        background: #ffffff;
+        border: 1px solid #acacac;
+        border-radius: 15px;
+        padding: 3rem 3rem 3rem 3rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    `,
+    reviewTextinput: css`
+        width: 100%;
+        height: 17.8rem;
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1.8rem;
+        line-height: 22px;
+        resize: none;
+        border: none;
+        outline: none;
+        ::placeholder {
+            color: #acacac;
+        }
+    `,
+    reviewTextcnt: css`
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1.8rem;
+        line-height: 22px;
+        color: #828282;
+    `,
+    reviewTextnowcnt: css`
+        color: #fe8101;
+    `,
+    reviewPhotodiv: css`
+        width: 160rem;
+        height: 23.6rem;
+        margin: 6rem 0 0 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    `,
+    reviewPhotolist: css`
+        width: auto;
+        height: 15rem;
+        display: flex;
+        margin: 3.8rem 0 0 0;
+        gap: 1.1rem;
+    `,
+    reviewNeededdiv: css`
+        width: 160rem;
+        height: 5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+        align-items: flex-start;
+        padding: 3.6rem 0 0 0;
+    `,
+    reviewNeedlist: css`
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1.6rem;
+        color: #2d2d2d;
+        display: flex;
+    `,
+    reviewButtondiv: css`
+        width: 124.8rem;
+        height: 11rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        margin: 8.2rem 0 6.4rem 0;
+    `,
+    reviewCanclebutton: css`
+        width: 61.4rem;
+        height: 11rem;
+        background: #ffffff;
+        border: 1px solid #a5a5a5;
+        border-radius: 12px;
+        color: #a5a5a5;
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 3.2rem;
+    `,
+    reviewPhotobefore: css`
+        width: 15rem;
+        height: 15rem;
+        border-radius: 5px;
+        background: #f3f3f3;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        position: relative;
+    `,
+    reviewPhotoafter: css`
+        width: 15rem;
+        height: 15rem;
+        border-radius: 5px;
+    `,
+    reviewPhotodeleteBG: css`
+        width: 2.8rem;
+        height: 2.8rem;
+        border: none;
+        background-color: #00000080;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+    `,
+    reviewDeletebutton: css`
+        width: 2.4rem;
+        height: 2.4rem;
+        color: white;
+    `,
+    reviewPhotoplus: css`
+        width: 6rem;
+        height: 6rem;
+        color: #c9c9c9;
+    `,
+    reviewSubmitbutton: (isValid: boolean) => css`
+        width: 61.4rem;
+        height: 11rem;
+        background: ${isValid ? "rgba(254, 129, 1, 0.5)" : "#FE8101"};
+        border-radius: 12px;
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 3.2rem;
+        line-height: 3.9rem;
+        color: #ffffff;
+        border: none;
+    `,
+    reviewAlertdiv: css`
+        z-index: 2;
+        border-radius: 10px;
+        background: #fff;
+        box-shadow: 2.140052318572998px 4.280104637145996px 11.413612365722656px
+            0px rgba(0, 0, 0, 0.25);
+        width: 50.7rem;
+        height: 16.8rem;
+        position: relative;
+    `,
+    reviewAlertcontext: css`
+        height: 11.2rem;
+        color: #2d2d2d;
+        font-size: 1.8rem;
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    `,
+    reviewAlertbutton: css`
+        height: 5.6rem;
+        width: 50.7rem;
+        background: #fff;
+        border-top: 1.5px solid #e4e4e4;
+        border-bottom: none;
+        border-left: none;
+        border-right: none;
+        color: #fe8101;
+        font-size: 1.8rem;
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 700;
+        border-radius: 0 0 1rem 1rem;
+    `,
+};
+
+export const mypageStyle = {
+    headerDiv: css`
+        height: 28.3rem;
+        width: auto;
+    `,
+    headerBgImg: css`
+        position: absolute;
+        background-size: cover;
+        width: 100vw;
+        height: 28.3rem;
+        overflow: hidden;
+    `,
+    bodyDiv: css`
+        width: 160rem;
+        height: fit-content;
+        padding-top: 6.4rem;
+        margin: 0 auto 0 auto;
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 7.5rem;
+    `,
+    selectContentDiv: css`
+        display: flex;
+    `,
+    contentTypeButton: css`
+        color: #b1b2c0;
+        position: relative;
+        font-family: Inter;
+        font-size: 2.8rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        padding-bottom: 1.8rem;
+        margin-right: 4.8rem;
+        background-color: transparent;
+        border: none;
+        &:hover {
+            color: #fe8101;
+            font-family: Inter;
+            font-size: 28px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            box-shadow: 0px 4px 0px 0px #fe8101;
+        }
+    `,
+    contentDiv: css`
+        padding-top: 5.2rem;
+        display: flex;
+    `,
+    mypageBorder: css`
+        width: 160rem;
+        height: 1px;
+        background: #eaeaea;
+        position: absolute;
+    `,
+    contentList: css`
+        width: 53.3rem;
+        height: 81rem;
+        border-radius: 15px;
+        background: #fff;
+        box-shadow: 0px 2px 13px 4px rgba(0, 0, 0, 0.1);
+        padding-right: 5.7rem;
+    `,
+    kakaoMap: css`
+        width: 101rem;
+        height: 81rem;
+        border-radius: 15px;
+        background: url(<path-to-image>), lightgray 50% / cover no-repeat;
+        margin-left: 5.7rem;
     `,
 };
