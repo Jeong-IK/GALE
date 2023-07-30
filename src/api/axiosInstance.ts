@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useRefreshToken } from "../hooks/useRefreshToken";
+// import { useRefreshToken } from "../hooks/useRefreshToken";
 
 const clientAxios = axios.create();
 clientAxios.defaults.baseURL = `${process.env.NEXT_PUBLIC_BASE_URL}`;
@@ -16,20 +16,21 @@ clientAxios.interceptors.request.use(
     error => Promise.reject(error)
 );
 
-const newAccesstoken = () => {
-    useRefreshToken();
-};
+// const newAccesstoken = () => {
+//     useRefreshToken();
+// };
 
 clientAxios.interceptors.response.use(
     res => res,
     async error => {
-        const originalConfig = error.config;
-        if (error.response.status === 401) {
-            await newAccesstoken();
-            const token = localStorage.getItem("accessToken");
-            originalConfig.headers.Authorization = `Bearer ${token}`;
-            return axios(originalConfig);
-        }
+        // const originalConfig = error.config;
+        console.log(error);
+        // if (error.response.code === 401) {
+        //     await newAccesstoken();
+        //     const token = localStorage.getItem("accessToken");
+        //     originalConfig.headers.Authorization = `Bearer ${token}`;
+        //     return axios(originalConfig);
+        // }
         return Promise.reject(error);
     }
 );

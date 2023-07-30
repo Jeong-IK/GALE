@@ -7,7 +7,7 @@ export type Reviewalertoption =
     | "파일이 선택되지 않았습니다."
     | null;
 
-export type Mypagecontenttype = "위시플레이스" | "여행일정";
+export type Mypagecontenttype = "위시플레이스" | "여행일정 보기";
 
 export interface Reviewalertstatus {
     alerText: Reviewalertoption;
@@ -119,4 +119,41 @@ export interface ImagelistStore {
 export interface Mypagecontentstore {
     contentType: Mypagecontenttype;
     setContenttype: (type: Mypagecontenttype) => void;
+}
+// 여행계획 작성 타입
+export interface Travleplannerresponsetype {
+    email: string;
+    title: string;
+    date_start: Date;
+    date_end: Date;
+    regdate: Date;
+    listPlannerDetails: Listplannerdetailstype[];
+}
+
+export interface Listplannerdetailstype {
+    select_board_category: number;
+    select_board_number: number;
+    startdate: Date;
+}
+
+// 여행계획 불러오기
+export interface GetTravlelisttype {
+    content: {
+        email: string;
+        title: string;
+        date_start: Date;
+        date_end: Date;
+        regdate: Date;
+        idx: number;
+    };
+}
+
+export interface GetTravlelistresponse {
+    code: number;
+    data: GetTravlelisttype[];
+    message: string;
+}
+
+export interface DeleteTrablelistProptype {
+    planner_idx: number;
 }

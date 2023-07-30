@@ -768,4 +768,19 @@ export const mypageStyle = {
         background: url(<path-to-image>), lightgray 50% / cover no-repeat;
         margin-left: 5.7rem;
     `,
+    listSubtitle: css`
+        height: 8.4rem;
+        width: 53.3rem;
+        border-bottom: 1px solid #eaeaea;
+        display: flex;
+        align-items: center;
+        padding-left: 2.4rem;
+        color: #2d2d2d;
+        font-family: Inter;
+        font-size: 2rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        letter-spacing: -0.004px;
+    `,
 };
