@@ -5,29 +5,22 @@ import {
     GetTravlelistresponse,
 } from "../types/type";
 
+// 여행 계획 리스트 요청 API
 export const GettravleplannerAction =
     async (): Promise<GetTravlelistresponse> => {
-        const accessToken = localStorage.getItem("accessToken");
         const axiosResult = await axios
-            .get("/planner", {
-                headers: {
-                    Authorization: `Bearer ${accessToken}`,
-                },
-            })
+            .get("/planner")
             .then(response => response.data);
         return axiosResult;
     };
 
+// 여행 기록 삭제 API
 export const DeleteTravlelistAction = async (
     props: DeleteTrablelistProptype
 ): Promise<GeneralResponse> => {
-    const accessToken = localStorage.getItem("accessToken");
     const axiosResult = await axios
-        .delete(`/planner/${props.planner_idx}`, {
-            headers: {
-                Authorization: `Bearer ${accessToken}`,
-            },
-        })
+        .delete(`/planner/${props.planner_idx}`
+        )
         .then(response => response.data);
     return axiosResult;
 };
