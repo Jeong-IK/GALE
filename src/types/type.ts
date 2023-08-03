@@ -138,14 +138,13 @@ export interface Listplannerdetailstype {
 
 // 여행계획 불러오기
 export interface GetTravlelisttype {
-    content: {
         email: string;
         title: string;
         date_start: Date;
         date_end: Date;
         regdate: Date;
         idx: number;
-    };
+
 }
 
 export interface GetTravlelistresponse {
