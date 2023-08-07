@@ -759,8 +759,56 @@ export const mypageStyle = {
         border-radius: 15px;
         background: #fff;
         box-shadow: 0px 2px 13px 4px rgba(0, 0, 0, 0.1);
-        padding-right: 5.7rem;
+        
     `,
+    mypageContentcard: css`
+    width:100%;
+    height:13.6rem;
+    border-bottom: 1px solid #EAEAEA;
+    padding:2.7rem 4.5rem 2.7rem 2.7rem;
+    display:flex;
+    `,
+
+    mypageContentimg: css`
+    width:8.2rem;
+    height:8.2rem;
+    border-radius: 6px;
+    margin-right: 1.7rem;
+    `,
+    mypageContenttext: {
+        subtitle: css`color: #54566F;
+        font-family: Inter;
+        font-size: 17px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        letter-spacing: -0.003px;
+        margin-bottom: 1rem;`,
+        addressIcon:css`color:#FE8101;`,
+        address: css`color: #989AAC;
+        font-family: Inter;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        margin-bottom:1rem`,
+        rating: (checked: boolean) => css`
+        width: 1.6rem;
+        height: 1.6rem;
+        color: ${checked ? "#FE8101" : "#DADADA"};
+    `,
+    likeit:(checked: boolean) => css`
+   
+    top: 0px;
+    right: 0px;
+    width: 1.6rem;
+    height: 1.6rem;
+    color: ${checked ? " #FF0000" : " #989AAC"};
+
+    `,
+    
+    },
+
     kakaoMap: css`
         width: 101rem;
         height: 81rem;

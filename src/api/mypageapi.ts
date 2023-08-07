@@ -10,7 +10,9 @@ export const GettravleplannerAction =
     async (): Promise<GetTravlelistresponse> => {
         const axiosResult = await axios
             .get("/planner")
-            .then(response => response.data);
+            .then(response => {
+                console.log(response);
+                return response.data;});
         return axiosResult;
     };
 

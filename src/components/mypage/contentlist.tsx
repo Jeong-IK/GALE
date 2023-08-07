@@ -10,11 +10,11 @@ import { GetTravlelisttype } from "../../types/type";
 export const ContentList = () => {
     const { contentType } = useMypagecontent();
     const { deletetravlelistMutation } = useDeletetravleMutation();
-    const {travlelistData, refetch} = useGettravleQuery();
+    // const {travlelistData, refetch} = useGettravleQuery();
 
-    useEffect(() => {
-        refetch();
-    }, [contentType, refetch]);
+    // useEffect(() => {
+    //     refetch();
+    // }, [contentType, refetch]);
 
     // 수정 필요
     const Deletetravle = () => {
@@ -24,12 +24,11 @@ export const ContentList = () => {
     return (
         <div css={mypageStyle.contentList}>
             <div css={mypageStyle.listSubtitle}>{contentType}</div>
-            <div>
-                 { travlelistData && travlelistData?.data.length > 0 ? travlelistData.data.map( (props:GetTravlelisttype) => <Contentcard props={props} key={props.idx} />) : <div>Loading...</div> }
+                 {/* { travlelistData && travlelistData?.data.content.length > 0 ? travlelistData.data.content.map( (props:GetTravlelisttype) => <Contentcard {...props} key={props.idx}/>) : <div>Loading...</div> } */}
+                 <Contentcard />
                 <button type="button" onClick={Deletetravle}>
                     삭제
                 </button>
-            </div>
         </div>
     );
 };
