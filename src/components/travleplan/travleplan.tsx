@@ -14,29 +14,28 @@ export const TravlePlan = () => {
         <div css={travleStyle.travleDiv}>
             <div css={travleStyle.travleSubject}>어디로 떠나시나요? 🧳</div>
             <div css={travleStyle.travleForm}>
-                <form>
-                    <div>
-                        <span>
+                <form >
+                    <div css={travleStyle.txt.div}>
                             <input
                                 type="text"
-                                css={travleStyle.inputTxt}
+                                css={travleStyle.txt.input}
                                 placeholder="출발지"
                                 ref={inputDepature}
                             />
-                        </span>
+                        </div>
                         <AiOutlineSwap />
-                        <span>
+                        <div css={travleStyle.txt.div}>
                             <input
                                 type="text"
-                                css={travleStyle.inputTxt}
+                                css={travleStyle.txt.input}
                                 placeholder="도착지"
                                 ref={inputArrival}
                             />
-                        </span>
-                        <span>
+                        </div>
+                        <div css={travleStyle.txt.div}>
                             <input
                                 type="text"
-                                css={travleStyle.inputTxt}
+                                css={travleStyle.txt.input}
                                 placeholder="날짜입력"
                                 ref={inputDate}
                                 onFocus={() => {
@@ -44,11 +43,12 @@ export const TravlePlan = () => {
                                     inputDate.current.type = "date";
                                 }}
                             />
-                        </span>
+                        </div>
                         <button type="submit">여행 계획하기</button>
-                    </div>
+
                 </form>
             </div>
         </div>
+
     );
 };

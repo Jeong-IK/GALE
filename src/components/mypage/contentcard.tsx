@@ -1,6 +1,6 @@
-import { mypageStyle } from "../../styles/style";
-import { GetTravlelisttype } from "../../types/type";
 import {AiTwotoneEnvironment, AiTwotoneStar, AiTwotoneHeart} from "react-icons/ai";
+// import { GetTravlelisttype } from "../../types/type";
+import { mypageStyle } from "../../styles/style";
 
 const  GetTravlelistdata = {
     address: "abced",
@@ -25,7 +25,7 @@ export const Contentcard = () => (
    <div css={mypageStyle.mypageContentcard}>
 
         <div css={mypageStyle.mypageContentimg} />
-            <div css={mypageStyle.mypageContenttext}>
+            <div>
              <div css={mypageStyle.mypageContenttext.subtitle}>{GetTravlelistdata.title}</div>
              < AiTwotoneHeart css={mypageStyle.mypageContenttext.likeit(GetTravlelistdata.likeit)}/> 
              <div css={mypageStyle.mypageContenttext.address}><AiTwotoneEnvironment css={mypageStyle.mypageContenttext.addressIcon}/>{GetTravlelistdata.address}</div>

@@ -208,14 +208,31 @@ export const travleStyle = {
         box-shadow: 0px 2px 13px 4px rgba(0, 0, 0, 0.1);
         margin: 2.4rem auto 0 auto;
     `,
-    inputTxt: css`
+    txt: {
+        div: css`
         border: none;
         border-bottom: 1px solid #dadada;
+        width: 36.5rem;
+        display: inline-block;
+    `,
+        input: css`
+        border: none;
+        font-family: Inter;
+        font-size: 2rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        margin-bottom: 1.8rem;
         &::placeholder {
             color: 989AAC;
             margin-left: 0;
-        }
-    `,
+            font-family: Inter;
+            font-size: 2rem;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+    }`
+    }
 };
 
 export const hotPlaceStyle = {
