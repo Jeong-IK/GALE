@@ -15,27 +15,28 @@ export const TravlePlan = () => {
             <div css={travleStyle.travleSubject}>어디로 떠나시나요? 🧳</div>
             <div css={travleStyle.travleForm}>
                 <form >
-                    <div css={travleStyle.txt.div}>
+                    <div css={travleStyle.form.div}>
                             <input
                                 type="text"
-                                css={travleStyle.txt.input}
+                                css={travleStyle.form.input}
                                 placeholder="출발지"
                                 ref={inputDepature}
+                                
                             />
                         </div>
                         <AiOutlineSwap />
-                        <div css={travleStyle.txt.div}>
+                        <div css={travleStyle.form.div}>
                             <input
                                 type="text"
-                                css={travleStyle.txt.input}
+                                css={travleStyle.form.input}
                                 placeholder="도착지"
                                 ref={inputArrival}
                             />
                         </div>
-                        <div css={travleStyle.txt.div}>
+                        <div css={travleStyle.form.div}>
                             <input
                                 type="text"
-                                css={travleStyle.txt.input}
+                                css={travleStyle.form.input}
                                 placeholder="날짜입력"
                                 ref={inputDate}
                                 onFocus={() => {
@@ -44,7 +45,7 @@ export const TravlePlan = () => {
                                 }}
                             />
                         </div>
-                        <button type="submit">여행 계획하기</button>
+                        <button type="submit" css={travleStyle.form.button}>여행 계획하기</button>
 
                 </form>
             </div>

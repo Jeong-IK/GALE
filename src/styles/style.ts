@@ -208,12 +208,13 @@ export const travleStyle = {
         box-shadow: 0px 2px 13px 4px rgba(0, 0, 0, 0.1);
         margin: 2.4rem auto 0 auto;
     `,
-    txt: {
+    form: {
         div: css`
         border: none;
         border-bottom: 1px solid #dadada;
         width: 36.5rem;
         display: inline-block;
+        margin: 0 3.7rem 0 3.7rem;
     `,
         input: css`
         border: none;
@@ -231,8 +232,55 @@ export const travleStyle = {
             font-style: normal;
             font-weight: 500;
             line-height: normal;
-    }`
-    }
+    }`,
+        button: css`
+        width: 21.8rem;
+        height: 6.2rem;
+        border-radius: 1.2rem;
+        background: #FE8101;
+        color: #FFF;
+        font-family: Inter;
+        font-size: 2rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        border:none;
+        `
+    },
+    destinationComplete : {
+    kakaomap: css`
+        width: 101rem;
+        height: 81rem;
+        border-radius: 15px;
+        margin: 0 5.7rem 0 0;
+    `,
+    subject: css`
+    color: #2D2D2D;
+    font-family: Inter;
+    font-size: 2.6rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 2.4rem;
+        
+    `,
+    div: css`
+        width: 160rem;
+        height: auto;
+        margin: 0 auto 0 auto;
+    `,
+    listDiv: css`
+    width: 53.3rem;
+    height: 81rem;
+    border-radius: 15px;
+    background: #FFF;
+    box-shadow: 0px 2px 13px 4px rgba(0, 0, 0, 0.10);
+    `,
+    travlePlace:css`
+    padding: 3rem 0 0 0;
+    display:flex;
+    `
+    },
+    
 };
 
 export const hotPlaceStyle = {

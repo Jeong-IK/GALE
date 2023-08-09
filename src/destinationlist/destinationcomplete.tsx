@@ -1,14 +1,19 @@
-import { destinationComplete } from "../styles/style";
-import { Destinationshell } from "./destinationShell";
+import { Map } from "react-kakao-maps-sdk";
+import { travleStyle, destinationComplete } from "../styles/style";
 
 export const Destinationcomplelte = () => (
-    <div css={destinationComplete.destinationDiv}>
-        <div css={destinationComplete.destinationSubject}>도착지 여행장소</div>
-        <div css={destinationComplete.destinationSelectDiv}>
-            <div css={destinationComplete.destinationSelectDiv}>
-                <Destinationshell />
+    <div css={travleStyle.destinationComplete.div}>
+        <div css={travleStyle.destinationComplete.subject}>도착지 여행장소</div>
+        <div css={travleStyle.destinationComplete.travlePlace}>
+        <Map
+                center={{ lat: 33.5563, lng: 126.79581 }}
+                css={travleStyle.destinationComplete.kakaomap}
+                zoomable={false}
+                draggable={false}
+            />
+            <div css={travleStyle.destinationComplete.listDiv}>
+
             </div>
-            <div />
         </div>
     </div>
 );
