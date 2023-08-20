@@ -1,3 +1,5 @@
+import { DayRange } from "react-modern-calendar-datepicker";
+
 export type ModalOption = "logIn" | "signUp" | "date" | "alert" | null;
 
 export type Reviewalertoption =
@@ -138,15 +140,15 @@ export interface Listplannerdetailstype {
 
 // 여행계획 불러오기
 export interface GetTravlelisttype {
-       email: string;
-        title: string;
-        date_start: Date;
-        date_end: Date;
-        regdate: Date;
-        idx: number;
+    email: string;
+    title: string;
+    date_start: Date;
+    date_end: Date;
+    regdate: Date;
+    idx: number;
 }
 
- interface Gettravlelistarraytype {
+interface Gettravlelistarraytype {
     content: GetTravlelisttype[];
 }
 
@@ -158,4 +160,9 @@ export interface GetTravlelistresponse {
 
 export interface DeleteTrablelistProptype {
     planner_idx: number;
+}
+
+export interface Plandatestoretype {
+    planDate: DayRange;
+    setPlandate: (date: DayRange) => void;
 }

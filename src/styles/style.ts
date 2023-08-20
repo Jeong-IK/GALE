@@ -210,77 +210,110 @@ export const travleStyle = {
     `,
     form: {
         div: css`
-        border: none;
-        border-bottom: 1px solid #dadada;
-        width: 36.5rem;
-        display: inline-block;
-        margin: 0 3.7rem 0 3.7rem;
-    `,
+            border: none;
+            border-bottom: 1px solid #dadada;
+            width: 36.5rem;
+            display: inline-block;
+            margin: 0 3.7rem 0 3.7rem;
+        `,
         input: css`
-        border: none;
-        font-family: Inter;
-        font-size: 2rem;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-        margin-bottom: 1.8rem;
-        &::placeholder {
-            color: 989AAC;
-            margin-left: 0;
+            border: none;
             font-family: Inter;
             font-size: 2rem;
             font-style: normal;
             font-weight: 500;
             line-height: normal;
-    }`,
+            margin-bottom: 1.8rem;
+            &::placeholder {
+                color: 989AAC;
+                margin-left: 0;
+                font-family: Inter;
+                font-size: 2rem;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+            }
+        `,
         button: css`
-        width: 21.8rem;
-        height: 6.2rem;
-        border-radius: 1.2rem;
-        background: #FE8101;
-        color: #FFF;
-        font-family: Inter;
-        font-size: 2rem;
-        font-style: normal;
-        font-weight: 700;
-        line-height: normal;
-        border:none;
-        `
+            width: 21.8rem;
+            height: 6.2rem;
+            border-radius: 1.2rem;
+            background: #fe8101;
+            color: #fff;
+            font-family: Inter;
+            font-size: 2rem;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            border: none;
+        `,
     },
-    destinationComplete : {
-    kakaomap: css`
-        width: 101rem;
-        height: 81rem;
-        border-radius: 15px;
-        margin: 0 5.7rem 0 0;
-    `,
-    subject: css`
-    color: #2D2D2D;
-    font-family: Inter;
-    font-size: 2.6rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 2.4rem;
-        
-    `,
-    div: css`
-        width: 160rem;
-        height: auto;
-        margin: 0 auto 0 auto;
-    `,
-    listDiv: css`
-    width: 53.3rem;
-    height: 81rem;
-    border-radius: 15px;
-    background: #FFF;
-    box-shadow: 0px 2px 13px 4px rgba(0, 0, 0, 0.10);
-    `,
-    travlePlace:css`
-    padding: 3rem 0 0 0;
-    display:flex;
-    `
+    destinationComplete: {
+        kakaomap: css`
+            width: 101rem;
+            height: 81rem;
+            border-radius: 15px;
+            margin: 0 5.7rem 0 0;
+        `,
+        subject: css`
+            color: #2d2d2d;
+            font-family: Inter;
+            font-size: 2.6rem;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 2.4rem;
+        `,
+        div: css`
+            width: 160rem;
+            height: auto;
+            margin: 0 auto 0 auto;
+        `,
+        listDiv: css`
+            width: 53.3rem;
+            height: 81rem;
+            border-radius: 15px;
+            background: #fff;
+            box-shadow: 0px 2px 13px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        `,
+        travlePlace: css`
+            padding: 3rem 0 0 0;
+            display: flex;
+            margin: 0 0 7.5rem 0;
+        `,
+        travleDate: css`
+            border-radius: 15px 15px 0px 0px;
+            background: #f3f3f3;
+            width: 53.3rem;
+            height: 10.7rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8.7rem;
+            color: #54566f;
+            font-family: Inter;
+            font-size: 1.8rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        `,
+        travleButton: css`
+            border-radius: 9px;
+            background: #fe8101;
+            display: flex;
+            width: 461px;
+            height: 54px;
+            padding: 14px 38px;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            color: white;
+            position: absolute;
+            bottom: 4.9rem;
+        `,
     },
-    
 };
 
 export const hotPlaceStyle = {
@@ -824,54 +857,56 @@ export const mypageStyle = {
         border-radius: 15px;
         background: #fff;
         box-shadow: 0px 2px 13px 4px rgba(0, 0, 0, 0.1);
-        
     `,
     mypageContentcard: css`
-    width:100%;
-    height:13.6rem;
-    border-bottom: 1px solid #EAEAEA;
-    padding:2.7rem 4.5rem 2.7rem 2.7rem;
-    display:flex;
+        width: 100%;
+        height: 13.6rem;
+        border-bottom: 1px solid #eaeaea;
+        padding: 2.7rem 4.5rem 2.7rem 2.7rem;
+        display: flex;
     `,
 
     mypageContentimg: css`
-    width:8.2rem;
-    height:8.2rem;
-    border-radius: 6px;
-    margin-right: 1.7rem;
+        width: 8.2rem;
+        height: 8.2rem;
+        border-radius: 6px;
+        margin-right: 1.7rem;
     `,
     mypageContenttext: {
-        subtitle: css`color: #54566F;
-        font-family: Inter;
-        font-size: 17px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: normal;
-        letter-spacing: -0.003px;
-        margin-bottom: 1rem;`,
-        addressIcon:css`color:#FE8101;`,
-        address: css`color: #989AAC;
-        font-family: Inter;
-        font-size: 15px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-        margin-bottom:1rem`,
+        subtitle: css`
+            color: #54566f;
+            font-family: Inter;
+            font-size: 17px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            letter-spacing: -0.003px;
+            margin-bottom: 1rem;
+        `,
+        addressIcon: css`
+            color: #fe8101;
+        `,
+        address: css`
+            color: #989aac;
+            font-family: Inter;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            margin-bottom: 1rem;
+        `,
         rating: (checked: boolean) => css`
-        width: 1.6rem;
-        height: 1.6rem;
-        color: ${checked ? "#FE8101" : "#DADADA"};
-    `,
-    likeit:(checked: boolean) => css`
-   
-    top: 0px;
-    right: 0px;
-    width: 1.6rem;
-    height: 1.6rem;
-    color: ${checked ? " #FF0000" : " #989AAC"};
-
-    `,
-    
+            width: 1.6rem;
+            height: 1.6rem;
+            color: ${checked ? "#FE8101" : "#DADADA"};
+        `,
+        likeit: (checked: boolean) => css`
+            top: 0px;
+            right: 0px;
+            width: 1.6rem;
+            height: 1.6rem;
+            color: ${checked ? " #FF0000" : " #989AAC"};
+        `,
     },
 
     kakaoMap: css`
