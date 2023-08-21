@@ -7,9 +7,7 @@ export const TravlePlan = () => {
     const inputDepature = useRef<HTMLInputElement>(null);
     const inputArrival = useRef<HTMLInputElement>(null);
     const inputDate = useRef<HTMLInputElement>(null);
-    // const travlePlanAction = () => {
-    // if()
-    // };
+
 
     return (
         <div css={travleStyle.travleDiv}>

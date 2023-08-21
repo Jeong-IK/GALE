@@ -1,20 +1,22 @@
-import { Calendar } from "react-modern-calendar-datepicker";
-// import { travleStyle } from "../../../styles/style";
-import { useTravledate } from "../../../stores/store";
+import moment from 'moment';
+import { DateRangePicker } from 'react-dates';
+import 'react-dates/lib/css/_datepicker.css';
+import { useDateRangeStore } from "../../../stores/store";
+import { travleStyle } from "../../../styles/style";
+import 'react-modern-calendar-datepicker/lib/DatePicker.css';
 
 export const Plancalendar = () => {
-    const { planDate, setPlandate } = useTravledate();
+    const { range, setRange } = useDateRangeStore();
 
     return (
-        <Calendar
-            value={planDate}
-            onChange={setPlandate}
+        <div css={travleStyle.calendar.containerStyle}>
+        {/* <Calendar
+            value={range}
+            onChange={setRange}
             shouldHighlightWeekends
-            minimumDate={{
-                day: new Date().getDate(),
-                month: new Date().getMonth() + 1,
-                year: new Date().getFullYear(),
-            }}
-        />
+            month={currentMonth}
+            year={currentYear}
+        /> */}
+        </div>
     );
 };

@@ -1,5 +1,4 @@
 import create from "zustand";
-import { DayRange } from "react-modern-calendar-datepicker";
 import {
     ErrorMsgType,
     LoginstateType,
@@ -11,7 +10,7 @@ import {
     Reviewalertoption,
     Mypagecontentstore,
     Mypagecontenttype,
-    Plandatestoretype,
+    DateRangeStore,
 } from "../types/type";
 
 // Modal 활성화 및 Modaltype
@@ -61,10 +60,7 @@ export const useMypagecontent = create<Mypagecontentstore>()(set => ({
     },
 }));
 
-export const useTravledate = create<Plandatestoretype>()(set => ({
-    planDate: {
-        from: null, // 초기값
-        to: null, // 초기값
-    },
-    setPlandate: (value: DayRange) => set({ planDate: value }),
-}));
+export const useDateRangeStore = create<DateRangeStore>((set) => ({
+    range: { from: null, to: null },
+    setRange: (range) => set(() => ({ range })),
+  }));

@@ -314,6 +314,14 @@ export const travleStyle = {
             bottom: 4.9rem;
         `,
     },
+    calendar: {
+        containerStyle: css`
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+      `,
+    
+    }
 };
 
 export const hotPlaceStyle = {
@@ -403,6 +411,7 @@ export const hotPlaceStyle = {
         height: 0.3rem;
         width: ${props === 0 ? "25rem" : "50rem"};
     `,
+    
 };
 
 export const footer = {
