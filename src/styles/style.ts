@@ -324,6 +324,42 @@ export const travleStyle = {
     }
 };
 
+export const customDatepickerStyle = css`
+  .DateInput {
+    border: none;
+  }
+  
+  /* 시작 및 종료 날짜의 선택된 배경 및 텍스트 색상 변경 */
+  .CalendarDay__selected,
+  .CalendarDay__selected:active {
+    border: none;
+    border-radius: 9px;
+    background: #FE8101;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  .CalendarDay__selected_span {
+    background-color: #F3F3F3;
+    border:none;
+    color:black;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  .CalendarDay__hovered_span {
+    background: #FFC080;
+    color:black;
+    border:none;
+  }
+  `
+
 export const hotPlaceStyle = {
     totalDiv: css`
         width: 160rem;

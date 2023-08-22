@@ -1,12 +1,12 @@
 import { useRef } from "react";
 import { AiOutlineSwap } from "react-icons/ai";
 import { Plancalendar } from "./calendar/plancalendar";
-import { travleStyle } from "../../styles/style";
+import { travleStyle, customDatepickerStyle } from "../../styles/style";
 
 export const TravlePlan = () => {
     const inputDepature = useRef<HTMLInputElement>(null);
     const inputArrival = useRef<HTMLInputElement>(null);
-    const inputDate = useRef<HTMLInputElement>(null);
+    // const inputDate = useRef<HTMLInputElement>(null);
 
 
     return (
@@ -31,8 +31,8 @@ export const TravlePlan = () => {
                             ref={inputArrival}
                         />
                     </div>
-                    <div css={travleStyle.form.div}>
-                        <input
+                    <div css={[travleStyle.form.div, customDatepickerStyle]}>
+                        {/* <input
                             type="text"
                             css={travleStyle.form.input}
                             placeholder="날짜입력"
@@ -41,15 +41,15 @@ export const TravlePlan = () => {
                                 if (!inputDate.current) return;
                                 inputDate.current.type = "date";
                             }}
-                            readOnly
-                        />
+                            readOnly 
+                        /> */}
+                        <Plancalendar/>
                     </div>
                     <button type="submit" css={travleStyle.form.button}>
                         여행 계획하기
                     </button>
                 </form>
             </div>
-            <Plancalendar />
         </div>
     );
 };
