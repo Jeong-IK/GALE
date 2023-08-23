@@ -1,4 +1,3 @@
-import type { DayValue } from 'react-modern-calendar-datepicker';
 
 export type ModalOption = "logIn" | "signUp" | "date" | "alert" | null;
 
@@ -16,10 +15,14 @@ export interface Reviewalertstatus {
     setAlertext: (context: Reviewalertoption) => void;
 }
 
+export interface DateRange  {
+    from: Date | null;
+    to: Date | null;
+}
 
-export type DateRangeStore = {
-    range: { from: DayValue | null; to: DayValue | null };
-    setRange: (range: { from: DayValue | null; to: DayValue | null }) => void;
+export interface DateRangeStore  {
+    range: DateRange
+    setRange: (dateRange:DateRange) => void;
   };
 
 export interface Modalstatus {

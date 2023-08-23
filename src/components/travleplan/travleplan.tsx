@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { AiOutlineSwap } from "react-icons/ai";
-import { Plancalendar } from "./calendar/plancalendar";
+import { DatePicker } from "./calendar/plancalendar";
 import { travleStyle, customDatepickerStyle } from "../../styles/style";
 
 export const TravlePlan = () => {
@@ -43,7 +43,7 @@ export const TravlePlan = () => {
                             }}
                             readOnly 
                         /> */}
-                        <Plancalendar/>
+                        <DatePicker/>
                     </div>
                     <button type="submit" css={travleStyle.form.button}>
                         여행 계획하기

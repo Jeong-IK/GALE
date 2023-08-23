@@ -62,5 +62,5 @@ export const useMypagecontent = create<Mypagecontentstore>()(set => ({
 
 export const useDateRangeStore = create<DateRangeStore>((set) => ({
     range: { from: null, to: null },
-    setRange: (range) => set(() => ({ range })),
+    setRange: (dateRange) =>{ set(() => ({ range:dateRange }))},
   }));
