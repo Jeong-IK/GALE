@@ -324,7 +324,11 @@ export const travleStyle = {
         display: flex;
         border-radius: 0px 0px 15px 15px;
         background: #F3F3F3;    
-        `
+        `,
+
+        sundayStyle: css`
+        color: red;
+        `,
     }
 };
 
@@ -380,18 +384,9 @@ export const customDatepickerStyle = css`
     display: none; 
   }
 
-  .CalendarDay__default_5:not(.CalendarDay__blocked_out_of_range):not(.CalendarDay__blocked_calendar):not(.CalendarDay__highlighted_calendar):not(.CalendarDay__selected_start):not(.CalendarDay__selected_end):not(.CalendarDay__selected_span) {
-    background-color: #fff;
-    border-color:#e4e7e7;
-    color:#565a5c;
-
-    &:nth-child(7n+1){
-      color:red; // 일요일 빨간색
-    }
-    &:nth-child(7n){
-      color:blue; // 토요일 파란색
-    }
-}
+  .CalendarDay__day--selected.CalendarDay__day--sunday {
+    color: red;
+  }
   `
 
 export const hotPlaceStyle = {

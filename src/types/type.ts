@@ -1,3 +1,4 @@
+import { Moment } from 'moment';
 
 export type ModalOption = "logIn" | "signUp" | "date" | "alert" | null;
 
@@ -15,15 +16,16 @@ export interface Reviewalertstatus {
     setAlertext: (context: Reviewalertoption) => void;
 }
 
-export interface DateRange  {
-    from: Date | null;
-    to: Date | null;
+export interface DaterangeType {
+  startDate: Moment | null;
+  endDate: Moment | null;
+  draftStartDate: Moment | null;
+  draftEndDate: Moment | null;
+  focusedInput: 'startDate' | 'endDate' | null;
+  setFocusedInput: (input: 'startDate' | 'endDate' | null) => void;
+  setDate: (startDate: Moment | null, endDate: Moment | null) => void;
+  setDraftDate: (startDate: Moment | null, endDate: Moment | null) => void;
 }
-
-export interface DateRangeStore  {
-    range: DateRange
-    setRange: (dateRange:DateRange) => void;
-  };
 
 export interface Modalstatus {
     modalOption: ModalOption;

@@ -10,7 +10,7 @@ import {
     Reviewalertoption,
     Mypagecontentstore,
     Mypagecontenttype,
-    DateRangeStore,
+    DaterangeType,
 } from "../types/type";
 
 // Modal 활성화 및 Modaltype
@@ -60,7 +60,13 @@ export const useMypagecontent = create<Mypagecontentstore>()(set => ({
     },
 }));
 
-export const useDateRangeStore = create<DateRangeStore>((set) => ({
-    range: { from: null, to: null },
-    setRange: (dateRange) =>{ set(() => ({ range:dateRange }))},
+export const useDaterangeStore = create<DaterangeType>((set) => ({
+    startDate: null,
+    endDate: null,
+    draftStartDate: null,
+    draftEndDate: null,
+    focusedInput: null,
+    setFocusedInput: (input) => set(() => ({ focusedInput: input })),
+    setDate: (startDate, endDate) => set(() => ({ startDate, endDate })),
+    setDraftDate: (startDate, endDate) => set(() => ({ draftStartDate: startDate, draftEndDate: endDate })),
   }));
