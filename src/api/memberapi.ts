@@ -12,7 +12,7 @@ export const signupAction = async (
     inputData: SignupProps
 ): Promise<GeneralResponse> => {
     const axiosResult = axios
-        .post("/auth/signup", inputData)
+        .post("/user/signup", inputData)
         .then(response => response.data);
     return axiosResult;
 };
@@ -21,7 +21,7 @@ export const existNicknameAction = async (
     inputData: ExistNicknameProps
 ): Promise<GeneralResponse> => {
     const axiosResult = await axios
-        .get("/auth/signup/exist-nickname", {
+        .get("/user/signup/exist-nickname", {
             params: {
                 nickname: inputData.nickname,
             },
@@ -34,7 +34,7 @@ export const loginAction = async (
     inputData: LoginProps
 ): Promise<LoginResponse> => {
     const axiosResult = await axios
-        .post("/auth/login", inputData)
+        .post("/user/login", inputData)
         .then(response => response.data);
     return axiosResult;
 };
@@ -43,7 +43,7 @@ export const loginAction = async (
 export const logoutAction = async (): Promise<GeneralResponse> => {
     const refreshtoken = localStorage.getItem("refreshToken");
     const axiosResult = await axios
-        .post("/auth/logout", {
+        .post("/user/logout", {
             headers: {
                 Authorization: `Bearer ${refreshtoken}`,
             },
@@ -55,7 +55,7 @@ export const logoutAction = async (): Promise<GeneralResponse> => {
 export const refreshTokenAction = async (): Promise<RefreshTokenResponse> => {
     const refreshtoken = localStorage.getItem("refreshToken");
     const axiosResult = await axios
-        .post("/auth/token", {
+        .post("/user/token", {
             headers: {
                 Authorization: `Bearer ${refreshtoken}`,
             },

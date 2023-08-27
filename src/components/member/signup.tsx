@@ -36,10 +36,10 @@ export const Signup = () => {
                         <div css={modalStyle.modalInputIndex}>이메일</div>
                         <div>
                             <input
-                                css={modalStyle.modalInput(!errors.email)}
+                                css={modalStyle.modalInput(!errors.userid)}
                                 type="text"
                                 placeholder="example@gmail.com"
-                                {...register("email", {
+                                {...register("userid", {
                                     required: "이메일을 입력해주세요.",
                                     pattern: {
                                         value: /[a-z0-9]([-_₩.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_₩.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/,
@@ -49,7 +49,7 @@ export const Signup = () => {
                                 })}
                             />
                             <div css={modalStyle.modalError}>
-                                {errors.email?.message}
+                                {errors.userid?.message}
                             </div>
                         </div>
                     </div>
@@ -143,7 +143,6 @@ export const Signup = () => {
                     </div>
                 </div>
             </form>
-            <ErrorMsg />
         </div>
     );
 };

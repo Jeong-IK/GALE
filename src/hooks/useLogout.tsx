@@ -11,9 +11,8 @@ const deleteAcountdata = () => {
 export const useLogoutMutation = () => {
     const { mutate: logoutMutation } = useMutation<GeneralResponse, Error>({
         mutationFn: logoutAction,
-        onSuccess: data => {
+        onSuccess: () => {
             deleteAcountdata();
-            alert(data.message);
         },
         onError: error => {
             alert(error.message);

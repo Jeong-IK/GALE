@@ -34,10 +34,10 @@ export const Login = (): JSX.Element => {
                         <div css={modalStyle.modalInputIndex}>이메일</div>
                         <div>
                             <input
-                                css={modalStyle.modalInput(!errors.email)}
+                                css={modalStyle.modalInput(!errors.userid)}
                                 type="text"
                                 placeholder="example@gmail.com"
-                                {...register("email", {
+                                {...register("userid", {
                                     required: {
                                         value: true,
                                         message: "이메일을 입력해주세요.",
@@ -50,8 +50,8 @@ export const Login = (): JSX.Element => {
                                 })}
                             />
                             <div css={modalStyle.modalError}>
-                                {errors.email
-                                    ? errors.email?.message
+                                {errors.userid
+                                    ? errors.userid?.message
                                     : loginError?.response.status === 401 &&
                                       loginError.response.data.message}
                             </div>

@@ -316,78 +316,78 @@ export const travleStyle = {
     },
     calendar: {
         containerStyle: css`
-        display: flex;
-        justify-content: space-around;
-        width: 100%;
-      `,
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        `,
         selectdateStyle: css`
-        display: flex;
-        border-radius: 0px 0px 15px 15px;
-        background: #F3F3F3;    
+            display: flex;
+            border-radius: 0px 0px 15px 15px;
+            background: #f3f3f3;
         `,
 
         sundayStyle: css`
-        color: red;
+            color: red;
         `,
-    }
+    },
 };
 
 export const customDatepickerStyle = css`
-.DateRangePicker_picker {
-    z-index: 9999; 
-  }
+    .DateRangePicker_picker {
+        z-index: 9999;
+    }
 
-  .CalendarDay__selected,
-  .CalendarDay__selected:active {
-    border: none;
-    border-radius: 9px;
-    background: #FE8101;
-    color: #FFF;
-    font-family: Inter;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-  }
+    .CalendarDay__selected,
+    .CalendarDay__selected:active {
+        border: none;
+        border-radius: 9px;
+        background: #fe8101;
+        color: #fff;
+        font-family: Inter;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
 
-  .CalendarDay__selected_span {
-    background-color: #F3F3F3;
-    border:none;
-    color:black;
-    font-family: Inter;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-  }
-  .CalendarDay__hovered_span {
-    background: #FFC080;
-    color:black;
-    border:none;
-  }
+    .CalendarDay__selected_span {
+        background-color: #f3f3f3;
+        border: none;
+        color: black;
+        font-family: Inter;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+    .CalendarDay__hovered_span {
+        background: #ffc080;
+        color: black;
+        border: none;
+    }
 
-  .DateRangePickerInput {
-    border: none;
-}
+    .DateRangePickerInput {
+        border: none;
+    }
 
-.DateRangePickerInput_arrow_svg {
-    display: none;
-  }
-  
-  .DateRangePickerInput_arrow {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-  }
-  
-  .DateRangePickerInput_arrow::after {
-    content: "~";
-    display: none; 
-  }
+    .DateRangePickerInput_arrow_svg {
+        display: none;
+    }
 
-  .CalendarDay__day--selected.CalendarDay__day--sunday {
-    color: red;
-  }
-  `
+    .DateRangePickerInput_arrow {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+
+    .DateRangePickerInput_arrow::after {
+        content: "~";
+        display: none;
+    }
+
+    .CalendarDay__day--selected.CalendarDay__day--sunday {
+        color: red;
+    }
+`;
 
 export const hotPlaceStyle = {
     totalDiv: css`
@@ -476,7 +476,6 @@ export const hotPlaceStyle = {
         height: 0.3rem;
         width: ${props === 0 ? "25rem" : "50rem"};
     `,
-    
 };
 
 export const footer = {
@@ -981,6 +980,24 @@ export const mypageStyle = {
             height: 1.6rem;
             color: ${checked ? " #FF0000" : " #989AAC"};
         `,
+        profile: {
+            profileContainerStyle: css`
+                position: absolute;
+                top: 100px;
+                left: 161px;
+            `,
+
+            profileImg: css`
+                width: 138px;
+                height: 138px;
+
+                /* 원형으로 만들기 위해 border-radius를 반지름의 크기로 설정합니다. */
+                border-radius: 69px;
+
+                /* 이미지가 너무 큰 경우, 객체의 중앙 부분만 보여주도록 설정합니다. */
+                object-fit: cover;
+            `,
+        },
     },
 
     kakaoMap: css`

@@ -1,4 +1,4 @@
-import { Moment } from 'moment';
+import { Moment } from "moment";
 
 export type ModalOption = "logIn" | "signUp" | "date" | "alert" | null;
 
@@ -17,14 +17,14 @@ export interface Reviewalertstatus {
 }
 
 export interface DaterangeType {
-  startDate: Moment | null;
-  endDate: Moment | null;
-  draftStartDate: Moment | null;
-  draftEndDate: Moment | null;
-  focusedInput: 'startDate' | 'endDate' | null;
-  setFocusedInput: (input: 'startDate' | 'endDate' | null) => void;
-  setDate: (startDate: Moment | null, endDate: Moment | null) => void;
-  setDraftDate: (startDate: Moment | null, endDate: Moment | null) => void;
+    startDate: Moment | null;
+    endDate: Moment | null;
+    draftStartDate: Moment | null;
+    draftEndDate: Moment | null;
+    focusedInput: "startDate" | "endDate" | null;
+    setFocusedInput: (input: "startDate" | "endDate" | null) => void;
+    setDate: (startDate: Moment | null, endDate: Moment | null) => void;
+    setDraftDate: (startDate: Moment | null, endDate: Moment | null) => void;
 }
 
 export interface Modalstatus {
@@ -48,8 +48,15 @@ export interface SignupProps extends LoginProps {
 }
 
 export interface LoginProps {
-    email: string;
+    userid: string;
     password: string;
+}
+
+export interface TravleplanProps {
+    depature: string;
+    arrival: string;
+    startDate: string;
+    endDate: string;
 }
 
 export interface ExistNicknameProps {
@@ -151,15 +158,15 @@ export interface Listplannerdetailstype {
 
 // 여행계획 불러오기
 export interface GetTravlelisttype {
-       email: string;
-        title: string;
-        date_start: Date;
-        date_end: Date;
-        regdate: Date;
-        idx: number;
+    email: string;
+    title: string;
+    date_start: Date;
+    date_end: Date;
+    regdate: Date;
+    idx: number;
 }
 
- interface Gettravlelistarraytype {
+interface Gettravlelistarraytype {
     content: GetTravlelisttype[];
 }
 
