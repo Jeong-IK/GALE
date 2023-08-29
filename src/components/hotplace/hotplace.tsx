@@ -19,6 +19,8 @@ export const Hotplace = () => (
             <Map
                 center={{ lat: 33.5563, lng: 126.79581 }}
                 css={hotPlaceStyle.kakaoMap}
+                zoomable={false}
+                draggable={false}
             />
         </div>
         <Slideshell subject="캠핑러들을 위한 장소 🏕️ " />

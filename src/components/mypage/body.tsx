@@ -14,6 +14,8 @@ export const Mypagebody = () => (
             <Map
                 center={{ lat: 33.5563, lng: 126.79581 }}
                 css={mypageStyle.kakaoMap}
+                zoomable={false}
+                draggable={false}
             />
         </div>
     </div>

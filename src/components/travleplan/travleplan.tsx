@@ -1,5 +1,4 @@
-import { useRef } from "react";
-// import { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { AiOutlineSwap } from "react-icons/ai";
 import { useForm } from "react-hook-form";
 import { DatePicker } from "./calendar/plancalendar";
@@ -9,10 +8,9 @@ import { TravleplanProps } from "../../types/type";
 import { travleStyle, customDatepickerStyle } from "../../styles/style";
 
 export const TravlePlan = () => {
-    const inputDepature = useRef<HTMLInputElement>(null);
-    const inputArrival = useRef<HTMLInputElement>(null);
+
     const { startDate, endDate } = useDaterangeStore();
-    // const router = useRouter();
+     const router = useRouter();
 
     const {
         register,
@@ -21,21 +19,16 @@ export const TravlePlan = () => {
     } = useForm<TravleplanProps>({ mode: "onChange" });
 
     const onSubmit = (inputDate: TravleplanProps) => {
-        if (!inputDepature.current || !inputArrival.current) return;
-
         const { depature, arrival } = inputDate;
-        const startDateStr = startDate?.toISOString();
-        const endDateStr = endDate?.toISOString();
-        console.log(depature, arrival, startDateStr, endDateStr);
-        // router.push({
-        //     pathname: "/searchplace",
-        //     query: {
-        //         depature,
-        //         arrival,
-        //         startDate: startDateStr,
-        //         endDate: endDateStr,
-        //     },
-        // });
+        router.push({
+            pathname: "/searchplace",
+            query: {
+                depature,
+                arrival,
+                startDate,
+                endDate,
+            },
+        });
     };
 
     return (
@@ -62,7 +55,12 @@ export const TravlePlan = () => {
                             type="text"
                             css={travleStyle.form.input}
                             placeholder="도착지"
-                            ref={inputArrival}
+                            {...register("arrival", {
+                                required: {
+                                    value: true,
+                                    message: "도착지를 입력해주세요",
+                                },
+                            })}
                         />
                     </div>
                     <div css={[travleStyle.form.div, customDatepickerStyle]}>

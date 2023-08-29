@@ -4,7 +4,7 @@ import { resetcss } from "../styles/resetstyle";
 import { Footer } from "../components/footer";
 import { Headerlink } from "../components/common/headerlink";
 import { TravlePlan } from "../components/travleplan/travlePlan";
-import { Destinationcomplelte } from "../destinationlist/destinationcomplete";
+import { Destinationcomplelte } from "../components/destinationlist/destinationcomplete";
 import { destinationComplete } from "../styles/style";
 
 const SearchPlace: NextPage = () => (

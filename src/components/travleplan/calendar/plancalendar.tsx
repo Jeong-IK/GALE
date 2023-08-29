@@ -3,8 +3,8 @@ import "react-dates/initialize";
 import "react-dates/lib/css/_datepicker.css";
 import moment from "moment";
 import "moment/locale/ko";
-import { useDaterangeStore } from "../../../stores/store";
-import { travleStyle } from "../../../styles/style";
+import { useDaterangeStore } from "src/stores/store";
+import { travleStyle } from "src/styles/style";
 
 export const DatePicker = () => {
     const {
@@ -16,6 +16,7 @@ export const DatePicker = () => {
         setDraftDate,
     } = useDaterangeStore();
 
+
     const onDatesChange = ({
         startDate,
         endDate,
@@ -23,17 +24,16 @@ export const DatePicker = () => {
         startDate: moment.Moment | null;
         endDate: moment.Moment | null;
     }) => {
+         const formatStartdate = startDate !== null && startDate instanceof moment ? startDate.format('YYYY.MM.DD') : null;
+         const formatEnddate = endDate !== null && endDate instanceof moment ? endDate.format('YYYY.MM.DD'): null;
         setDraftDate(startDate, endDate);
+        setDate(formatStartdate, formatEnddate);
     };
 
     const onFocusChange = (
         focusedInputdate: "startDate" | "endDate" | null
     ) => {
         setFocusedInput(focusedInputdate);
-    };
-
-    const onSubmit = () => {
-        setDate(draftStartDate, draftEndDate);
     };
 
     moment.locale("ko");

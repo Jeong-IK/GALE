@@ -15,6 +15,7 @@ export const Header = (): JSX.Element => (
                 css={headerStyle.headerBgImg}
                 alt=""
                 priority
+
             />
             <div>
                 <Headerlink isIndex />
@@ -29,5 +30,5 @@ export const Header = (): JSX.Element => (
             </div>
         </div>
         <Modal />
-    </>
-);
+    </>);
+

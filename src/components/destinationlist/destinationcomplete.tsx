@@ -1,6 +1,6 @@
 import { Map } from "react-kakao-maps-sdk";
 import { AiOutlineSwapRight } from "react-icons/ai";
-import { travleStyle } from "../styles/style";
+import { travleStyle } from "../../styles/style";
 
 export const Destinationcomplelte = () => (
     <div css={travleStyle.destinationComplete.div}>
