@@ -26,6 +26,29 @@ export interface DaterangeType {
     setDate: (startDate: Moment | null, endDate: Moment | null) => void;
     setDraftDate: (startDate: Moment | null, endDate: Moment | null) => void;
 }
+export interface TravleplandetailsType {
+    select_board_category: number | null, 
+    // (<- board 게시물의 카테고리 값)
+      select_board_number: number | null,
+    // (<- board 게시물의 idx값)
+      startdate: string | null, 
+    // (값 형태[DATE]구조 : 2023-06-19)
+}
+
+export interface TravleplanType {
+        planner: {
+            email : string | null,
+            title : string | null,
+            date_start : string | null, 
+            // (값 형태[DATE]구조 : 2023-06-19)
+            date_end : string | null, 
+            // (값 형태[DATE]구조 : 2023-06-24)
+            regdate : string | null 
+            // (값 형태[LocalDateTime]구조 : 2023-06-19T00:00:00Z)
+      },
+    
+      listPlannerDetails: TravleplandetailsType[]
+}
 
 export interface Modalstatus {
     modalOption: ModalOption;
@@ -55,8 +78,6 @@ export interface LoginProps {
 export interface TravleplanProps {
     depature: string;
     arrival: string;
-    startDate: string;
-    endDate: string;
 }
 
 export interface ExistNicknameProps {

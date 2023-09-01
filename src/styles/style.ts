@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 export const headerStyle = {
     mainHeader: css`
         position: relative;
-        height: 46vh;
+        height: 54rem;
         width: 100vw;
         margin-bottom: 8.7vh;
     `,
@@ -45,6 +45,7 @@ export const headerStyle = {
         position: absolute;
         background-size: cover;
         width: 100vw;
+        
         background-repeat: no-repeat;
     `,
 };
