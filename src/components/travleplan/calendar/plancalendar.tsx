@@ -1,4 +1,4 @@
-import { DateRangePicker, ModifiersShape } from "react-dates";
+import { DateRangePicker } from "react-dates";
 import "react-dates/initialize";
 import "react-dates/lib/css/_datepicker.css";
 import moment from "moment";
@@ -16,7 +16,6 @@ export const DatePicker = () => {
         setDraftDate,
     } = useDaterangeStore();
 
-
     const onDatesChange = ({
         startDate,
         endDate,
@@ -24,8 +23,14 @@ export const DatePicker = () => {
         startDate: moment.Moment | null;
         endDate: moment.Moment | null;
     }) => {
-         const formatStartdate = startDate !== null && startDate instanceof moment ? startDate.format('YYYY.MM.DD') : null;
-         const formatEnddate = endDate !== null && endDate instanceof moment ? endDate.format('YYYY.MM.DD'): null;
+        const formatStartdate =
+            startDate !== null && startDate instanceof moment
+                ? startDate.format("YYYY.MM.DD")
+                : null;
+        const formatEnddate =
+            endDate !== null && endDate instanceof moment
+                ? endDate.format("YYYY.MM.DD")
+                : null;
         setDraftDate(startDate, endDate);
         setDate(formatStartdate, formatEnddate);
     };
@@ -54,24 +59,6 @@ export const DatePicker = () => {
         return dayAsMoment.format("dd");
     };
 
-    const renderDayContents = (
-        date: moment.Moment,
-        modifiers: ModifiersShape
-    ) => {
-        if (modifiers && modifiers.has("end-of-range")) {
-            return (
-                <>
-                    {date.format("D")}
-                    <button type="button" onClick={onSubmit}>
-                        Submit
-                    </button>
-                </>
-            );
-        }
-
-        return date.format("D");
-    };
-
     return (
         <DateRangePicker
             startDate={draftStartDate}
@@ -81,7 +68,6 @@ export const DatePicker = () => {
             onDatesChange={onDatesChange}
             focusedInput={focusedInput}
             onFocusChange={onFocusChange}
-            renderDayContents={renderDayContents}
             monthFormat="YYYY년 MM월"
             startDatePlaceholderText="날짜 선택"
             endDatePlaceholderText=""

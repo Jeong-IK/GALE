@@ -5,14 +5,22 @@ import example from "../../public/example.png";
 import { ShellProps } from "../../types/type";
 
 export const Shells = (props: ShellProps) => {
-    const { cssType } = props;
+    const { cssType, imageUrl, title, address } = props;
+    console.log(imageUrl);
     return (
         <div css={hotPlaceStyle.hotplaceShells(cssType)}>
-            <Image src={example} alt="" css={hotPlaceStyle.hotPlaceImage} />
+            <Image
+                src={imageUrl !== "null" ? imageUrl : example}
+                alt=""
+                css={hotPlaceStyle.hotPlaceImage}
+                width={250}
+                height={310}
+            />
+
             <div css={hotPlaceStyle.hotPlaceAdress}>
-                <AiTwotoneEnvironment css={hotPlaceStyle.svg} /> Name
+                <AiTwotoneEnvironment css={hotPlaceStyle.svg} /> {address}
             </div>
-            <div css={hotPlaceStyle.hotPlacePlaceName}>Title</div>
+            <div css={hotPlaceStyle.hotPlacePlaceName}>{title}</div>
         </div>
     );
 };

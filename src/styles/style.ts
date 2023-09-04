@@ -45,7 +45,7 @@ export const headerStyle = {
         position: absolute;
         background-size: cover;
         width: 100vw;
-        
+
         background-repeat: no-repeat;
     `,
 };
@@ -402,6 +402,7 @@ export const hotPlaceStyle = {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         row-gap: 10px;
+        border-radius: 15px;
     `,
     hotPlaceSubject: css`
         margin: 0 0 2.4rem 0;
@@ -425,6 +426,7 @@ export const hotPlaceStyle = {
     hotPlaceImage: css`
         width: 25rem;
         height: 28.6rem;
+        border-radius: 15px;
     `,
     hotPlaceAdress: css`
         margin-top: 1rem;

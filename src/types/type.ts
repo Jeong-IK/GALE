@@ -17,37 +17,67 @@ export interface Reviewalertstatus {
 }
 
 export interface DaterangeType {
-    startDate: Moment | null;
-    endDate: Moment | null;
+    startDate: string | null;
+    endDate: string | null;
     draftStartDate: Moment | null;
     draftEndDate: Moment | null;
     focusedInput: "startDate" | "endDate" | null;
     setFocusedInput: (input: "startDate" | "endDate" | null) => void;
-    setDate: (startDate: Moment | null, endDate: Moment | null) => void;
+    setDate: (startDate: string | null, endDate: string | null) => void;
     setDraftDate: (startDate: Moment | null, endDate: Moment | null) => void;
 }
+// 여행 상세 계획 타입
 export interface TravleplandetailsType {
-    select_board_category: number | null, 
+    select_board_category: number | null;
     // (<- board 게시물의 카테고리 값)
-      select_board_number: number | null,
+    select_board_number: number | null;
     // (<- board 게시물의 idx값)
-      startdate: string | null, 
+    startdate: string | null;
     // (값 형태[DATE]구조 : 2023-06-19)
 }
 
+// 여행 계획 저장 요청 타입
 export interface TravleplanType {
-        planner: {
-            email : string | null,
-            title : string | null,
-            date_start : string | null, 
-            // (값 형태[DATE]구조 : 2023-06-19)
-            date_end : string | null, 
-            // (값 형태[DATE]구조 : 2023-06-24)
-            regdate : string | null 
-            // (값 형태[LocalDateTime]구조 : 2023-06-19T00:00:00Z)
-      },
-    
-      listPlannerDetails: TravleplandetailsType[]
+    planner: {
+        email: string | null;
+        title: string | null;
+        date_start: string | null;
+        // (값 형태[DATE]구조 : 2023-06-19)
+        date_end: string | null;
+        // (값 형태[DATE]구조 : 2023-06-24)
+        regdate: string | null;
+        // (값 형태[LocalDateTime]구조 : 2023-06-19T00:00:00Z)
+    };
+
+    listPlannerDetails: TravleplandetailsType[];
+}
+
+// index 페이지 각 카테고리 별 각 게시글의 반환 타입
+export interface CategoryplaceresponseType {
+    latitue: number;
+    longitude: number;
+    board_category_number: string;
+    // 이미지가 존재하지않으면 String으로 null 반환
+    firstImageUrl: string;
+    locationname: string;
+    board_number: number;
+    locationaddress: string;
+    // 2023-08-29T00:05:06
+    regdate: string;
+    userid: string;
+    view_count: number;
+}
+
+// 카테고리 별 게시글 반환 타입
+export interface CategoryrisingresponseType {
+    list: CategoryplaceresponseType[];
+}
+
+// GetRisingCategoryList API request props 타입
+export interface CategoryrisingrequestType {
+    board_Category_Number: number;
+    // (0 = rising 높은순의 1번째 6개의 리스트 가져오기 1 = 높은순의 2번째 6개 리스트 가져오기)
+    currentPage: number;
 }
 
 export interface Modalstatus {
@@ -114,10 +144,15 @@ export type ButtonStatusProps = {
 
 export interface ShellProps {
     cssType: number;
+    title: string;
+    address: string;
+    imageUrl: string;
 }
+export type SlidepageType = 0 | 1;
 
-export interface SlidShellSubject {
+export interface SlidshellCategory {
     subject: string;
+    categoryCode: number;
 }
 
 export interface StarValuetype {

@@ -1,18 +1,27 @@
 import { AiOutlineRightCircle, AiOutlineLeftCircle } from "react-icons/ai";
-import { useState } from "react";
-import { hotPlaceStyle } from "../../styles/style";
+import { useEffect, useState } from "react";
+import { useGetcategory } from "src/hooks/useGetrisingcategory";
+import { SlidshellCategory, SlidepageType } from "src/types/type";
+import { hotPlaceStyle } from "src/styles/style";
 import { Shells } from "./shell";
-import { SlidShellSubject } from "../../types/type";
 
-export const Slideshell = (slideSubject: SlidShellSubject) => {
-    const { subject } = slideSubject;
-    const [slidePage, setSlidePage] = useState<number>(0);
-    const goNext = () => {
-        setSlidePage(slidePage + 1);
+export const Slideshell = (slidecategory: SlidshellCategory) => {
+    const { subject, categoryCode } = slidecategory;
+    // 페이지 이동 상태
+    const [slidePage, setSlidePage] = useState<SlidepageType>(0);
+    const { categoryData, refetch } = useGetcategory({
+        board_Category_Number: categoryCode,
+        currentPage: slidePage,
+    });
+
+    useEffect(() => {
+        refetch();
+    }, [slidePage]);
+
+    const goOtherpage = () => {
+        setSlidePage(slidePage === 1 ? 0 : 1);
     };
-    const goPrev = () => {
-        setSlidePage(slidePage - 1);
-    };
+
     return (
         <div css={hotPlaceStyle.slideDiv}>
             <div css={hotPlaceStyle.hotPlaceSubject}>
@@ -23,7 +32,7 @@ export const Slideshell = (slideSubject: SlidShellSubject) => {
                     </div>
                     <button
                         type="button"
-                        onClick={goPrev}
+                        onClick={goOtherpage}
                         css={hotPlaceStyle.slideButton}
                     >
                         <AiOutlineLeftCircle />
@@ -31,7 +40,7 @@ export const Slideshell = (slideSubject: SlidShellSubject) => {
                     0{slidePage + 1}/02
                     <button
                         type="button"
-                        onClick={goNext}
+                        onClick={goOtherpage}
                         css={hotPlaceStyle.slideButton}
                     >
                         <AiOutlineRightCircle />
@@ -39,18 +48,17 @@ export const Slideshell = (slideSubject: SlidShellSubject) => {
                 </div>
             </div>
             <div css={hotPlaceStyle.totalShell}>
-                <Shells cssType={slidePage} />
-                <Shells cssType={slidePage} />
-                <Shells cssType={slidePage} />
-                <Shells cssType={slidePage} />
-                <Shells cssType={slidePage} />
-                <Shells cssType={slidePage} />
-                <Shells cssType={slidePage} />
-                <Shells cssType={slidePage} />
-                <Shells cssType={slidePage} />
-                <Shells cssType={slidePage} />
-                <Shells cssType={slidePage} />
-                <Shells cssType={slidePage} />
+                {categoryData
+                    ? categoryData.list.map(data => (
+                          <Shells
+                              cssType={-1}
+                              title={data.locationname}
+                              address={data.locationaddress}
+                              imageUrl={data.firstImageUrl}
+                              key={data.board_number}
+                          />
+                      ))
+                    : null}
             </div>
         </div>
     );
