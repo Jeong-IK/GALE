@@ -80,6 +80,15 @@ export interface CategoryrisingrequestType {
     currentPage: number;
 }
 
+export interface ViewlocationType {
+    lat: number;
+    lng: number;
+}
+
+export interface ViewlocationstoreType extends ViewlocationType {
+    setLocation: ({ lat, lng }: ViewlocationType) => void;
+}
+
 export interface Modalstatus {
     modalOption: ModalOption;
     setModaloption: (type: ModalOption) => void;
@@ -147,7 +156,11 @@ export interface ShellProps {
     title: string;
     address: string;
     imageUrl: string;
+    latitue: number;
+    longitude: number;
+    board_number: number;
 }
+
 export type SlidepageType = 0 | 1;
 
 export interface SlidshellCategory {

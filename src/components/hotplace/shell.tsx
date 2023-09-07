@@ -1,14 +1,36 @@
 import Image from "next/image";
 import { AiTwotoneEnvironment } from "react-icons/ai";
+import { useViewlocation } from "src/stores/store";
+import { useRouter } from "next/router";
 import { hotPlaceStyle } from "../../styles/style";
 import example from "../../public/example.png";
 import { ShellProps } from "../../types/type";
 
 export const Shells = (props: ShellProps) => {
     const { cssType, imageUrl, title, address } = props;
-    console.log(imageUrl);
+    const { setLocation } = useViewlocation();
+    const { latitue, longitude, board_number } = props;
+    // Shells 컴포넌트에서 호출되는 함수
+    const viewlocation = (lat: number, lng: number) => {
+        console.log(lat, lng);
+        setLocation({ lat, lng });
+    };
+    const router = useRouter();
+
+    const goDetailpage = () => {
+        router.push({
+            pathname: "/placeinfo",
+            query: { board_idx: board_number.toString() },
+        });
+    };
+
     return (
-        <div css={hotPlaceStyle.hotplaceShells(cssType)}>
+        <div
+            css={hotPlaceStyle.hotplaceShells(cssType)}
+            onMouseOver={() => viewlocation(latitue, longitude)}
+            onFocus={() => viewlocation(latitue, longitude)}
+            onClick={goDetailpage}
+        >
             <Image
                 src={imageUrl !== "null" ? imageUrl : example}
                 alt=""

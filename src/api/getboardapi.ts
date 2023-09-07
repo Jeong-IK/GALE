@@ -9,9 +9,6 @@ export const getboardrequest = async (
 ): Promise<CategoryrisingresponseType> => {
     const axiosResult = await axios
         .get("/board/list", { params: inputData })
-        .then(response => {
-            console.log(response.data.data.list);
-            return response.data.data;
-        });
+        .then(response => response.data.data);
     return axiosResult;
 };

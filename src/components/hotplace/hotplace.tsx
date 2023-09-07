@@ -1,14 +1,22 @@
-import { Map } from "react-kakao-maps-sdk";
+import { Map, MapMarker } from "react-kakao-maps-sdk";
 import { useGetcategory } from "src/hooks/useGetrisingcategory";
-import { hotPlaceStyle } from "../../styles/style";
+import { hotPlaceStyle } from "src/styles/style";
+import { useViewlocation } from "src/stores/store";
+import { useEffect } from "react";
 import { Shells } from "./shell";
 import { Slideshell } from "./slideshell";
 
 export const Hotplace = () => {
+    // 현재 선택된 위치의 상태
+    const { lat, lng } = useViewlocation();
     const { categoryData } = useGetcategory({
         board_Category_Number: 0,
         currentPage: 0,
     });
+
+    useEffect(() => {
+        console.log(lat, lng);
+    }, [lat, lng]);
 
     return (
         <>
@@ -23,16 +31,28 @@ export const Hotplace = () => {
                                   address={data.locationaddress}
                                   imageUrl={data.firstImageUrl}
                                   key={data.board_number}
+                                  latitue={data.latitue}
+                                  longitude={data.longitude}
+                                  board_number={data.board_number}
                               />
                           ))
                         : null}
                 </div>
                 <Map
-                    center={{ lat: 37.541, lng: 126.986 }}
+                    center={{ lat, lng }}
                     css={hotPlaceStyle.kakaoMap}
                     zoomable={false}
                     draggable={false}
-                />
+                >
+                    {lat !== 0 && lng !== 0 ? (
+                        <MapMarker
+                            position={{
+                                lat,
+                                lng,
+                            }}
+                        />
+                    ) : null}
+                </Map>
             </div>
             <Slideshell subject="캠핑러들을 위한 장소 🏕️ " categoryCode={200} />
             <Slideshell

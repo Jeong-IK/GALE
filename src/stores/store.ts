@@ -11,6 +11,8 @@ import {
     Mypagecontentstore,
     Mypagecontenttype,
     DaterangeType,
+    ViewlocationstoreType,
+    ViewlocationType,
 } from "../types/type";
 
 // Modal 활성화 및 Modaltype
@@ -60,13 +62,20 @@ export const useMypagecontent = create<Mypagecontentstore>()(set => ({
     },
 }));
 
-export const useDaterangeStore = create<DaterangeType>((set) => ({
+export const useDaterangeStore = create<DaterangeType>(set => ({
     startDate: null,
     endDate: null,
     draftStartDate: null,
     draftEndDate: null,
     focusedInput: null,
-    setFocusedInput: (input) => set(() => ({ focusedInput: input })),
+    setFocusedInput: input => set(() => ({ focusedInput: input })),
     setDate: (startDate, endDate) => set(() => ({ startDate, endDate })),
-    setDraftDate: (startDate, endDate) => set(() => ({ draftStartDate: startDate, draftEndDate: endDate })),
-  }));
+    setDraftDate: (startDate, endDate) =>
+        set(() => ({ draftStartDate: startDate, draftEndDate: endDate })),
+}));
+
+export const useViewlocation = create<ViewlocationstoreType>(set => ({
+    lat: 37.541,
+    lng: 126.986,
+    setLocation: ({ lat, lng }: ViewlocationType) => set(() => ({ lat, lng })),
+}));

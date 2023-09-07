@@ -56,6 +56,9 @@ export const Slideshell = (slidecategory: SlidshellCategory) => {
                               address={data.locationaddress}
                               imageUrl={data.firstImageUrl}
                               key={data.board_number}
+                              board_number={data.board_number}
+                              latitue={data.latitue}
+                              longitude={data.longitude}
                           />
                       ))
                     : null}
