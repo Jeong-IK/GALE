@@ -1,5 +1,5 @@
 import axios from "./axiosInstance";
-import { ReviewuploadProps, GeneralResponse } from "../types/type";
+import { ReviewuploadProps, GeneralResponse,  } from "../types/type";
 
 export const reviewUploadAction = async (
     inputData: ReviewuploadProps

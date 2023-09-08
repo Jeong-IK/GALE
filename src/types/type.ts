@@ -1,7 +1,8 @@
 import { Moment } from "moment";
-
+// 로그인, 회원가입, 알림창과 같은 모달창 타입
 export type ModalOption = "logIn" | "signUp" | "date" | "alert" | null;
 
+// 리뷰 모달창에서 출력되는 문구
 export type Reviewalertoption =
     | "이미지 파일만 업로드 가능합니다."
     | "최대 10MB까지 업로드 가능합니다."
@@ -9,13 +10,16 @@ export type Reviewalertoption =
     | "파일이 선택되지 않았습니다."
     | null;
 
+// 마이페이지에서 출력되는 리스트 타입
 export type Mypagecontenttype = "위시플레이스" | "여행일정 보기";
 
+// 리뷰 모달창을 관리하는 store타입
 export interface Reviewalertstatus {
     alerText: Reviewalertoption;
     setAlertext: (context: Reviewalertoption) => void;
 }
 
+// 여행기간을 관리하는 store타입 
 export interface DaterangeType {
     startDate: string | null;
     endDate: string | null;
@@ -26,6 +30,7 @@ export interface DaterangeType {
     setDate: (startDate: string | null, endDate: string | null) => void;
     setDraftDate: (startDate: Moment | null, endDate: Moment | null) => void;
 }
+
 // 여행 상세 계획 타입
 export interface TravleplandetailsType {
     select_board_category: number | null;
@@ -52,7 +57,9 @@ export interface TravleplanType {
     listPlannerDetails: TravleplandetailsType[];
 }
 
-// index 페이지 각 카테고리 별 각 게시글의 반환 타입
+
+/* /GetListRisingCategoryList API 관련 타입 */
+// index 페이지 각 카테고리 별 각 게시글 타입
 export interface CategoryplaceresponseType {
     latitue: number;
     longitude: number;
@@ -80,14 +87,42 @@ export interface CategoryrisingrequestType {
     currentPage: number;
 }
 
+// 지도에 핑을 찍기위한 경도, 위도
 export interface ViewlocationType {
     lat: number;
     lng: number;
 }
 
+// 지도에 핑을 찍기위한 경도, 위도를 관리하는 store 타입
 export interface ViewlocationstoreType extends ViewlocationType {
     setLocation: ({ lat, lng }: ViewlocationType) => void;
 }
+
+/* /Read api관련 타입 */
+// 게시글 데이터 읽어오는 ReadboardAPI response타입
+export interface ReadplacecontentresponseType {
+    board_category: number;
+    latitue: number;
+    locationaddress: string;
+    accessibility: number;
+    userid: string;
+    locationname: string;
+    board_number: number;
+    reviewCount: number;
+    service: number;
+    price: number;
+    grade: number;
+    regdate: string;
+    allAverage: number;
+    congestion: number;
+    longitude: number;
+}
+
+export interface ReadplacerequestType {
+    board_number: number;
+}
+
+
 
 export interface Modalstatus {
     modalOption: ModalOption;
