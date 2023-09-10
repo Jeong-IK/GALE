@@ -19,7 +19,7 @@ export interface Reviewalertstatus {
     setAlertext: (context: Reviewalertoption) => void;
 }
 
-// 여행기간을 관리하는 store타입 
+// 여행기간을 관리하는 store타입
 export interface DaterangeType {
     startDate: string | null;
     endDate: string | null;
@@ -56,7 +56,6 @@ export interface TravleplanType {
 
     listPlannerDetails: TravleplandetailsType[];
 }
-
 
 /* /GetListRisingCategoryList API 관련 타입 */
 // index 페이지 각 카테고리 별 각 게시글 타입
@@ -116,13 +115,12 @@ export interface ReadplacecontentresponseType {
     allAverage: number;
     congestion: number;
     longitude: number;
+    imageArrayUrl: string;
 }
 
 export interface ReadplacerequestType {
-    board_number: number;
+    board_idx: string;
 }
-
-
 
 export interface Modalstatus {
     modalOption: ModalOption;

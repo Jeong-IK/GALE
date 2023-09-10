@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 export const headerStyle = {
     mainHeader: css`
         position: relative;
-        height: 54rem;
+        height: 12rem;
         width: 100vw;
         margin-bottom: 8.7vh;
     `,
@@ -1025,4 +1025,67 @@ export const mypageStyle = {
         line-height: normal;
         letter-spacing: -0.004px;
     `,
+};
+
+export const placeinfoStyle = {
+    bodydiv: css`
+        margin: 0 auto 0 auto;
+        width: 160rem;
+        background: #fbfbfb;
+    `,
+    placedata: {
+        totalDiv: css`
+            height: 52rem;
+            padding-top: 5.8rem;
+            display: flex;
+        `,
+        textinfoDiv: css`
+            width: 80rem;
+        `,
+        imageinfoDiv: css`
+            width: 81.5rem;
+        `,
+        image: css`
+            border-radius: 15px;
+            box-shadow: 1px 2px 13px 4px rgba(0, 0, 0, 0.15);
+            height: 46rem;
+        `,
+        title: css`
+            font-family: Inter;
+            font-size: 44px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            letter-spacing: -0.009px;
+            margin-bottom: 2.4rem;
+        `,
+        reviewButton: css`
+            border-radius: 70px;
+            border: 1px solid var(--main2, #fe8101);
+            background: #fff;
+            color: var(--main2, #fe8101);
+            font-family: Inter;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            width: 14.5rem;
+            height: 6rem;
+        `,
+        address: css`
+            color: #989aac;
+            font-family: Inter;
+            font-size: 2.8rem;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            letter-spacing: -0.006px;
+        `,
+    },
+    reviewdata: {
+        totalDiv: css`
+            height: 125rem;
+            padding-top: 11.7rem;
+        `,
+    },
 };

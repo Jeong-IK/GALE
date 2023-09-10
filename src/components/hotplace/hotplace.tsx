@@ -2,7 +2,6 @@ import { Map, MapMarker } from "react-kakao-maps-sdk";
 import { useGetcategory } from "src/hooks/useGetrisingcategory";
 import { hotPlaceStyle } from "src/styles/style";
 import { useViewlocation } from "src/stores/store";
-import { useEffect } from "react";
 import { Shells } from "./shell";
 import { Slideshell } from "./slideshell";
 
@@ -13,10 +12,6 @@ export const Hotplace = () => {
         board_Category_Number: 0,
         currentPage: 0,
     });
-
-    useEffect(() => {
-        console.log(lat, lng);
-    }, [lat, lng]);
 
     return (
         <>
