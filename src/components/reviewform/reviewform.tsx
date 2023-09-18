@@ -18,7 +18,7 @@ const example = {
 const reviewItem = [
     {
         id: "grade",
-        name: "⭐ 별점",
+        name: "⭐ 총점",
         explain: "장소에 대한 전반적인 평점을 입력해주세요. ",
     },
     {

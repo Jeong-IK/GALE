@@ -1048,7 +1048,7 @@ export const placeinfoStyle = {
         image: css`
             border-radius: 15px;
             box-shadow: 1px 2px 13px 4px rgba(0, 0, 0, 0.15);
-            height: 46rem;
+            height: 47rem;
         `,
         title: css`
             font-family: Inter;
@@ -1080,6 +1080,47 @@ export const placeinfoStyle = {
             font-weight: 500;
             line-height: normal;
             letter-spacing: -0.006px;
+        `,
+        stargradeDiv: css`
+            padding-top: 5rem;
+        `,
+    },
+    stargrade: {
+        reviewTitle: (name: string) => css`
+            color: #54566f;
+            font-family: Inter;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            letter-spacing: -0.003px;
+            padding-right: ${name.length === 4 ||
+            name.length === 5 ||
+            name.length === 7
+                ? "3rem"
+                : "1.5rem"};
+        `,
+        reviewStar: (checked: boolean) => css`
+            width: 3.3rem;
+            height: 3.3rem;
+            color: ${checked ? "#FE8101" : "#DADADA"};
+        `,
+        reviewEachform: css`
+            width: 28rem;
+            height: 3.5;
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            padding: 0 0 3rem 0;
+        `,
+        reviewcnt: css`
+            color: #989aac;
+            font-family: Inter;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            letter-spacing: -0.003px;
         `,
     },
     reviewdata: {

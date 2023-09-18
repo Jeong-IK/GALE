@@ -6,10 +6,7 @@ export const getContentinfo = async (
 ): Promise<ReadplacecontentresponseType> => {
     const axiosResult = await axios
         .get("/board", { params: { board_Number } })
-        .then(response => {
-            console.log(response.data.data);
-            return response.data.data;
-        });
+        .then(response => response.data.data);
     return axiosResult;
 };
 

@@ -116,6 +116,7 @@ export interface ReadplacecontentresponseType {
     congestion: number;
     longitude: number;
     imageArrayUrl: string;
+    satisfaction: number;
 }
 
 export interface ReadplacerequestType {
