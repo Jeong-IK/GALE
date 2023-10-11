@@ -1,8 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
-import { getContentinfo, getContentreview } from "src/api/readcontentapi";
-import { GeneralError, ReadplacecontentresponseType } from "../types/type";
+import {
+    getContentinfo,
+    getDetailreview,
+    getReviewlist,
+} from "src/api/readcontentapi";
+import {
+    GeneralError,
+    GetplacereivewrequestType,
+    GetplacereviewresponseType,
+    ReadplacecontentresponseType,
+    ReadreviewresponseType,
+} from "../types/type";
 
-export const useGetplaceinfo = (board_Number: string) => {
+export const useGetplaceinfo = (board_Number: number) => {
     const { data: placeinfoData, refetch } = useQuery<
         ReadplacecontentresponseType,
         GeneralError
@@ -10,10 +20,18 @@ export const useGetplaceinfo = (board_Number: string) => {
     return { placeinfoData, refetch };
 };
 
-export const useGetreviewdata = (board_Number: string) => {
-    const { data: reviewData, refetch } = useQuery<
-        ReadplacecontentresponseType,
+export const useGetreviewlistdata = (props: GetplacereivewrequestType) => {
+    const { data: reviewlistData, refetch } = useQuery<
+        GetplacereviewresponseType[],
         GeneralError
-    >(["reviewdata", board_Number], () => getContentreview(board_Number));
-    return { reviewData, refetch };
+    >(["reviewlsitdata", props], () => getReviewlist(props));
+    return { reviewlistData, refetch };
+};
+
+export const useGetreviewdetaildata = (board_Number: number) => {
+    const { data: reviewdetailData, refetch } = useQuery<
+        ReadreviewresponseType,
+        GeneralError
+    >(["reviewdetailinfo", board_Number], () => getDetailreview(board_Number));
+    return { reviewdetailData, refetch };
 };

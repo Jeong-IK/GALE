@@ -2,19 +2,29 @@ import { css } from "@emotion/react";
 
 export const headerStyle = {
     mainHeader: css`
-        position: relative;
-        height: 12rem;
-        width: 100vw;
-        margin-bottom: 8.7vh;
+        // position: relative;
+        height: 58rem;
+        width: 160rem;
+        margin: 0 0 8.7rem 0;
+        // display: ;
+        justify-content: center;
     `,
     memberLink: css`
         position: relative;
         float: right;
-        padding: 0 16rem 0 0;
+    `,
+    totallinkDiv: css`
+        width: 160rem;
+        padding: 0 0 0 18.3rem;
     `,
     linkFamily: css`
         position: relative;
-        padding: 4.1rem 0 0 16rem;
+        width: 160rem;
+        margin: 0 auto 4rem auto;
+        padding-top: 4rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     `,
     smallLogoDiv: css`
         position: relative;
@@ -33,6 +43,8 @@ export const headerStyle = {
         }
     `,
     bigLogoDiv: css`
+        width: 160rem;
+        margin: 0 auto 0 auto;
         position: relative;
         display: block;
         padding: 14.3rem 0 0 0;
@@ -45,7 +57,7 @@ export const headerStyle = {
         position: absolute;
         background-size: cover;
         width: 100vw;
-
+        z-index: -1;
         background-repeat: no-repeat;
     `,
 };
@@ -179,12 +191,12 @@ export const modalStyle = {
 export const bodyStyle = css`
     width: 160rem;
     margin: 0 auto 0 auto;
-    padding-bottom: 7.5rem;
+    margin-bottom: 7.5rem;
 `;
 
 export const travleStyle = {
     travleDiv: css`
-        margin: 0 auto 10rem auto;
+        margin: 9.7rem auto 10rem auto;
         position: relative;
         width: 160rem;
         height: 20rem;
@@ -873,14 +885,14 @@ export const reviewStyle = {
 
 export const mypageStyle = {
     headerDiv: css`
-        height: 28.3rem;
+        height: 53rem;
         width: auto;
     `,
     headerBgImg: css`
         position: absolute;
         background-size: cover;
-        width: 100vw;
-        height: 28.3rem;
+        width: 100rem;
+        height: 53rem;
         overflow: hidden;
     `,
     bodyDiv: css`
@@ -1058,6 +1070,9 @@ export const placeinfoStyle = {
             line-height: normal;
             letter-spacing: -0.009px;
             margin-bottom: 2.4rem;
+            display: flex;
+            width: 75.5rem;
+            justify-content: space-between;
         `,
         reviewButton: css`
             border-radius: 70px;
@@ -1127,6 +1142,114 @@ export const placeinfoStyle = {
         totalDiv: css`
             height: 125rem;
             padding-top: 11.7rem;
+        `,
+        sortBy: css`
+            color: #54566f;
+            font-family: Inter;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            letter-spacing: -0.003px;
+        `,
+        startLine: css`
+            height: 0.5rem;
+            background: #eaeaea;
+            margin: 2rem 0 3rem 0;
+        `,
+        reviewCard: css`
+            height: 18.6rem;
+            display: flex;
+        `,
+        reviewImage: css`
+            border-radius: 15px;
+        `,
+        textDiv: css`
+            height: 18.6rem;
+            width: 136rem;
+        `,
+        profileDiv: css`
+            width: 136rem;
+            height: 4.3rem;
+            display: flex;
+            padding-left: 2.4rem;
+        `,
+        profile: css`
+            border-radius: 4.3rem;
+            box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.25);
+        `,
+        nickname: css`
+            //닉네임 폰트
+            width: 136rem;
+            margin: 0 0 0 0.8rem;
+            color: #989aac;
+            font-family: Inter;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            letter-spacing: -0.002px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        `,
+        reportButton: css`
+            //신고하기 버튼
+            height: 1.7rem;
+            border: none;
+            background-color: transparent;
+            color: #989aac;
+            font-family: Inter;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            letter-spacing: -0.002px;
+        `,
+        reviewContent: css`
+            margin: 0.8rem 0 0 7.22rem;
+            width: 131rem;
+            height: 12rem;
+            // 폰트
+            color: var(--main, #2d2d2d);
+            font-family: Inter;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            letter-spacing: -0.003px;
+        `,
+        writeDate: css`
+            margin: 0 0 0 2.4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            //폰트
+            color: #acacac;
+            font-family: Inter;
+            font-size: 10px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        `,
+        moreButton: css`
+            background-color: transparent;
+            border: none;
+            color: #54566f;
+            font-family: Inter;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            letter-spacing: -0.003px;
+            text-decoration-line: underline;
+        `,
+        reviewcardendLine: css`
+            width: 160rem;
+            height: 1px;
+            margin: 2.5rem 0 0 0;
+            stroke-width: 1px;
+            background-color: #eaeaea;
         `,
     },
 };

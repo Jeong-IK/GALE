@@ -13,6 +13,9 @@ import {
     DaterangeType,
     ViewlocationstoreType,
     ViewlocationType,
+    PagenumberstoreType,
+    DetailModalType,
+    DetailpagemodalstoreType,
 } from "../types/type";
 
 // Modal 활성화 및 Modaltype
@@ -78,4 +81,20 @@ export const useViewlocation = create<ViewlocationstoreType>(set => ({
     lat: 37.541,
     lng: 126.986,
     setLocation: ({ lat, lng }: ViewlocationType) => set(() => ({ lat, lng })),
+}));
+
+export const useReviewPage = create<PagenumberstoreType>(set => ({
+    page: 0,
+    setPage: (page: number) =>
+        set(() => ({
+            page,
+        })),
+}));
+
+export const useDetailpagemodaltype = create<DetailpagemodalstoreType>(set => ({
+    type: null,
+    setType: (selecttype: DetailModalType) =>
+        set(() => ({
+            type: selecttype,
+        })),
 }));

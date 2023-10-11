@@ -119,8 +119,34 @@ export interface ReadplacecontentresponseType {
     satisfaction: number;
 }
 
+export interface GetplacereivewrequestType {
+    board_Number: number;
+    sortType: "new" | "averge";
+    orderType: "asc" | "desc";
+    currentPage: number;
+}
+
+export interface GetplacereviewresponseType {
+    average: number;
+    board_number: number;
+    userProfileImageUrl: string;
+    regdate: string;
+    userNickname: string;
+    board_review_number: number;
+    userid: string;
+    imageArrayUrl: string;
+    content: string;
+}
+
+export interface ReadreviewresponseType extends ReadplacecontentresponseType {
+    userProfileImageUrl: string;
+    userNickname: string;
+    content: string;
+    regdate: string;
+}
+
 export interface ReadplacerequestType {
-    board_idx: string;
+    board_idx: number;
 }
 
 export interface Modalstatus {
@@ -281,4 +307,15 @@ export interface GetTravlelistresponse {
 
 export interface DeleteTrablelistProptype {
     planner_idx: number;
+}
+
+export interface PagenumberstoreType {
+    page: number;
+    setPage: (page: number) => void;
+}
+export type DetailModalType = "report" | "moreshow" | null;
+
+export interface DetailpagemodalstoreType {
+    type: DetailModalType;
+    setType: (selecttype: DetailModalType) => void;
 }

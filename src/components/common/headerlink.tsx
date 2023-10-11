@@ -6,18 +6,17 @@ import smallLogo from "src/public/CI.png";
 import { useModal, useLoginState } from "src/stores/store";
 import { useLogoutMutation } from "src/hooks/useLogout";
 
-
-
 export const Headerlink = ({ isIndex }: { isIndex: boolean }) => {
     const { setModaloption } = useModal();
     const { loginState, setLoginState } = useLoginState();
     const logoutAction = useLogoutMutation();
     const router = useRouter();
-    
+
     const gohome = () => {
         router.push({
-            pathname: "/"})
-    }
+            pathname: "/",
+        });
+    };
 
     // 로그인 여부 확인
     useEffect(() => {
@@ -34,7 +33,7 @@ export const Headerlink = ({ isIndex }: { isIndex: boolean }) => {
         <div css={headerStyle.linkFamily}>
             <span css={headerStyle.smallLogoDiv}>
                 <button type="button" css={headerStyle.smallLogo}>
-                    <Image src={smallLogo} alt="" onClick={gohome}/>
+                    <Image src={smallLogo} alt="" onClick={gohome} />
                 </button>
             </span>
             {/* <button type="button">

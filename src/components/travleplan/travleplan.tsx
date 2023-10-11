@@ -2,15 +2,12 @@ import { useRouter } from "next/router";
 import { AiOutlineSwap } from "react-icons/ai";
 import { useForm } from "react-hook-form";
 import { DatePicker } from "./calendar/plancalendar";
-// import { useDaterangeStore } from "../../stores/store";
 import { TravleplanProps } from "../../types/type";
-
 import { travleStyle, customDatepickerStyle } from "../../styles/style";
 
 export const TravlePlan = () => {
-
     // const { startDate, endDate } = useDaterangeStore();
-     const router = useRouter();
+    const router = useRouter();
 
     const {
         register,

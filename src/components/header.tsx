@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { headerStyle } from "../styles/style";
-import { Modal } from "./member/modal";
 import headerImg from "../public/headerBgImage.png";
 import bigLogo from "../public/LOGO.png";
 import { Headerlink } from "./common/headerlink";
@@ -15,9 +14,8 @@ export const Header = (): JSX.Element => (
                 css={headerStyle.headerBgImg}
                 alt=""
                 priority
-
             />
-            <div>
+            <div css={headerStyle.totallinkDiv}>
                 <Headerlink isIndex />
                 <div css={headerStyle.bigLogoDiv}>
                     <Image src={bigLogo} alt="" />
@@ -29,6 +27,5 @@ export const Header = (): JSX.Element => (
                 </div>
             </div>
         </div>
-        <Modal />
-    </>);
-
+    </>
+);
