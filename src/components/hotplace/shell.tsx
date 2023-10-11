@@ -12,7 +12,6 @@ export const Shells = (props: ShellProps) => {
     const { latitue, longitude, board_number } = props;
     // Shells 컴포넌트에서 호출되는 함수
     const viewlocation = (lat: number, lng: number) => {
-        console.log(lat, lng);
         setLocation({ lat, lng });
     };
     const router = useRouter();

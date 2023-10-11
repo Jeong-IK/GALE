@@ -26,7 +26,7 @@ export const Hotplace = () => {
                                   address={data.locationaddress}
                                   imageUrl={data.firstImageUrl}
                                   key={data.board_number}
-                                  latitue={data.latitue}
+                                  latitue={data.latitude}
                                   longitude={data.longitude}
                                   board_number={data.board_number}
                               />

@@ -9,7 +9,6 @@ export const Modal = () => {
     const { modalOption, setModaloption } = useModal();
 
     const windowModal = useRef<HTMLDivElement>(null);
-
     const overClick = (event: React.MouseEvent) => {
         if (
             event.target &&
@@ -49,7 +48,6 @@ export const Modal = () => {
                     </div>,
                     document.getElementById("modal") as HTMLElement
                 )}
-            <div id="errormodal" />
         </>
     );
 };

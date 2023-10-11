@@ -60,7 +60,7 @@ export interface TravleplanType {
 /* /GetListRisingCategoryList API 관련 타입 */
 // index 페이지 각 카테고리 별 각 게시글 타입
 export interface CategoryplaceresponseType {
-    latitue: number;
+    latitude: number;
     longitude: number;
     board_category_number: string;
     // 이미지가 존재하지않으면 String으로 null 반환

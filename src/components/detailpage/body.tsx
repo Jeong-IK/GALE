@@ -21,4 +21,5 @@ export const DetailBody = () => {
             </div>
         );
     }
+    return <div />;
 };

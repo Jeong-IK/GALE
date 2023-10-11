@@ -12,8 +12,8 @@ const Home: NextPage = () => (
             <Header />
             <Body />
             <Footer />
+            <div id="modal" />
         </div>
-        <div id="modal" />
     </>
 );
 
