@@ -319,3 +319,10 @@ export interface DetailpagemodalstoreType {
     type: DetailModalType;
     setType: (selecttype: DetailModalType) => void;
 }
+
+export interface ReportreviewrequestType {
+    reporter_userid: string;
+    board_review_number: number;
+    report_category: number;
+    content: string;
+}

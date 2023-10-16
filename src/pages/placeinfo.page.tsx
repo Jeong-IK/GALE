@@ -13,6 +13,7 @@ const Reviewupload: NextPage = () => (
             <DetailBody />
             <Footer />
         </div>
+        <div id="modal" />
     </>
 );
 

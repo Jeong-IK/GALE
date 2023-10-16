@@ -1,1 +1,1 @@
-export const modal = () => <div />;
+export const Moreshow = () => <div />;

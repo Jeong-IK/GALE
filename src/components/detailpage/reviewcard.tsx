@@ -1,13 +1,14 @@
 import { placeinfoStyle } from "src/styles/style";
 import Image from "next/image";
 import { GetplacereviewresponseType } from "src/types/type";
+import { useDetailpagemodaltype } from "src/stores/store";
 import example from "../../public/reviewCardexample.png";
 import profileexample from "../../public/profileexample.png";
 
 export const Reviewcard = (props: GetplacereviewresponseType) => {
     // const placeimage = data.imageArrayUrl[0];
+    const { setType } = useDetailpagemodaltype();
 
-    console.log(props.imageArrayUrl);
     return (
         <>
             <div css={placeinfoStyle.reviewdata.reviewCard}>
@@ -41,6 +42,7 @@ export const Reviewcard = (props: GetplacereviewresponseType) => {
                             <button
                                 type="button"
                                 css={placeinfoStyle.reviewdata.reportButton}
+                                onClick={() => setType("report")}
                             >
                                 {/* onClick 신고하기 modal창 */}
                                 신고하기

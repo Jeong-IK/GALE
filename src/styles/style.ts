@@ -1252,4 +1252,17 @@ export const placeinfoStyle = {
             background-color: #eaeaea;
         `,
     },
+    modalStyle: {
+        modalWindow: css`
+            background-color: white;
+            position: relative;
+            z-index: 2;
+            border-radius: 1rem;
+        `,
+        modalForm: css`
+            text-align: center;
+            display: block;
+            margin: 4rem;
+        `,
+    },
 };
