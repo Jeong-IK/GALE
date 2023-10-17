@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import {
     getContentinfo,
-    getDetailreview,
     getReviewlist,
 } from "src/api/readcontentapi";
 import {
@@ -9,7 +8,7 @@ import {
     GetplacereivewrequestType,
     GetplacereviewresponseType,
     ReadplacecontentresponseType,
-    ReadreviewresponseType,
+
 } from "../types/type";
 
 export const useGetplaceinfo = (board_Number: number) => {
@@ -28,10 +27,4 @@ export const useGetreviewlistdata = (props: GetplacereivewrequestType) => {
     return { reviewlistData, refetch };
 };
 
-export const useGetreviewdetaildata = (board_Number: number) => {
-    const { data: reviewdetailData, refetch } = useQuery<
-        ReadreviewresponseType,
-        GeneralError
-    >(["reviewdetailinfo", board_Number], () => getDetailreview(board_Number));
-    return { reviewdetailData, refetch };
-};
+

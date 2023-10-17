@@ -119,6 +119,11 @@ export interface ReadplacecontentresponseType {
     satisfaction: number;
 }
 
+export interface placecontentstoreType {
+    data: ReadplacecontentresponseType | null;
+    setData : (data:ReadplacecontentresponseType) => void;
+}
+
 export interface GetplacereivewrequestType {
     board_Number: number;
     sortType: "new" | "averge";
@@ -138,11 +143,14 @@ export interface GetplacereviewresponseType {
     content: string;
 }
 
-export interface ReadreviewresponseType extends ReadplacecontentresponseType {
-    userProfileImageUrl: string;
-    userNickname: string;
-    content: string;
-    regdate: string;
+export interface GetdetailreviewresponseType extends GetplacereviewresponseType {
+    accessibility:number;
+    board_idx: number;
+    satisfaction:number;
+    board_number:number;
+    service:number;
+    price:number;
+    congestion:number
 }
 
 export interface ReadplacerequestType {
@@ -318,6 +326,8 @@ export type DetailModalType = "report" | "moreshow" | null;
 export interface DetailpagemodalstoreType {
     type: DetailModalType;
     setType: (selecttype: DetailModalType) => void;
+    board_review_number: number | null;
+    setBoard_review_number: (board_review_number:number) => void;
 }
 
 export interface ReportreviewrequestType {

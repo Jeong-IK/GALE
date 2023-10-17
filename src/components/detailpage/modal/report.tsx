@@ -1,19 +1,15 @@
 import { useForm } from "react-hook-form";
+import { useDetailpagemodaltype } from "src/stores/store";
 
 export const Reportmodal = () => {
-    console.log("test");
-    // {
-    //     board_idx,
-    //     user_id,
-    // }: {
-    //     board_idx: number;
-    //     user_id: string;
-    // }
-
+    // board_review_number 가져오기
+    const { board_review_number } = useDetailpagemodaltype();   
     const { register, handleSubmit } = useForm();
 
-    const onSubmit = () => {
-        console.log("data");
+    const onSubmit = data => {
+        // cookie 내 저장된 email 값 가져오기 
+        const user_id = localStorage.getItem('email');
+        console.log(data, board_review_number, user_id);
     };
 
     return (

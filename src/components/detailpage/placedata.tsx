@@ -1,56 +1,71 @@
 import { placeinfoStyle } from "src/styles/style";
 import Image from "next/image";
+import router from "next/router";
+import { usePlaceinfo } from "src/stores/store";
 import bgdetailexample from "src/public/bgdetailexample.png";
 import { AiTwotoneEnvironment } from "react-icons/ai";
-import { ReadplacecontentresponseType } from "src/types/type";
 import { Stargrade } from "./startgrade";
 import { Reviewcnt } from "./reviewCnt";
 
-export const Placedata = (props: ReadplacecontentresponseType) => (
-    <>
+
+
+export const Placedata = () => {
+    const {data} = usePlaceinfo();
+   
+    const goreviewuploadpage = () => {
+        if(!localStorage.getItem("email"))
+            alert("리뷰 쓰기는 로그인 시 가능합니다.");
+        router.push({
+            pathname: "/reviewupload",
+            query: { board_idx: data?.board_number.toString() },
+        });
+    };
+
+   return ( <>
         <div css={placeinfoStyle.placedata.totalDiv}>
             <div css={placeinfoStyle.placedata.textinfoDiv}>
                 <div css={placeinfoStyle.placedata.title}>
-                    {props?.locationname}
+                    {data?.locationname}
                     <button
                         type="button"
                         css={placeinfoStyle.placedata.reviewButton}
+                        onClick={goreviewuploadpage}
                     >
                         리뷰쓰기
                     </button>
                 </div>
                 <div css={placeinfoStyle.placedata.address}>
                     <AiTwotoneEnvironment />
-                    {props?.locationaddress}
+                    {data?.locationaddress}
                 </div>
                 <div css={placeinfoStyle.placedata.stargradeDiv}>
-                    {props ? (
+                    {data ? (
                         <>
                             <Stargrade
                                 name="⭐ 총점"
-                                grade={props.allAverage}
+                                grade={data.allAverage}
                             />
 
                             <Stargrade
                                 name="👍🏻 좋아요"
-                                grade={props.satisfaction}
+                                grade={data.satisfaction}
                             />
 
-                            <Stargrade name="💸 비용" grade={props.price} />
+                            <Stargrade name="💸 비용" grade={data.price} />
 
                             <Stargrade
                                 name="👨‍👩‍👧‍👦 번잡도"
-                                grade={props.congestion}
+                                grade={data.congestion}
                             />
 
                             <Stargrade
                                 name="🚗 접근성"
-                                grade={props.accessibility}
+                                grade={data.accessibility}
                             />
 
                             <Reviewcnt
                                 name="‍️📝 리뷰"
-                                grade={props.reviewCount}
+                                grade={data.reviewCount}
                             />
                         </>
                     ) : null}
@@ -58,7 +73,7 @@ export const Placedata = (props: ReadplacecontentresponseType) => (
             </div>
             <div css={placeinfoStyle.placedata.imageinfoDiv}>
                 <Image
-                    src={props ? props.imageArrayUrl[0] : bgdetailexample}
+                    src={data ? data.imageArrayUrl[0] : bgdetailexample}
                     width={800}
                     height={460}
                     alt=""
@@ -68,3 +83,4 @@ export const Placedata = (props: ReadplacecontentresponseType) => (
         </div>
     </>
 );
+}

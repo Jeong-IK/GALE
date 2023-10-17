@@ -19,8 +19,7 @@ export const Reviewdata = ({
         orderType: "asc",
         currentPage: page,
     });
-    console.log(reviewcnt);
-    // if (reviewlistData) console.log(reviewlistData.length);
+    
     return (
         <div css={placeinfoStyle.reviewdata.totalDiv}>
             <div css={placeinfoStyle.reviewdata.sortBy}>

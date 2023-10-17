@@ -16,6 +16,8 @@ import {
     PagenumberstoreType,
     DetailModalType,
     DetailpagemodalstoreType,
+    ReadplacecontentresponseType,
+    placecontentstoreType,
 } from "../types/type";
 
 // Modal 활성화 및 Modaltype
@@ -91,10 +93,22 @@ export const useReviewPage = create<PagenumberstoreType>(set => ({
         })),
 }));
 
+export const usePlaceinfo = create<placecontentstoreType>(set => ({
+    data : null,
+    setData : (data: ReadplacecontentresponseType) => set(()=> ({
+        data,
+    }))
+}))
+
 export const useDetailpagemodaltype = create<DetailpagemodalstoreType>(set => ({
     type: null,
+    board_review_number:null,
     setType: (selecttype: DetailModalType) =>
         set(() => ({
             type: selecttype,
         })),
+    setBoard_review_number: (board_review_number: number) => set(() => ({
+        board_review_number,
+    }))
 }));
+

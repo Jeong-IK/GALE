@@ -2,13 +2,14 @@ import { placeinfoStyle } from "src/styles/style";
 import Image from "next/image";
 import { GetplacereviewresponseType } from "src/types/type";
 import { useDetailpagemodaltype } from "src/stores/store";
-import example from "../../public/reviewCardexample.png";
-import profileexample from "../../public/profileexample.png";
+import example from "src/public/reviewCardexample.png";
+import profileexample from "src/public/profileexample.png";
+import { useEffect } from "react";
 
 export const Reviewcard = (props: GetplacereviewresponseType) => {
-    // const placeimage = data.imageArrayUrl[0];
-    const { setType } = useDetailpagemodaltype();
-
+    const { setType, setBoard_review_number } = useDetailpagemodaltype();
+    useEffect(()=> setBoard_review_number(props.board_review_number), []);
+    
     return (
         <>
             <div css={placeinfoStyle.reviewdata.reviewCard}>
@@ -44,7 +45,6 @@ export const Reviewcard = (props: GetplacereviewresponseType) => {
                                 css={placeinfoStyle.reviewdata.reportButton}
                                 onClick={() => setType("report")}
                             >
-                                {/* onClick 신고하기 modal창 */}
                                 신고하기
                             </button>
                         </div>
@@ -58,6 +58,7 @@ export const Reviewcard = (props: GetplacereviewresponseType) => {
                         <button
                             type="button"
                             css={placeinfoStyle.reviewdata.moreButton}
+                            onClick={() => setType("moreshow")}
                         >
                             더보기
                         </button>

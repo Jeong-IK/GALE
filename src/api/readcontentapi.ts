@@ -3,7 +3,7 @@ import {
     GetplacereivewrequestType,
     GetplacereviewresponseType,
     ReadplacecontentresponseType,
-    ReadreviewresponseType,
+
 } from "../types/type";
 
 export const getContentinfo = async (
@@ -24,11 +24,3 @@ export const getReviewlist = async (
     return axiosResult;
 };
 
-export const getDetailreview = async (
-    board_Review_Number: number
-): Promise<ReadreviewresponseType> => {
-    const axiosResult = await axios
-        .get("/board/review", { params: { board_Review_Number } })
-        .then(response => response.data.data);
-    return axiosResult;
-};

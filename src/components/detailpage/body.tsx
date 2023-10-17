@@ -1,24 +1,33 @@
 import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { usePlaceinfo } from "src/stores/store";
 import { placeinfoStyle } from "src/styles/style";
 import { useGetplaceinfo } from "src/hooks/useGetplaceinfo";
 import { Placedata } from "./placedata";
 import { Reviewdata } from "./reviewdata";
 import { Modal } from "./modal/modal";
 
+
+
 export const DetailBody = () => {
     const router = useRouter();
     const { board_idx } = router.query;
-    const { placeinfoData } = useGetplaceinfo(Number(board_idx));
+    const {data, setData} = usePlaceinfo();
 
-    if (board_idx && placeinfoData) {
-        console.log(placeinfoData?.reviewCount);
+    useEffect(()=> {
+        const { placeinfoData } = useGetplaceinfo(Number(board_idx));
+    if(placeinfoData)
+        setData(placeinfoData);
+    }, []);
+
+    if (data) {
         return (
             <>
                 <div css={placeinfoStyle.bodydiv}>
-                    <Placedata {...placeinfoData} />
+                    <Placedata />
                     <Reviewdata
                         board_idx={Number(board_idx)}
-                        reviewcnt={placeinfoData.reviewCount}
+                        reviewcnt={data.reviewCount}
                     />
                 </div>
                 <Modal />
