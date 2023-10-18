@@ -1,16 +1,14 @@
 import { useRouter } from "next/router";
-import { AiOutlineSwap } from "react-icons/ai";
 import { useForm } from "react-hook-form";
+import { TravleplanProps } from "src/types/type";
+import { travleStyle, customDatepickerStyle } from "src/styles/style";
+import {AiTwotoneEnvironment} from "react-icons/ai";
 import { DatePicker } from "./calendar/plancalendar";
-import { TravleplanProps } from "../../types/type";
-import { travleStyle, customDatepickerStyle } from "../../styles/style";
+import { Regionselector } from "./regionselector";
 
 export const TravlePlan = () => {
-    // const { startDate, endDate } = useDaterangeStore();
     const router = useRouter();
-
     const {
-        register,
         formState: { isSubmitting, isValid },
         handleSubmit,
     } = useForm<TravleplanProps>({ mode: "onChange" });
@@ -31,32 +29,11 @@ export const TravlePlan = () => {
             <div css={travleStyle.travleSubject}>어디로 떠나시나요? 🧳</div>
             <div css={travleStyle.travleForm}>
                 <form onSubmit={handleSubmit(onSubmit)}>
+
                     <div css={travleStyle.form.div}>
-                        <input
-                            type="text"
-                            css={travleStyle.form.input}
-                            placeholder="출발지"
-                            {...register("depature", {
-                                required: {
-                                    value: true,
-                                    message: "출발지를 입력해주세요",
-                                },
-                            })}
-                        />
-                    </div>
-                    <AiOutlineSwap />
-                    <div css={travleStyle.form.div}>
-                        <input
-                            type="text"
-                            css={travleStyle.form.input}
-                            placeholder="도착지"
-                            {...register("arrival", {
-                                required: {
-                                    value: true,
-                                    message: "도착지를 입력해주세요",
-                                },
-                            })}
-                        />
+                        <Regionselector />
+                        <AiTwotoneEnvironment />
+
                     </div>
                     <div css={[travleStyle.form.div, customDatepickerStyle]}>
                         <DatePicker />

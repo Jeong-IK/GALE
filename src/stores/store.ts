@@ -18,6 +18,7 @@ import {
     DetailpagemodalstoreType,
     ReadplacecontentresponseType,
     placecontentstoreType,
+    RegionselectorstoreType,
 } from "../types/type";
 
 // Modal 활성화 및 Modaltype
@@ -111,4 +112,14 @@ export const useDetailpagemodaltype = create<DetailpagemodalstoreType>(set => ({
         board_review_number,
     }))
 }));
+
+export const useRegionselectorstore = create<RegionselectorstoreType> (set => ({
+    isopen : false,
+    selectedregion : "",
+    selectedsubregion : "",
+    setIsopen : (state: boolean) => set(() => ({isopen : state})),
+    setSelectedregion : (region:string) => set(() => ({selectedregion : region})),
+    setSelectedsubregion : (subregion : string) => set(() => ({selectedsubregion : subregion}))
+}));
+
 
