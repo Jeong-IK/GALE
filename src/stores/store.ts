@@ -19,6 +19,7 @@ import {
     ReadplacecontentresponseType,
     placecontentstoreType,
     RegionselectorstoreType,
+    MypagemodalType,
 } from "../types/type";
 
 // Modal 활성화 및 Modaltype
@@ -121,5 +122,10 @@ export const useRegionselectorstore = create<RegionselectorstoreType> (set => ({
     setSelectedregion : (region:string) => set(() => ({selectedregion : region})),
     setSelectedsubregion : (subregion : string) => set(() => ({selectedsubregion : subregion}))
 }));
+
+export const useMypageemodalstore = create<MypagemodalType>( set =>({
+    isopen: false,
+    setIsopen: (state: boolean) => set(() => ({isopen: state})),
+}))
 
 

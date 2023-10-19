@@ -321,6 +321,7 @@ export interface PagenumberstoreType {
     page: number;
     setPage: (page: number) => void;
 }
+// 상세보기 페이지 신고, 더보기 모달
 export type DetailModalType = "report" | "moreshow" | null;
 
 export interface DetailpagemodalstoreType {
@@ -336,7 +337,7 @@ export interface ReportreviewrequestType {
     report_category: number;
     content: string;
 }
-
+// 지역 선택 모달
 export interface RegionselectorstoreType {
     isopen : boolean;
     selectedregion : string;
@@ -345,6 +346,7 @@ export interface RegionselectorstoreType {
     setSelectedregion : (region:string) => void;
     setSelectedsubregion : (subregion : string) => void;
 }
+
 interface RegiondataType {
     [key: string]: string[];
 }
@@ -358,3 +360,9 @@ export const Regiondata : RegiondataType = {
         "광주시", "양주시", "포천시", "여주시", "연천군", "가평군", "양평군"
       ]
 }
+
+export interface MypagemodalType {
+    isopen : boolean;
+    setIsopen: (state: boolean) => void;
+}
+

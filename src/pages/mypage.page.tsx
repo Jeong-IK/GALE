@@ -14,7 +14,7 @@ const Reviewupload: NextPage = () => (
             <Footer />
         </div>
 
-        <div id="alertModal" />
+        <div id="modal" />
     </>
 );
 
