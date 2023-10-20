@@ -1,7 +1,7 @@
 import { placeinfoStyle } from "src/styles/style";
 import Image from "next/image";
 import router from "next/router";
-import { usePlaceinfo } from "src/stores/store";
+import { useGetplaceinfo } from "src/hooks/useGetplaceinfo";
 import bgdetailexample from "src/public/bgdetailexample.png";
 import { AiTwotoneEnvironment } from "react-icons/ai";
 import { Stargrade } from "./startgrade";
@@ -9,15 +9,17 @@ import { Reviewcnt } from "./reviewCnt";
 
 
 
-export const Placedata = () => {
-    const {data} = usePlaceinfo();
-   
-    const goreviewuploadpage = () => {
-        if(!localStorage.getItem("email"))
+export const Placedata = ({board_idx} : {board_idx:number}) => {
+    const { placeinfoData } = useGetplaceinfo(Number(board_idx));
+    
+    const goreviewuploadpage = () => {  
+        if(!localStorage.getItem("email")){
             alert("리뷰 쓰기는 로그인 시 가능합니다.");
+            return 0;
+    }
         router.push({
             pathname: "/reviewupload",
-            query: { board_idx: data?.board_number.toString() },
+            query: { board_idx: placeinfoData?.board_number.toString() },
         });
     };
 
@@ -25,7 +27,7 @@ export const Placedata = () => {
         <div css={placeinfoStyle.placedata.totalDiv}>
             <div css={placeinfoStyle.placedata.textinfoDiv}>
                 <div css={placeinfoStyle.placedata.title}>
-                    {data?.locationname}
+                    {placeinfoData?.locationname}
                     <button
                         type="button"
                         css={placeinfoStyle.placedata.reviewButton}
@@ -36,36 +38,36 @@ export const Placedata = () => {
                 </div>
                 <div css={placeinfoStyle.placedata.address}>
                     <AiTwotoneEnvironment />
-                    {data?.locationaddress}
+                    {placeinfoData?.locationaddress}
                 </div>
                 <div css={placeinfoStyle.placedata.stargradeDiv}>
-                    {data ? (
+                    {placeinfoData ? (
                         <>
                             <Stargrade
                                 name="⭐ 총점"
-                                grade={data.allAverage}
+                                grade={placeinfoData.allAverage}
                             />
 
                             <Stargrade
                                 name="👍🏻 좋아요"
-                                grade={data.satisfaction}
+                                grade={placeinfoData.satisfaction}
                             />
 
-                            <Stargrade name="💸 비용" grade={data.price} />
+                            <Stargrade name="💸 비용" grade={placeinfoData.price} />
 
                             <Stargrade
                                 name="👨‍👩‍👧‍👦 번잡도"
-                                grade={data.congestion}
+                                grade={placeinfoData.congestion}
                             />
 
                             <Stargrade
                                 name="🚗 접근성"
-                                grade={data.accessibility}
+                                grade={placeinfoData.accessibility}
                             />
 
                             <Reviewcnt
                                 name="‍️📝 리뷰"
-                                grade={data.reviewCount}
+                                grade={placeinfoData.reviewCount}
                             />
                         </>
                     ) : null}
@@ -73,7 +75,7 @@ export const Placedata = () => {
             </div>
             <div css={placeinfoStyle.placedata.imageinfoDiv}>
                 <Image
-                    src={data ? data.imageArrayUrl[0] : bgdetailexample}
+                    src={placeinfoData ? placeinfoData.imageArrayUrl[0] : bgdetailexample}
                     width={800}
                     height={460}
                     alt=""

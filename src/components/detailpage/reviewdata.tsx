@@ -6,10 +6,8 @@ import { Reviewcard } from "./reviewcard";
 
 export const Reviewdata = ({
     board_idx,
-    reviewcnt,
 }: {
     board_idx: number;
-    reviewcnt: number;
 }) => {
     const { page, setPage } = useReviewPage();
 
@@ -34,7 +32,7 @@ export const Reviewdata = ({
 
             {reviewlistData &&
                 [0, 1, 2, 3, 4, 5].map((value: number) =>
-                    value <= reviewcnt / 5 ? (
+                    value <= reviewlistData.length / 5 ? (
                         <button type="button" onClick={() => setPage(value)}>
                             {value + 1}
                         </button>

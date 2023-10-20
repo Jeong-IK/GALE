@@ -1,15 +1,15 @@
 import { useForm } from "react-hook-form";
 import { useDetailpagemodaltype } from "src/stores/store";
-
+import { useReportmutation } from "src/hooks/useReportreview";
 export const Reportmodal = () => {
     // board_review_number 가져오기
     const { board_review_number } = useDetailpagemodaltype();   
     const { register, handleSubmit } = useForm();
+    const  reportMutation  = useReportmutation();
 
     const onSubmit = data => {
-        // cookie 내 저장된 email 값 가져오기 
-        const user_id = localStorage.getItem('email');
-        console.log(data, board_review_number, user_id);
+        console.log(data, board_review_number);
+        reportMutation({board_review_number, ...data});
     };
 
     return (
@@ -24,51 +24,51 @@ export const Reportmodal = () => {
                         type="radio"
                         id="report1"
                         value={1}
-                        {...register("choice")}
+                        {...register("report_category")}
                     />
                     <label htmlFor="report1">주제와 상관 없는 리뷰</label>
                     <input
                         type="radio"
                         id="report2"
                         value={2}
-                        {...register("choice")}
+                        {...register("report_category")}
                     />
                     <label htmlFor="report2">도배성 리뷰</label>
                     <input
                         type="radio"
-                        id="report2"
+                        id="report3"
                         value={3}
-                        {...register("choice")}
+                        {...register("report_category")}
                     />
-                    <label htmlFor="report2">불법 광고</label>
+                    <label htmlFor="report3">불법 광고</label>
                     <input
                         type="radio"
-                        id="report2"
+                        id="report4"
                         value={4}
-                        {...register("choice")}
+                        {...register("report_category")}
                     />
-                    <label htmlFor="report3">
+                    <label htmlFor="report4">
                         개인 정보 노출 및 사생활 침해
                     </label>
                     <input
                         type="radio"
-                        id="report4"
+                        id="report5"
                         value={5}
-                        {...register("choice")}
+                        {...register("report_category")}
                     />
-                    <label htmlFor="report4">
+                    <label htmlFor="report5">
                         욕설 및 비속어, 인신 공격 리뷰
                     </label>
                     <input
                         type="radio"
-                        id="report5"
-                        value="기타 (하단 신고 내용 입력)"
-                        {...register("choice")}
+                        id="report6"
+                        value={6}
+                        {...register("report_category")}
                     />
-                    <label htmlFor="report5">기타 (하단 신고 내용 입력)</label>
+                    <label htmlFor="report6">기타 (하단 신고 내용 입력)</label>
 
-                    <label htmlFor="신고내용">신고내용</label>
-                    <textarea id="신고내용" {...register("message")} />
+                    <label htmlFor="content">신고내용</label>
+                    <textarea id="content" {...register("content")} />
                     <button type="button">닫기</button>
                     <button type="submit"> 신고하기</button>
                 </form>

@@ -119,11 +119,6 @@ export interface ReadplacecontentresponseType {
     satisfaction: number;
 }
 
-export interface placecontentstoreType {
-    data: ReadplacecontentresponseType | null;
-    setData : (data:ReadplacecontentresponseType) => void;
-}
-
 export interface GetplacereivewrequestType {
     board_Number: number;
     sortType: "new" | "averge";
@@ -332,7 +327,6 @@ export interface DetailpagemodalstoreType {
 }
 
 export interface ReportreviewrequestType {
-    reporter_userid: string;
     board_review_number: number;
     report_category: number;
     content: string;

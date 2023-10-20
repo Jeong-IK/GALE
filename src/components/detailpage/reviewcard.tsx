@@ -4,11 +4,15 @@ import { GetplacereviewresponseType } from "src/types/type";
 import { useDetailpagemodaltype } from "src/stores/store";
 import example from "src/public/reviewCardexample.png";
 import profileexample from "src/public/profileexample.png";
-import { useEffect } from "react";
 
 export const Reviewcard = (props: GetplacereviewresponseType) => {
     const { setType, setBoard_review_number } = useDetailpagemodaltype();
-    useEffect(()=> setBoard_review_number(props.board_review_number), []);
+    // setBoard_review_number(props.board_review_number);
+
+    const goreportform = () => {
+        setBoard_review_number(props.board_review_number);
+        setType('report');
+    }
     
     return (
         <>
@@ -43,7 +47,7 @@ export const Reviewcard = (props: GetplacereviewresponseType) => {
                             <button
                                 type="button"
                                 css={placeinfoStyle.reviewdata.reportButton}
-                                onClick={() => setType("report")}
+                                onClick={goreportform}
                             >
                                 신고하기
                             </button>

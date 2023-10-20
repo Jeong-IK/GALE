@@ -16,8 +16,6 @@ import {
     PagenumberstoreType,
     DetailModalType,
     DetailpagemodalstoreType,
-    ReadplacecontentresponseType,
-    placecontentstoreType,
     RegionselectorstoreType,
     MypagemodalType,
 } from "../types/type";
@@ -94,13 +92,6 @@ export const useReviewPage = create<PagenumberstoreType>(set => ({
             page,
         })),
 }));
-
-export const usePlaceinfo = create<placecontentstoreType>(set => ({
-    data : null,
-    setData : (data: ReadplacecontentresponseType) => set(()=> ({
-        data,
-    }))
-}))
 
 export const useDetailpagemodaltype = create<DetailpagemodalstoreType>(set => ({
     type: null,

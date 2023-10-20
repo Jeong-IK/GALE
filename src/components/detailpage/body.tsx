@@ -1,38 +1,26 @@
 import { useRouter } from "next/router";
-import { useEffect } from "react";
-import { usePlaceinfo } from "src/stores/store";
 import { placeinfoStyle } from "src/styles/style";
-import { useGetplaceinfo } from "src/hooks/useGetplaceinfo";
 import { Placedata } from "./placedata";
 import { Reviewdata } from "./reviewdata";
 import { Modal } from "./modal/modal";
 
 
 
-export const DetailBody = () => {
+export const DetailBody =  (): JSX.Element | Promise<JSX.Element>  => {
     const router = useRouter();
     const { board_idx } = router.query;
-    const {data, setData} = usePlaceinfo();
+    
+    if (!board_idx) return <div />;
 
-    useEffect(()=> {
-        const { placeinfoData } = useGetplaceinfo(Number(board_idx));
-    if(placeinfoData)
-        setData(placeinfoData);
-    }, []);
-
-    if (data) {
-        return (
-            <>
-                <div css={placeinfoStyle.bodydiv}>
-                    <Placedata />
-                    <Reviewdata
-                        board_idx={Number(board_idx)}
-                        reviewcnt={data.reviewCount}
-                    />
-                </div>
-                <Modal />
-            </>
-        );
-    }
-    return <div />;
+    return (
+        <>
+            <div css={placeinfoStyle.bodydiv}>
+                <Placedata board_idx={Number(board_idx)} />
+                <Reviewdata
+                    board_idx={Number(board_idx)}
+                />
+            </div>
+            <Modal />
+        </>
+    );
 };

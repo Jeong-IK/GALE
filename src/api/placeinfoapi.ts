@@ -6,8 +6,9 @@ export const reportreviewrequestapi = async (
     inputData: ReportreviewrequestType
 ): Promise<GeneralResponse> => {
     const axiosResult = await axios
-        .get("/board/review/report", { params: inputData })
-        .then(response => response.data.data);
+        .post("/board/review/report", { params: inputData })
+        .then(response => {console.log(response.data.data)
+            return response.data.data});
     return axiosResult;
 };
 
