@@ -16,6 +16,7 @@ export const Stargrade = ({ name, grade }: Starratingtype) => (
                         css={placeinfoStyle.stargrade.reviewStar(
                             value <= grade
                         )}
+                        key={value}
                     />
                 ))}
             </div>

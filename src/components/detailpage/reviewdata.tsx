@@ -33,7 +33,7 @@ export const Reviewdata = ({
             {reviewlistData &&
                 [0, 1, 2, 3, 4, 5].map((value: number) =>
                     value <= reviewlistData.length / 5 ? (
-                        <button type="button" onClick={() => setPage(value)}>
+                        <button type="button" onClick={() => setPage(value)} key={value}>
                             {value + 1}
                         </button>
                     ) : null

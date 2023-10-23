@@ -95,13 +95,13 @@ export const useReviewPage = create<PagenumberstoreType>(set => ({
 
 export const useDetailpagemodaltype = create<DetailpagemodalstoreType>(set => ({
     type: null,
-    board_review_number:null,
+    board_review_Number:null,
     setType: (selecttype: DetailModalType) =>
         set(() => ({
             type: selecttype,
         })),
-    setBoard_review_number: (board_review_number: number) => set(() => ({
-        board_review_number,
+    setBoard_review_number: (board_review_Number: number) => set(() => ({
+        board_review_Number,
     }))
 }));
 

@@ -11,7 +11,7 @@ import { Reviewcnt } from "./reviewCnt";
 
 export const Placedata = ({board_idx} : {board_idx:number}) => {
     const { placeinfoData } = useGetplaceinfo(Number(board_idx));
-    
+    // console.log("placeData", placeinfoData?.imageArrayUrl[0]);
     const goreviewuploadpage = () => {  
         if(!localStorage.getItem("email")){
             alert("리뷰 쓰기는 로그인 시 가능합니다.");

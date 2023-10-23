@@ -322,7 +322,7 @@ export type DetailModalType = "report" | "moreshow" | null;
 export interface DetailpagemodalstoreType {
     type: DetailModalType;
     setType: (selecttype: DetailModalType) => void;
-    board_review_number: number | null;
+    board_review_Number: number | null;
     setBoard_review_number: (board_review_number:number) => void;
 }
 

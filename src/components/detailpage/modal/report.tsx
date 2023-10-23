@@ -1,15 +1,15 @@
 import { useForm } from "react-hook-form";
 import { useDetailpagemodaltype } from "src/stores/store";
 import { useReportmutation } from "src/hooks/useReportreview";
+
 export const Reportmodal = () => {
     // board_review_number 가져오기
-    const { board_review_number } = useDetailpagemodaltype();   
+    const { board_review_Number } = useDetailpagemodaltype();   
     const { register, handleSubmit } = useForm();
     const  reportMutation  = useReportmutation();
 
     const onSubmit = data => {
-        console.log(data, board_review_number);
-        reportMutation({board_review_number, ...data});
+        reportMutation({board_review_Number, ...data});
     };
 
     return (

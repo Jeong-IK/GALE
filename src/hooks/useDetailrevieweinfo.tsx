@@ -7,10 +7,10 @@ import {
     GetdetailreviewresponseType
 } from "../types/type";
 
-export const useGetdetailreview = (board_review_number:number) => {
+export const useGetdetailreview = (board_review_Number:number) => {
     const { data: reviewData, refetch } = useQuery<
     GetdetailreviewresponseType,
         GeneralError
-    >(["placeinfo", board_review_number], () => moreshowreviewrequestapi(board_review_number));
+    >(["placeinfo", board_review_Number], () => moreshowreviewrequestapi(board_review_Number));
     return { reviewData, refetch };
 };

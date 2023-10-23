@@ -6,7 +6,7 @@ export const useReportmutation = () => {
     const { mutate: reportMutation } = useMutation<GeneralResponse, Error, ReportreviewrequestType>({
         mutationFn: reportreviewrequestapi,
         onSuccess: () => {
-            console.log("success");
+            alert("신고가 완료됬습니다.");
         },
         onError: error => {
             alert(error.message);

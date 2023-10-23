@@ -13,6 +13,11 @@ export const Reviewcard = (props: GetplacereviewresponseType) => {
         setBoard_review_number(props.board_review_number);
         setType('report');
     }
+
+    const gomoreshowform = () => {
+        setBoard_review_number(props.board_review_number);
+        setType('moreshow');
+    }
     
     return (
         <>
@@ -62,7 +67,7 @@ export const Reviewcard = (props: GetplacereviewresponseType) => {
                         <button
                             type="button"
                             css={placeinfoStyle.reviewdata.moreButton}
-                            onClick={() => setType("moreshow")}
+                            onClick={gomoreshowform}
                         >
                             더보기
                         </button>
