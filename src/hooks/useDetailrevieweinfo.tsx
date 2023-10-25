@@ -11,6 +11,6 @@ export const useGetdetailreview = (board_review_Number:number) => {
     const { data: reviewData, refetch } = useQuery<
     GetdetailreviewresponseType,
         GeneralError
-    >(["placeinfo", board_review_Number], () => moreshowreviewrequestapi(board_review_Number));
+    >(["morereview", board_review_Number], () => moreshowreviewrequestapi(board_review_Number));
     return { reviewData, refetch };
 };

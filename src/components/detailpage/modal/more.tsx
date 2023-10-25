@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useGetdetailreview } from "src/hooks/useDetailrevieweinfo";
 import { useDetailpagemodaltype } from "src/stores/store";
 import example from "src/public/profileexample.png";
-import placeexample from "src/public/example.png";
+import placeexample from "src/public/reviewCardexample.png";
 import { Stargrade } from "../startgrade";
 
 
@@ -15,12 +15,12 @@ export const Moreshow = () => {
     return (<div>   
         <div>
             <div>
-                <Image src={reviewData?.userProfileImageUrl ? reviewData.userProfileImageUrl : example} alt="" width={300} height={300}/>
+                <Image src={reviewData?.userProfileImageUrl && reviewData.userProfileImageUrl !== "null" ? reviewData.userProfileImageUrl : example} alt="" width={300} height={300}/>
                 <div>
                     <div>{reviewData?.userNickname}</div>
                    <div>{reviewData?.regdate}</div>
                 </div>
-                <Image src={reviewData?.imageArrayUrl ? reviewData.imageArrayUrl[0] : placeexample} alt="" width={300} height={300}/>
+                <Image src={reviewData?.imageArrayUrl && reviewData.imageArrayUrl[0] !== "null" ? reviewData.imageArrayUrl[0] : placeexample} alt="" width={300} height={300}/>
             </div>
             <div>
                 <div>
