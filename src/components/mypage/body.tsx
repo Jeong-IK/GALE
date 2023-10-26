@@ -6,17 +6,19 @@ import { ContentList } from "./contentlist";
 
 export const Mypagebody = () => (
     // const { contentType, setContenttype } = useMypagecontent();
-
-    <div css={mypageStyle.bodyDiv}>
-        <SelectContenttype />
-        <div css={mypageStyle.contentDiv}>
-            <ContentList />
-            <Map
-                center={{ lat: 33.5563, lng: 126.79581 }}
-                css={mypageStyle.kakaoMap}
-                zoomable={false}
-                draggable={false}
-            />
+    
+    <>
+        <div css={mypageStyle.bodyDiv}>
+            <SelectContenttype />
+            <div css={mypageStyle.contentDiv}>
+                <ContentList />
+                <Map
+                    center={{ lat: 33.5563, lng: 126.79581 }}
+                    css={mypageStyle.kakaoMap}
+                    zoomable={false}
+                    draggable={false}
+                />
+            </div>
         </div>
-    </div>
+    </>
 );

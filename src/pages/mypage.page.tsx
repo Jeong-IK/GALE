@@ -5,7 +5,7 @@ import { Footer } from "../components/footer";
 import { Mypageheader } from "../components/mypage/header";
 import { Mypagebody } from "../components/mypage/body";
 
-const Reviewupload: NextPage = () => (
+const Mypage: NextPage = () => (
     <>
         <Global styles={resetcss} />
         <div id="root">
@@ -13,9 +13,8 @@ const Reviewupload: NextPage = () => (
             <Mypagebody />
             <Footer />
         </div>
-
         <div id="modal" />
     </>
 );
 
-export default Reviewupload;
+export default Mypage;

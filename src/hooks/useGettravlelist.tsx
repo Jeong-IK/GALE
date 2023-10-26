@@ -1,10 +1,10 @@
 import {  useQuery } from "@tanstack/react-query";
-import { GeneralError, GetTravlelistresponse } from "../types/type";
-import { GettravleplannerAction } from "../api/mypageapi";
+import { GeneralError, Gettravlearrayresponsetype } from "../types/type";
+import { GettravlearrayAction } from "../api/mypageapi";
 
-export const useGettravleQuery = () => {
-    const { data: travlelistData, isLoading, error, refetch } = useQuery<GetTravlelistresponse, GeneralError, GetTravlelistresponse, [string]>(
-       ["travlelist"], GettravleplannerAction
+export const useGettravlearrayQuery = () => {
+    const { data: travlelistData, isLoading, error, refetch } = useQuery<Gettravlearrayresponsetype, GeneralError, Gettravlearrayresponsetype, [string]>(
+       ["travlelist"], GettravlearrayAction
     );
     return { travlelistData, isLoading, error, refetch };
 };

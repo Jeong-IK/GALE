@@ -18,6 +18,10 @@ export const Headerlink = ({ isIndex }: { isIndex: boolean }) => {
         });
     };
 
+    const gomypage = () => {
+        router.push({pathname:"/mypage"});
+    }
+
     // 로그인 여부 확인
     useEffect(() => {
         // localStorage가 생성되기 전에 실행되어 발생하는 오류 방지
@@ -72,7 +76,7 @@ export const Headerlink = ({ isIndex }: { isIndex: boolean }) => {
                     >
                         로그아웃
                     </button>
-                    <button type="button" css={headerStyle.link(isIndex)}>
+                    <button type="button" css={headerStyle.link(isIndex)} onClick={gomypage}>
                         마이페이지
                     </button>
                 </div>

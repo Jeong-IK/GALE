@@ -1,4 +1,5 @@
 import { Moment } from "moment";
+
 // 로그인, 회원가입, 알림창과 같은 모달창 타입
 export type ModalOption = "logIn" | "signUp" | "date" | "alert" | null;
 
@@ -288,26 +289,39 @@ export interface Listplannerdetailstype {
     startdate: Date;
 }
 
-// 여행계획 불러오기
-export interface GetTravlelisttype {
-    email: string;
-    title: string;
+// 여행계획 리스트 개별 타입
+interface Travleelementstype {
+    average: number;
     date_start: Date;
-    date_end: Date;
+	destination_address : string;
+	board_number: number;
+    planner_number: number;
     regdate: Date;
-    idx: number;
+    date_end: Date;
+	locationaddress : string;
+    userid: string;
+	imageArrayUrl : string[];
+}
+// /planner/list api 반환타입
+export interface Gettravlearrayresponsetype {
+    list: Travleelementstype[];
 }
 
-interface Gettravlelistarraytype {
-    content: GetTravlelisttype[];
+// /user/profile api 반환타입
+export interface Getprofileresponsetype {
+    nickname: string;
+    profileImageUrl: string;
 }
 
-export interface GetTravlelistresponse {
-    code: number;
-    data: Gettravlelistarraytype;
-    message: string;
+// /user/profile api 요청 타입
+export interface Editprofilerequesttype {
+    nickname : string,
+	password : string,
+	newPassword : string,
+	newPasswordConfirmation : string,
 }
 
+// 여행 계획 삭제하기
 export interface DeleteTrablelistProptype {
     planner_idx: number;
 }

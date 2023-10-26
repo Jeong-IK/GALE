@@ -116,7 +116,8 @@ export const useRegionselectorstore = create<RegionselectorstoreType> (set => ({
 
 export const useMypageemodalstore = create<MypagemodalType>( set =>({
     isopen: false,
-    setIsopen: (state: boolean) => set(() => ({isopen: state})),
+    setIsopen: (state: boolean) => 
+        set(() => ({isopen: state})),
 }))
 
 

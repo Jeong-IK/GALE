@@ -26,7 +26,6 @@ export const Photoform = () => {
             setAlertext("최대 10개의 파일까지 업로드 가능합니다.");
 
         if (file) {
-            console.log("4");
             const reader = new FileReader();
             reader.onloadend = () => {
                 setImagelist((prevImages: Uploadimagetype[]) => [

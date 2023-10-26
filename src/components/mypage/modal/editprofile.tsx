@@ -2,8 +2,14 @@ import Image from "next/image";
 import example from "src/public/profileexample.png";
 import {AiOutlineCamera} from "react-icons/ai";
 import {MdOutlineClose} from "react-icons/md";
+import { useprofileeditMutation } from "src/hooks/useProfileupdate";
 
 export const Editprofile = () => {
+    const {editprofileMutation, editprofileError} = useprofileeditMutation();
+    const editprofilesubmit = (props) => {
+        console.log(props);
+    }
+
     console.log(1);
     return (<div>
         <div>GALE 프로필 수정</div>

@@ -56,7 +56,7 @@ export const headerStyle = {
     headerBgImg: css`
         position: absolute;
         background-size: cover;
-        width: 100vw;
+        width: 100%;
         z-index: -1;
         background-repeat: no-repeat;
     `,
@@ -69,7 +69,7 @@ export const modalStyle = {
         position: fixed;
         top: 0;
         left: 0;
-        z-index: 1;
+        z-index: 999;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -891,9 +891,10 @@ export const mypageStyle = {
     headerBgImg: css`
         position: absolute;
         background-size: cover;
-        width: 100rem;
+        width: auto;
         height: 53rem;
         overflow: hidden;
+        z-index: -1;
     `,
     bodyDiv: css`
         width: 160rem;
