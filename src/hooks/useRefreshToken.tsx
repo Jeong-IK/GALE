@@ -11,17 +11,18 @@ const setStorageData = (responseData: RefreshTokenResponse) => {
 };
 
 export const useRefreshToken = () => {
-    const { mutate: refreshMutate } = useMutation<
+    const { mutate } = useMutation<
         RefreshTokenResponse,
-        GeneralError,
-        RefreshTokenProps
+        
+        GeneralError
     >({
         mutationFn: refreshTokenAction,
         onSuccess: data => {
+            console.log(data);  
             setStorageData(data);
         },
         onError: error => Promise.reject(error),
     });
 
-    return refreshMutate;
+    return{ mutate };
 };

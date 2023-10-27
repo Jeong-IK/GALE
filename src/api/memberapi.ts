@@ -42,6 +42,7 @@ export const loginAction = async (
 // 수정 예정
 export const logoutAction = async (): Promise<GeneralResponse> => {
     const refreshtoken = localStorage.getItem("refreshToken");
+    console.log(refreshtoken);
     const axiosResult = await axios
         .post("/user/logout", {
             headers: {

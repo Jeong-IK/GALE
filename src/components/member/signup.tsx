@@ -19,6 +19,7 @@ export const Signup = () => {
         const nickname = getValues("nickname");
         existNicknameMutation({ nickname });
     };
+    
     const onSignup = (inputdata: SignupProps) => {
         signupMutation(inputdata);
     };

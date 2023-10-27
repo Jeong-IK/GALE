@@ -196,7 +196,7 @@ export interface RefreshTokenProps {
 }
 export interface RefreshTokenResponse {
     message: string;
-    Success: boolean;
+    accessToken: string;
 }
 
 export interface GeneralResponse {

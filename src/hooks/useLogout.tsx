@@ -15,6 +15,7 @@ export const useLogoutMutation = () => {
             deleteAcountdata();
         },
         onError: error => {
+            console.log(error);
             alert(error.message);
         },
     });
