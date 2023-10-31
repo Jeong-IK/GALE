@@ -4,6 +4,7 @@ import { GeneralError, LoginProps, LoginResponse } from "../types/type";
 import { useLoginState } from "../stores/store";
 
 const setStorageData = (responseData: LoginResponse) => {
+    console.log(responseData);
     localStorage.setItem("accessToken", responseData.data.accessToken);
     localStorage.setItem("refreshToken", responseData.data.refreshToken);
     localStorage.setItem("email", responseData.data.email);

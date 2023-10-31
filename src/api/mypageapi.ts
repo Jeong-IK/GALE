@@ -11,9 +11,7 @@ import {
 export const GettravlearrayAction = async (): Promise<Gettravlearrayresponsetype> => {
     const axiosResult = await axios
             .get("/planner/list")
-            .then(response => {
-                console.log(response.data.data);
-                return response.data.data});
+            .then(response => response.data.data);
         return axiosResult;
 };
 
@@ -21,9 +19,7 @@ export const GettravlearrayAction = async (): Promise<Gettravlearrayresponsetype
 export const GetprofileAction = async (): Promise<Getprofileresponsetype> => {
     const axiosResult = await axios
             .get("/user/profile")
-            .then(response => {
-                console.log(response.data.data);
-                return response.data.data});
+            .then(response => response.data.data);
         return axiosResult;
 };
 

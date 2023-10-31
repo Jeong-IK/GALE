@@ -2,7 +2,7 @@ import ReactDOM from "react-dom";
 import React, { useRef } from "react";
 import { modalStyle, placeinfoStyle } from "src/styles/style";
 import { useMypageemodalstore } from "src/stores/store";
-import { Editprofile } from "./editprofile";
+import { Editform } from "./editform";
 
 
 export const Modal = () => {
@@ -32,7 +32,7 @@ export const Modal = () => {
                             ref={windowModal}
                         >
                             <div css={placeinfoStyle.modalStyle.modalForm}>
-                                <Editprofile />
+                                <Editform />
                             </div>
                         </div>
                     </div>,

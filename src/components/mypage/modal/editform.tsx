@@ -1,15 +1,17 @@
 import Image from "next/image";
 import example from "src/public/profileexample.png";
-import {AiOutlineCamera} from "react-icons/ai";
-import {MdOutlineClose} from "react-icons/md";
-import { useprofileeditMutation } from "src/hooks/useProfileupdate";
 import { useForm } from "react-hook-form";
 import { Editprofilerequesttype } from "src/types/type";
 import { useMypageemodalstore } from "src/stores/store";
+import { useGetprofileinfo } from "src/hooks/useGetprofileinfo";
+import { useprofileeditMutation } from "src/hooks/useProfileupdate";
+import { Editprofileimage } from "./editprofileimage";
 
-export const Editprofile = () => {
-    const {editprofileMutation} = useprofileeditMutation();
+export const Editform = () => {
+    
     const {isopen, setIsopen} = useMypageemodalstore();
+    const {editprofileMutation} = useprofileeditMutation();
+    const  { profileData } = useGetprofileinfo();
 
     const editFORMsubmit = (props:Editprofilerequesttype) => {
         // console.log("submit", props);
@@ -27,11 +29,8 @@ export const Editprofile = () => {
     <div>
         <div>GALE 프로필 수정</div>
         <div/>
-        <Image src={example} alt=""/>
-        <div>
-            <button type="button"> <AiOutlineCamera/> </button>
-            <button type="button"> <MdOutlineClose/> </button>
-        </div> 
+        <Image src={profileData?.profileImageUrl && profileData.profileImageUrl !== "null" ? profileData.profileImageUrl : example} alt=""/>
+        <Editprofileimage />
         <div>
             <label htmlFor="id">아이디</label>
             <div id="id">example@gmail.com</div>

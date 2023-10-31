@@ -6,7 +6,7 @@ import example from "src/public/profileexample.png";
 import {AiOutlineEdit} from "react-icons/ai";
 
 export const Profile = () => {
-    const {profileData} = useGetprofileinfo();
+    const { profileData } = useGetprofileinfo();
     const {isopen, setIsopen} = useMypageemodalstore();
     
     return (

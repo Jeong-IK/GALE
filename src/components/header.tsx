@@ -5,7 +5,6 @@ import bigLogo from "../public/LOGO.png";
 import { Headerlink } from "./common/headerlink";
 
 export const Header = (): JSX.Element => (
-    // 로그아웃 액션 -> accessToken만으로 로그아웃 되도록 수정 예정
 
     <>
         <div css={headerStyle.mainHeader}>
