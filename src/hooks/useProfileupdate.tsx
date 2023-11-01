@@ -1,4 +1,4 @@
-import { EditprofileAction } from "src/api/mypageapi";
+import { EditprofileAction } from "src/api/profileapi";
 import { useMutation } from "@tanstack/react-query";
 import { Editprofilerequesttype, GeneralError, GeneralResponse } from "src/types/type";
 

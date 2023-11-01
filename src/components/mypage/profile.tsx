@@ -12,7 +12,7 @@ export const Profile = () => {
     return (
     <>
         <div>
-            <Image src={profileData?.profileImageUrl && profileData?.profileImageUrl !== "null" ? profileData?.profileImageUrl :example} alt=""/>
+            <Image src={profileData?.profileImageUrl && profileData?.profileImageUrl !== "null" ? profileData?.profileImageUrl :example} width={30} height={30}  alt=""/>
             <button type="button" onClick={()=>setIsopen(!isopen)}>
                 <AiOutlineEdit/>
             </button>

@@ -6,17 +6,14 @@ clientAxios.defaults.baseURL = `${process.env.NEXT_PUBLIC_BASE_URL}`;
 
 clientAxios.interceptors.request.use(
     config => {
-        console.log("config Start");
         const refresh = localStorage.getItem("refreshToken");        
         const token = localStorage.getItem("accessToken");
         if(token || refresh){
             if(config.url === "/user/token" || config.url === "/user/logout"){
-                console.log("token or logout catch");
                 config.headers!.Authorization = `Bearer ${refresh}`;
                 console.log(config.headers!.Authorization);
                 return config;
             }
-            console.log("accesstoken 삽입 및 전송");
             config.headers!.Authorization = `Bearer ${token}`;
             return config;
         }
@@ -48,6 +45,7 @@ const frontLogoutfunc = () => {
 clientAxios.interceptors.response.use(
     res => res,
     async error => {
+        console.log(error);
         // 401오류가 발생한 API 요청 저장
         const originalConfig = error.config;
         // isRetreycheck가 참일 경우 리프레시 토큰이 만료된 것으로 확인 
@@ -67,6 +65,7 @@ clientAxios.interceptors.response.use(
         frontLogoutfunc();
 
     }
+    return axios(originalConfig);
     }
 );
 

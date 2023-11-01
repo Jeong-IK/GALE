@@ -13,8 +13,8 @@ export const Editform = () => {
     const {editprofileMutation} = useprofileeditMutation();
     const  { profileData } = useGetprofileinfo();
 
-    const editFORMsubmit = (props:Editprofilerequesttype) => {
-        // console.log("submit", props);
+    const editformsubmit = (props:Editprofilerequesttype) => {
+        console.log("editformsubmit", props);
         editprofileMutation(props);
     }
 
@@ -29,13 +29,13 @@ export const Editform = () => {
     <div>
         <div>GALE 프로필 수정</div>
         <div/>
-        <Image src={profileData?.profileImageUrl && profileData.profileImageUrl !== "null" ? profileData.profileImageUrl : example} alt=""/>
+        <Image src={profileData?.profileImageUrl && profileData.profileImageUrl !== "null" ? profileData.profileImageUrl : example} width={50} height={50} alt=""/>
         <Editprofileimage />
         <div>
             <label htmlFor="id">아이디</label>
             <div id="id">example@gmail.com</div>
         </div>
-        <form onSubmit={handleSubmit(editFORMsubmit)}>
+        <form onSubmit={handleSubmit(editformsubmit)}>
             <div>
                 <label htmlFor="nickname">닉네임</label>
                 <input type="text" id="nickname"

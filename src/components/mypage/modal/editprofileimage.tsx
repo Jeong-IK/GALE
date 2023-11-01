@@ -7,21 +7,18 @@ import { useUoloadprofileimage } from "src/hooks/useUploadprofileimage";
 export const Editprofileimage = () => {
     const imagechangeRef = useRef<HTMLInputElement>(null);
     const { deleteprofileimageMutation } = useDeleteprofileimage();
-    const {uploadimagemutate} = useUoloadprofileimage();
+    const { uploadimagemutate } = useUoloadprofileimage();
     
-    const fileChangefunc = (chfile: React.ChangeEvent<HTMLInputElement>) => {
+    const imageChangefunc = (chfile: React.ChangeEvent<HTMLInputElement>) => {
         const file = chfile.target.files ? chfile.target.files[0] : null;
         
         if (file) {
             const reader = new FileReader();
             reader.onloadend = () => {
-                setImagelist((prevImages: Uploadimagetype[]) => [
-                    ...prevImages,
-                    {
+                uploadimagemutate({
                         fileData: reader.result as string,
                         saveFileData: file,
-                    },
-                ]);
+                }) 
             };
             reader.readAsDataURL(file);
         }
@@ -34,10 +31,10 @@ export const Editprofileimage = () => {
             accept="image/*"
             style={{ display: "none" }}
             ref={imagechangeRef}
-            // onChange={fileChangefunc}
+             onChange={imageChangefunc}
         />
         <button type="button" aria-label="uploadimage" onClick={() => imagechangeRef.current?.click()}><AiOutlineCamera /></button>
-        <button type="button" onClick={() => deleteprofileimageMutation}> <MdOutlineClose/> </button>
+        <button type="button" onClick={()=> {deleteprofileimageMutation()}}> <MdOutlineClose/> </button>
     </>
             );
 }

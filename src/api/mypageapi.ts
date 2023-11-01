@@ -4,7 +4,6 @@ import {
     DeleteTrablelistProptype,
     Gettravlearrayresponsetype,
     Getprofileresponsetype,
-    Editprofilerequesttype
 } from "../types/type";
 
 // 여행 계획 리스트 요청 API
@@ -22,14 +21,6 @@ export const GetprofileAction = async (): Promise<Getprofileresponsetype> => {
             .then(response => response.data.data);
         return axiosResult;
 };
-
-// 프로필 수정
-export const EditprofileAction = async (props:Editprofilerequesttype): Promise<GeneralResponse> => {
-    const axiosResult = await axios
-            .patch("/user/profile", props)
-            .then(response => response.data.data);
-        return axiosResult;
-}
 
 // // 상세 여행 계획 요청 API
 // export const GettravleplannerAction =

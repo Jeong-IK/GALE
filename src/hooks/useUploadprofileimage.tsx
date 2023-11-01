@@ -6,7 +6,7 @@ import {
     Uploadimagetype
 } from "../types/type";
 
-export const useUoloadprofileimage = async () => {
+export const useUoloadprofileimage = () => {
     const { mutate: uploadimagemutate } = useMutation<
         GeneralResponse,
         GeneralError,
@@ -17,5 +17,5 @@ export const useUoloadprofileimage = async () => {
         onSuccess: response => console.log(response),
         onError: error => console.log(error),
     });
-    return uploadimagemutate;
+    return {uploadimagemutate};
 }
