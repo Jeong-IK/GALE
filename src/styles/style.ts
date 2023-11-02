@@ -220,16 +220,19 @@ export const travleStyle = {
         border-radius: 15px;
         box-shadow: 0px 2px 13px 4px rgba(0, 0, 0, 0.1);
         margin: 2.4rem auto 0 auto;
+        
     `,
     form: {
         div: css`
             border: none;
             border-bottom: 1px solid #dadada;
             width: 36.5rem;
-            display: inline-block;
+            display: inline-flex;
+            justify-content: space-between;
+            align-items: center;
             margin: 0 3.7rem 0 3.7rem;
         `,
-        input: css`
+        input: (selectedsubregion: string) => css`
             border: none;
             font-family: Inter;
             font-size: 2rem;
@@ -237,15 +240,12 @@ export const travleStyle = {
             font-weight: 500;
             line-height: normal;
             margin-bottom: 1.8rem;
-            &::placeholder {
-                color: 989AAC;
-                margin-left: 0;
-                font-family: Inter;
-                font-size: 2rem;
-                font-style: normal;
-                font-weight: 500;
-                line-height: normal;
-            }
+            color: ${selectedsubregion ? "#2D2D2D" : "#989AAC"};
+        `,
+        iputemoge : css`
+            width: 24px;
+            height: 24px;
+            color: #989AAC;
         `,
         button: css`
             width: 21.8rem;
@@ -343,6 +343,20 @@ export const travleStyle = {
             color: red;
         `,
     },
+    RegionSelector: {
+        div: css`
+        width: 62rem;
+        height: 37rem;
+        border-radius: 15px;
+        background: #FFF;
+        box-shadow: 0px 2px 13px 4px rgba(0, 0, 0, 0.10);
+        position: absolute;
+        top: 100%;
+        display: flex;
+        border:none;
+        z-index:9;
+        `,
+    }
 };
 
 export const customDatepickerStyle = css`
@@ -357,9 +371,9 @@ export const customDatepickerStyle = css`
         background: #fe8101;
         color: #fff;
         font-family: Inter;
-        font-size: 18px;
+        font-size: 2rem;
         font-style: normal;
-        font-weight: 700;
+        font-weight: 500;
         line-height: normal;
     }
 

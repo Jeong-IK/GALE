@@ -5,6 +5,7 @@ import moment from "moment";
 import "moment/locale/ko";
 import { useDaterangeStore } from "src/stores/store";
 import { travleStyle } from "src/styles/style";
+import {AiOutlineCalendar} from "react-icons/ai";
 
 export const DatePicker = () => {
     const {
@@ -60,6 +61,7 @@ export const DatePicker = () => {
     };
 
     return (
+        <>
         <DateRangePicker
             startDate={draftStartDate}
             startDateId="start_date_id"
@@ -74,5 +76,7 @@ export const DatePicker = () => {
             hideKeyboardShortcutsPanel
             renderWeekHeaderElement={renderWeekHeaderElement}
         />
+        <AiOutlineCalendar css={travleStyle.form.iputemoge}/>
+        </>
     );
 };

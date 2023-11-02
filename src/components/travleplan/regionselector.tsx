@@ -1,3 +1,5 @@
+import { travleStyle } from "src/styles/style";
+import { AiTwotoneEnvironment } from "react-icons/ai";
 import {useRegionselectorstore} from "src/stores/store";
 import { Regiondata} from "src/types/type";
 
@@ -14,16 +16,19 @@ export const Regionselector = () => {
     };
 
     return (
-        <div>
+      <div css={{position: "relative", display:"inline-flex"}}>
+        <div css={[travleStyle.form.div, { alignItems: 'center',justifyContent:"space-between" }]}>
           <div 
             onClick={() => setIsopen(!isopen)} 
-            style={{ width: 200, height: 50, border: '1px solid black' }}
+            css={travleStyle.form.input(selectedregion)}
           >
-            {selectedsubregion || '지역 선택'}
+            { selectedsubregion ? `${selectedregion} ${selectedsubregion}` : "지역을 선택해주세요."}
           </div>
-    
+          <AiTwotoneEnvironment  css={travleStyle.form.iputemoge}/>
+        </div>
+      
           {isopen && (
-            <div style={{ width: 400, height: 200, border: '1px solid black', display: 'flex' }}>
+            <div css={travleStyle.RegionSelector.div}>
               <div style={{ flex: 1 }}>
                 {Object.keys(Regiondata).map((region: string) => (
                   <div key={region} onClick={() => handleRegionClick(region)}>
