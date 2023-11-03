@@ -200,6 +200,7 @@ export const travleStyle = {
         position: relative;
         width: 160rem;
         height: 20rem;
+        z-index:1;
     `,
     travleSubject: css`
         display: flex;
@@ -345,16 +346,70 @@ export const travleStyle = {
     },
     RegionSelector: {
         div: css`
-        width: 62rem;
-        height: 37rem;
+        margin-top: -9rem;
+        width: 63rem;
+        height: auto;
         border-radius: 15px;
         background: #FFF;
         box-shadow: 0px 2px 13px 4px rgba(0, 0, 0, 0.10);
-        position: absolute;
-        top: 100%;
-        display: flex;
         border:none;
-        z-index:9;
+        padding: 5rem;
+        color: var(--main, #2D2D2D);
+        font-family: "굴림";
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        `,
+        regionlist: css`
+        flex-basis: 15rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        `,
+        regioncontent: (isClicked:boolean) => css`
+        width:15rem;
+        height:3.5rem;
+        display: flex;
+        align-items: center; 
+        padding: 0 1.5rem; 
+        color: var(--main, #2D2D2D);
+        font-family: Inter;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: ${isClicked ? "700" : "500"};
+        line-height: normal;
+        color: ${isClicked ? "var(--main2, #FE8101)" : "black"};
+        background-color:${isClicked ? "#FFEEDC" : "white"};
+        svg {
+            color: ${isClicked ? "var(--main2, #FE8101)" : "white"};
+          }
+        justify-content: space-between;
+        `,
+        subregionlist: css`
+        width:32rem;
+        display: grid;
+        grid-template-columns: repeat(3, 6.6fr);
+        gap: 1.5rem;
+        color: var(--main, #2D2D2D);
+        margin: 0.5rem 0 0 6rem;
+        font-family: Inter;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        `,
+        subregioncontent: (isClicked : boolean) => css`
+
+        color: ${isClicked ? "var(--main2, #FE8101)" : "black"};
+        svg {
+            margin 0 0.5rem 0 0;
+            width:1.4rem;
+            color: ${isClicked ? "#FE8101" : "white"};
+          } 
+            
+
         `,
     }
 };
@@ -569,9 +624,7 @@ export const errorMsg = {
 
 export const destinationComplete = {
     distinationBgcolor: css`
-        width: auto;
-        height: auto;
-        background-color: #f5f5f5;
+        
         padding-top: 5.8rem;
     `,
     destinationDiv: css`

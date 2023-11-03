@@ -24,6 +24,7 @@ export const resetcss = css`
     h4,
     h5,
     h6 {
+        font-family: "굴림", sans-serif;
         font-size: 10px;
         margin: 0;
         padding: 0;
