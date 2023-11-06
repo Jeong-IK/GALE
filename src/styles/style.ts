@@ -268,6 +268,7 @@ export const travleStyle = {
             height: 81rem;
             border-radius: 15px;
             margin: 0 5.7rem 0 0;
+            z-index:-1;
         `,
         subject: css`
             color: #2d2d2d;
@@ -324,8 +325,7 @@ export const travleStyle = {
             align-items: center;
             border: none;
             color: white;
-            position: absolute;
-            bottom: 4.9rem;
+            margin-top: 1rem;
         `,
     },
     calendar: {
@@ -346,7 +346,7 @@ export const travleStyle = {
     },
     RegionSelector: {
         div: css`
-        margin-top: -9rem;
+        margin-top: 1rem;
         width: 63rem;
         height: auto;
         border-radius: 15px;
