@@ -1,5 +1,5 @@
 import Image from "next/image";
-import headerImg from "src/public/headerBgImage.png";
+import headerImg from "src/public/mypageBgImage.png";
 import { mypageStyle } from "src/styles/style";
 import { Headerlink } from "../common/headerlink";
 import { Modal } from "./modal/modal";

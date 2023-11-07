@@ -21,7 +21,7 @@ export const headerStyle = {
         position: relative;
         width: 160rem;
         margin: 0 auto 4rem auto;
-        padding-top: 4rem;
+        padding: 4rem 0 0 0; 
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -268,7 +268,6 @@ export const travleStyle = {
             height: 81rem;
             border-radius: 15px;
             margin: 0 5.7rem 0 0;
-            z-index:-1;
         `,
         subject: css`
             color: #2d2d2d;
@@ -282,6 +281,7 @@ export const travleStyle = {
             width: 160rem;
             height: auto;
             margin: 0 auto 0 auto;
+            
         `,
         listDiv: css`
             width: 53.3rem;
@@ -297,6 +297,7 @@ export const travleStyle = {
             padding: 3rem 0 0 0;
             display: flex;
             margin: 0 0 7.5rem 0;
+            z-index:-1;
         `,
         travleDate: css`
             border-radius: 15px 15px 0px 0px;
@@ -530,6 +531,7 @@ export const hotPlaceStyle = {
         height: 66rem;
         flex: 1;
         border-radius: 15px;
+        z-index:-1;
     `,
     slideDiv: css`
         height: 36rem;
@@ -952,21 +954,22 @@ export const reviewStyle = {
 
 export const mypageStyle = {
     headerDiv: css`
-        height: 53rem;
+        height: auto;
         width: auto;
+        padding 0 0 0 16rem;
     `,
     headerBgImg: css`
         position: absolute;
         background-size: cover;
         width: auto;
-        height: 53rem;
+        height: 28rem;
         overflow: hidden;
         z-index: -1;
     `,
     bodyDiv: css`
         width: 160rem;
         height: fit-content;
-        padding-top: 6.4rem;
+        padding-top: 29rem;
         margin: 0 auto 0 auto;
         display: flex;
         flex-direction: column;
@@ -1063,26 +1066,83 @@ export const mypageStyle = {
             height: 1.6rem;
             color: ${checked ? " #FF0000" : " #989AAC"};
         `,
-        profile: {
-            profileContainerStyle: css`
-                position: absolute;
-                top: 100px;
-                left: 161px;
-            `,
-
-            profileImg: css`
-                width: 138px;
-                height: 138px;
-
-                /* 원형으로 만들기 위해 border-radius를 반지름의 크기로 설정합니다. */
-                border-radius: 69px;
-
-                /* 이미지가 너무 큰 경우, 객체의 중앙 부분만 보여주도록 설정합니다. */
-                object-fit: cover;
-            `,
-        },
     },
+    profile: {
+        profileContainerStyle: css`
+            position: absolute;
+            top: 100px;
+            left: 161px;
+            top:0%;
+        `,
 
+        profileImg: css`
+            width: 138px;
+            height: 138px;
+            border-radius: 69px;
+            object-fit: cover;
+            position: relative;
+        `,
+        editbutton: css`
+            width: 3.8rem;
+            height: 3.8rem;
+            border-radius: 1.9rem;
+            border: none;
+            font-size: 2.4rem;
+            position: absolute;
+            top: 75%;
+            left: 58%;
+        `,
+        nickname: css`
+            margin: 0 0 0 1.6rem;
+            align-items: center;
+            display: flex;
+            color: #FFF;
+            font-family: Inter;
+            font-size: 2.8rem;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            letter-spacing: -0.006px;`
+    },
+    Editprofileform: {
+        title: css`
+            color: var(--main, #2D2D2D);
+            font-family: Inter;
+            font-size: 28px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+        `,
+        line: css`
+            width: 52.5rem;
+            height: 1px;
+            background-color: black;
+            stroke-width: 2px;
+            stroke: var(--main, #2D2D2D);
+            margin: 2rem 0 2.5rem 0;
+        `,
+        profileImage: css`
+            width:14rem;
+            height:14rem;
+            border-radius: 7rem;
+            
+        `,
+        container: css`
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        `,
+        label: css`
+            width: 100px;
+        `,
+        input: css`
+            margin-left: 10px;
+        `,
+        text: css`
+        
+        `
+
+    },
     kakaoMap: css`
         width: 101rem;
         height: 81rem;
