@@ -3,7 +3,7 @@ import { AiOutlineCamera } from "react-icons/ai";
 import { MdOutlineClose } from "react-icons/md";
 import { useDeleteprofileimage } from "src/hooks/useDeleteprofileimage";
 import { useUoloadprofileimage } from "src/hooks/useUploadprofileimage";
-// import { mypageStyle } from "src/styles/style";
+import { mypageStyle } from "src/styles/style";
 
 export const Editprofileimage = () => {
     const imagechangeRef = useRef<HTMLInputElement>(null);
@@ -26,7 +26,7 @@ export const Editprofileimage = () => {
     };
 
     return (
-    <div style={{display:"flex", position:"absolute"}}> 
+    <div css={mypageStyle.Editprofileform.profileimageButton}> 
         <input
             type="file"
             accept="image/*"
@@ -34,8 +34,9 @@ export const Editprofileimage = () => {
             ref={imagechangeRef}
              onChange={imageChangefunc}
         />
-        <button type="button" aria-label="uploadimage" onClick={() => imagechangeRef.current?.click()}><AiOutlineCamera /></button>
-        <button type="button" onClick={()=> {deleteprofileimageMutation()}}> <MdOutlineClose/> </button>
+        <button type="button" aria-label="uploadimage" css={mypageStyle.Editprofileform.button} onClick={() => imagechangeRef.current?.click()}><AiOutlineCamera /></button>
+        <div css={{color:"#D9D9D9", fontSize:"2.4rem"}}> | </div>
+        <button type="button" css={mypageStyle.Editprofileform.button} onClick={()=> {deleteprofileimageMutation()}}> <MdOutlineClose/> </button>
     </div>
-            );
+    );
 }

@@ -1105,6 +1105,29 @@ export const mypageStyle = {
             letter-spacing: -0.006px;`
     },
     Editprofileform: {
+        editform: css`
+            margin: 6.7rem auto 0 auto;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        `,
+        label: css`
+            color: var(--main, #2D2D2D);
+            font-family: Inter;
+            font-size: 1.6rem;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal; 
+        `,
+        text: css`
+            width:36rem;
+            color: var(--main, #2D2D2D);
+            font-family: Inter;
+            font-size: 1.6rem;
+            font-style: normal;
+            line-height: normal;
+            font-weight:500;
+        `,
         title: css`
             color: var(--main, #2D2D2D);
             font-family: Inter;
@@ -1129,20 +1152,72 @@ export const mypageStyle = {
         `,
         container: css`
             display: flex;
+            text-align: left;
             align-items: center;
             margin-bottom: 10px;
-        `,
-        label: css`
-            width: 100px;
+            justify-content: space-between;
+
         `,
         input: css`
             margin-left: 10px;
+            width:36rem;
+            height:5.5rem;
+            border-radius: 8px;
+            border: 1px solid #ACACAC;      
+            background: #FFF;
         `,
-        text: css`
-        
+        onlytext: css`
+            border:none;
+        `,
+        cancleButton: css`
+            width: 18.5rem;
+            height: 6rem;
+            border-radius: 8px;
+            border: 1px solid #A5A5A5;
+            background: #FFF;
+            color: #A5A5A5;
+            font-family: Inter;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            margin: 0 1rem 0 0;
+        `,
+        submitButton: (isvalid:boolean) => css`
+            width: 18.5rem;
+            height: 6rem;
+            border-radius: 8px;
+            border: 1px solid #A5A5A5;
+            color: #FFF;
+            font-family: Inter;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            background: ${isvalid ? "var(--main2, #FE8101)" : "var(--main2, #FE8101);"};
+        `,
+        profileimageButton: css`
+            display:flex;
+            position:absolute;
+            right: 42%;
+            top: 33%;
+            width: 10rem;
+            height: 4.5rem;
+            border-radius: 100px;
+            background: #FFF;
+            box-shadow: 0px 2px 11px 0px rgba(0, 0, 0, 0.15);
+            display: flex;
+            justify-content: center;
+            align-items:center;
+`,
+        button:css`
+            border:none;
+            background: transparent;
+            border: none;
+            font-size: 2.4rem;
+            color: #A5A5A5;
         `
-
-    },
+},
     kakaoMap: css`
         width: 101rem;
         height: 81rem;

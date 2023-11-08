@@ -5,8 +5,8 @@ import { Editprofilerequesttype } from "src/types/type";
 import { useMypageemodalstore } from "src/stores/store";
 import { useGetprofileinfo } from "src/hooks/useGetprofileinfo";
 import { useprofileeditMutation } from "src/hooks/useProfileupdate";
-import { Editprofileimage } from "./editprofileimage";
 import { mypageStyle } from "src/styles/style";
+import { Editprofileimage } from "./editprofileimage";
 
 export const Editform = () => {
     
@@ -32,15 +32,15 @@ export const Editform = () => {
         <div css={mypageStyle.Editprofileform.line}/>
         <Image src={profileData?.profileImageUrl && profileData.profileImageUrl !== "null" ? profileData.profileImageUrl : example} width={140} height={140} css={mypageStyle.Editprofileform.profileImage} alt=""/>
         <Editprofileimage />
-        <div style={{margin:"6.7rem auto 0 auto", alignItems:"left"}}>
+        <div css={mypageStyle.Editprofileform.editform}>
+            <form onSubmit={handleSubmit(editformsubmit)} >
             <div css={mypageStyle.Editprofileform.container}>
                 <label htmlFor="id" css={mypageStyle.Editprofileform.label}>아이디</label>
-                <div id="id" css={mypageStyle.Editprofileform.input}>example@gmail.com</div>
+                <input type="text" id="id" css={[mypageStyle.Editprofileform.input, mypageStyle.Editprofileform.text, mypageStyle.Editprofileform.onlytext]} value="example@gmail.com"/>
             </div>
-            <form onSubmit={handleSubmit(editformsubmit)} >
                 <div css={mypageStyle.Editprofileform.container}>
                     <label htmlFor="nickname" css={mypageStyle.Editprofileform.label}>닉네임</label>
-                    <input type="text" id="nickname"
+                    <input type="text" id="nickname" css={[mypageStyle.Editprofileform.input, mypageStyle.Editprofileform.text]}
                     {...register("nickname", {
                         required: "닉네임을 입력해주세요.",
                         minLength: {
@@ -49,6 +49,7 @@ export const Editform = () => {
                     }})}
                         />
                 </div>
+                
                 <div css={mypageStyle.Editprofileform.container}>
                     <label htmlFor="currentpass" css={mypageStyle.Editprofileform.label}>기존 비밀번호</label>
                     <input type="password" id="currentpass" css={mypageStyle.Editprofileform.input} placeholder="기존 비밀번호"
@@ -85,8 +86,8 @@ export const Editform = () => {
                     />
                 </div>
                     
-                <button type="button" onClick={() => setIsopen(!isopen)}>취소</button>
-                <button type="submit" disabled={!isValid}>적용하기</button>
+                <button type="button" onClick={() => setIsopen(!isopen)}  css={mypageStyle.Editprofileform.cancleButton}>취소</button>
+                <button type="submit" disabled={!isValid} css={mypageStyle.Editprofileform.submitButton(isValid)}>적용하기</button>
             </form>
         </div>
     </div>
