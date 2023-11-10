@@ -27,20 +27,11 @@ export const Modal = () => {
                         onClick={overClick}
                         aria-hidden="true"
                     >
-                         <button
-                                type="button"
-                                css={modalStyle.closeButton}
-                                onClick={() => {
-                                    setType(null);
-                                }}
-                            >
-                                X
-                            </button>
                         <div
                             css={placeinfoStyle.modalStyle.modalWindow}
                             ref={windowModal}
                         >
-                            <div css={placeinfoStyle.modalStyle.modalForm}>
+                            <div css={placeinfoStyle.modalStyle.modalForm(type)}>
                                 {/* {modalOption === "logIn" ? (
                                     <Login />
                                 ) : (

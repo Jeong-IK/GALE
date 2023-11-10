@@ -374,3 +374,15 @@ export interface MypagemodalType {
     setIsopen: (state: boolean) => void;
 }
 
+export interface RegioncontetType {
+    firstImageUrl: string[];
+    locationname: string;
+    board_number:number;
+    locationaddress: string;
+    latitude: number;
+    allAverage: number;
+    longitude: number;
+}
+export interface RegionlistresponseType{
+    data:RegioncontetType[];
+}

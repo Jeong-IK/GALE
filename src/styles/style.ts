@@ -268,6 +268,8 @@ export const travleStyle = {
             height: 81rem;
             border-radius: 15px;
             margin: 0 5.7rem 0 0;
+            position:relative;
+            z-index:-1;
         `,
         subject: css`
             color: #2d2d2d;
@@ -1462,10 +1464,209 @@ export const placeinfoStyle = {
             z-index: 2;
             border-radius: 1rem;
         `,
-        modalForm: css`
+        modalForm: (type:string) => css`
             text-align: center;
             display: block;
-            margin: 4rem;
+            margin: ${type === "moreshow" ? "2.5rem" : "4rem"};
         `,
+        closeButton : css`
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 4.5rem;
+            position: absolute;
+            top: -10%;
+            right: 0;
+        `,
+        reportStyle: {
+            form: css`
+                display: flex;
+                flex-direction: column;
+                text-align: left;
+                margin: 0 0 2rem 0;
+            `,
+            title: css`
+                color: var(--main, #2D2D2D);
+                font-family: Inter;
+                font-size: 2.8rem;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+                text-align: left;
+            `,
+            titleline: css`
+                width:55rem;
+                height:2px;
+                background: black;
+                margin: 2rem 0 2rem 0;
+            `,
+            subtitle:css`
+                color: var(--main, #2D2D2D);
+                font-family: Inter;
+                font-size: 1.7rem;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                text-align: left;
+            `,
+            subtitleline:css`
+                width:55rem;
+                height:2px;
+                background: #F3F3F3;
+                margin: 2rem 0 2.5rem 0;
+            `,
+            reportreason: css`
+                color: var(--main, #2D2D2D);
+                font-family: Inter;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+                text-align: left;
+            `,
+            radioButton: css`
+            display: flex;
+            align-items: center;
+            margin: 2rem 0 0 0;
+            input[type="radio"]{
+                fill: #F3F3F3;
+                width: 34px;
+                height: 34px;
+                border:none;
+            }
+            label {
+                color: var(--main, #2D2D2D);
+                font-family: Inter;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+                margin: 0 0 0 0.8rem;
+              }
+            `,
+            reporttextarea: css`
+                display:flex;
+                flex-direction: column;
+                margin: 3.2rem 0 4rem 0;
+                textarea {
+                    margin-Top: 2rem;
+                    width: 550px;
+                    height: 168px;
+                    flex-shrink: 0;
+                    border-radius: 8px;
+                    border: 1px solid #ACACAC;
+                    background: #FFF;
+                    resize: none;
+                    padding: 2rem;
+                    color: var(--main, #2D2D2D);
+                    font-family: Inter;
+                    font-size: 1.5rem;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: normal;
+                }
+            `,
+            cancleButton: css`
+                width: 18.5rem;
+                height: 6rem;
+                border-radius: 8px;
+                border: 1px solid #A5A5A5;
+                background: #FFF;
+                color: #A5A5A5;
+                font-family: Inter;
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+                margin: 0 1rem 0 0;
+        `,
+            submitButton: (isvalid:boolean) => css`
+                width: 18.5rem;
+                height: 6rem;
+                border-radius: 8px;
+                border: 1px solid #A5A5A5;
+                color: #FFF;
+                font-family: Inter;
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+                background: ${isvalid ? "var(--main2, #FE8101)" : "var(--main2, #FE8101);"};
+            `,
+        },
+        moreshowStyle:{
+            profileDiv: css`
+                display: flex;
+                align-items: center;
+            `,
+            profileImage: css`
+                width:4.2rem;
+                height:4.2rem;
+                border-radius: 4.2rem;
+            `,
+            title: css`
+                color: #54566F;
+                font-family: Inter;
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+                text-align: left;
+                margin:0 0 0 1.5rem
+            `,
+            regdate:css`
+                color: #ACACAC;
+                font-family: Inter;
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+            `,
+            placeimage: css`
+                width: 40rem;
+                height:42rem;
+                position: relative;
+                margin: 2.5rem 0 0 0;
+            `,
+            stargradetitle: css`
+                color: #989AAC;
+                font-family: Inter;
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+            `,
+            stargradeform: css`
+                width: 18rem;
+                display: flex;
+                align-items: center;
+                justify-content: left;
+                padding: 0 0 1rem 0;
+                justify-content: space-between;
+            `,
+            star: (checked : boolean) => css`
+                width: 2rem;
+                height: 2rem;
+                color: ${checked ? "#FE8101" : "#DADADA"};
+            `,
+            starline: css`
+                width:45rem;
+                height:1px;
+                margin: 2rem 0 2rem 0;
+                background-color: #EAEAEA;
+            `,
+            contentDiv: css`
+                width:45rem;
+                height:29rem;
+                color: var(--main, #2D2D2D);
+                font-family: Inter;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                text-align: left;
+            `
+
+        }
     },
 };
