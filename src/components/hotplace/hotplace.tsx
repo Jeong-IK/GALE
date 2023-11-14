@@ -39,7 +39,7 @@ export const Hotplace = () => {
                     zoomable={false}
                     draggable={false}
                 >
-                    {lat !== 0 && lng !== 0 ? (
+                    {lat !== 37.541 && lng !== 126.986 ? (
                         <MapMarker
                             position={{
                                 lat,

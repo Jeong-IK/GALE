@@ -350,30 +350,32 @@ export interface RegionselectorstoreType {
     isopen : boolean;
     selectedregion : string;
     selectedsubregion : string;
+    region_number:number | null;
     setIsopen : (state: boolean) => void;
     setSelectedregion : (region:string) => void;
     setSelectedsubregion : (subregion : string) => void;
+    setRegion_number: (region_number:number) => void;
 }
 
 interface RegiondataType {
-    [key: string]: string[];
+    [key: string]: {regioncode: number, subregion: string[]};
 }
 
 export const Regiondata : RegiondataType = {
-    "서울" : ["서울 전체", "강북구", "광진구", "노원구", "서초구", "송파구", "용산구", "중구", "강남구", "강서구", "구로구", "도봉구", "성동구", "양천구", "은평구", "중량구", "강동구", "관악구", "금천구", "동대문구", "성북구", "영등포구", "종로구"],
-    "경기" : [
+    "서울" : {regioncode: 2, subregion: ["서울 전체", "강북구", "광진구", "노원구", "서초구", "송파구", "용산구", "중구", "강남구", "강서구", "구로구", "도봉구", "성동구", "양천구", "은평구", "중량구", "강동구", "관악구", "금천구", "동대문구", "성북구", "영등포구", "종로구"]},
+    "경기" :{ regioncode:31, subregion: [
         "경기도 전체", "수원시", "성남시", "의정부시", "안양시", "부천시", "광명시", "평택시", "동두천시", 
         "안산시", "고양시", "과천시", "구리시", "남양주시", "오산시", "시흥시", "군포시", 
         "의왕시", "하남시", "용인시", "파주시", "이천시", "안성시", "김포시", "화성시", 
         "광주시", "양주시", "포천시", "여주시", "연천군", "가평군", "양평군"
-      ]
+      ]}
 }
 
 export interface MypagemodalType {
     isopen : boolean;
     setIsopen: (state: boolean) => void;
 }
-
+// 지역 정보 가져오기 API 요청 및 반환 타입
 export interface RegioncontetType {
     firstImageUrl: string[];
     locationname: string;

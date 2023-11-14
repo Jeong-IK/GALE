@@ -6,10 +6,12 @@ import { Regiondata } from "src/types/type";
 
 
 export const Regionselector = () => {
-    const {isopen, selectedregion, selectedsubregion, setSelectedregion, setSelectedsubregion, setIsopen} = useRegionselectorstore();
+    const {isopen, selectedregion, selectedsubregion, setSelectedregion, setRegion_number, setSelectedsubregion, setIsopen} = useRegionselectorstore();
 
     const handleRegionClick = (region: string) => {
       setSelectedregion(region);
+      setRegion_number(Regiondata[region].regioncode);
+      
   };
 
   const handleSubRegionClick = (subRegion: string) => {
@@ -33,7 +35,7 @@ export const Regionselector = () => {
             </div>
               
             <div css={travleStyle.RegionSelector.subregionlist}>
-              {selectedregion && Regiondata[selectedregion].map((subRegion) => (
+              {selectedregion && Regiondata[selectedregion].subregion.map((subRegion) => (
                 <div key={subRegion} css={travleStyle.RegionSelector.subregioncontent(subRegion === selectedsubregion)} onClick={() => handleSubRegionClick(subRegion)}>
                   <MdDone />
                   {subRegion}

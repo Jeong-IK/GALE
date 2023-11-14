@@ -109,9 +109,11 @@ export const useRegionselectorstore = create<RegionselectorstoreType> (set => ({
     isopen : false,
     selectedregion : "",
     selectedsubregion : "",
+    region_number: null,
     setIsopen : (state: boolean) => set(() => ({isopen : state})),
     setSelectedregion : (region:string) => set(() => ({selectedregion : region})),
-    setSelectedsubregion : (subregion : string) => set(() => ({selectedsubregion : subregion}))
+    setSelectedsubregion : (subregion : string) => set(() => ({selectedsubregion : subregion})),
+    setRegion_number: (region_number:number) => set(() => ({region_number}))
 }));
 
 export const useMypageemodalstore = create<MypagemodalType>( set =>({

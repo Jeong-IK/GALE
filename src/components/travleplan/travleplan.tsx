@@ -10,15 +10,14 @@ export const TravlePlan = () => {
     const router = useRouter();
     const regionref = useRef(null);
     const {startDate, endDate} = useDaterangeStore();
-    const {isopen, selectedregion, selectedsubregion,  setIsopen} = useRegionselectorstore();
-
+    const {isopen, selectedregion, selectedsubregion ,  setIsopen} = useRegionselectorstore();
 
     const onSubmit = () => {
         router.push({ 
             pathname: "/searchplace",
         });
     };
-
+    
     return (
         <>
         <div css={travleStyle.travleDiv}>
