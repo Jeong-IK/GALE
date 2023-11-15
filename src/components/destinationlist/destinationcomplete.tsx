@@ -3,8 +3,8 @@ import { useRouter } from "next/router";
 import { AiOutlineSwapRight } from "react-icons/ai";
 import { useRegionselectorstore, useViewlocation } from "src/stores/store";
 import { useGetregionlist } from "src/hooks/useGetregionlist";
+import  mapmarkericon from "src/public/mapmarkericon.svg";
 import { travleStyle } from "../../styles/style";
-
 
 export const Destinationcomplelte = () => {
     const router = useRouter();
@@ -17,22 +17,24 @@ export const Destinationcomplelte = () => {
         <div css={travleStyle.destinationComplete.subject}>도착지 여행장소</div>
         <div css={travleStyle.destinationComplete.travlePlace}>
             <Map
-                // center={{ lat: 37.566535, lng: 126.9779692 }}
+                 // center={{ lat: 37.5137976, lng: 126.8910412539 }}
                 center={{lat, lng}}
                 css={travleStyle.destinationComplete.kakaomap}
                 zoomable
                 draggable
-                level={7}
+                level={8}
             >
-                {regionData ? regionData.map((marker) => { 
-                    console.log(marker.latitude, marker.longitude);
-                    return (
-                    <MapMarker
-                        position={{ lat: marker.latitude, lng: marker.latitude }}
-                        clickable
-                          />)
-                }) : null          
-                }
+                {/* <MapMarker
+                position={{lat:37.5137976, lng:126.8910412539}}
+                /> */}
+                {regionData &&
+                        regionData.map((marker) => (
+                            <MapMarker
+                                key={marker.board_number}
+                                position={{ lat: marker.latitude, lng: marker.longitude }}
+                                image={{src: mapmarkericon, size:{width:40, height:40}}}
+                            />
+                ))}
                 </Map>
             <div css={travleStyle.destinationComplete.listDiv}>
                 <div css={travleStyle.destinationComplete.travleDate}>
